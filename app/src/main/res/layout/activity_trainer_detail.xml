@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.TrainerDetail">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerlay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/fifty"
+                android:layout_height="match_parent"
+                android:src="@drawable/back"
+                android:padding="@dimen/ten"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/usericon"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/five"
+                android:text="K Ravi Kumar"
+                android:fontFamily="@font/raleway"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/eighteen"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerlay"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred_fifty"
+                android:layout_marginTop="@dimen/ten"
+                android:orientation="horizontal">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabIndicatorGravity="center" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/itemimage"
+                android:padding="@dimen/fifteen"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/itemname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="@dimen/five"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="K Ravi Kumar"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/seventeen" />
+
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/itemname"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Certified Professional Trainer"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/fourteen" />
+
+
+                <RelativeLayout
+                    android:id="@+id/pricelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address"
+                    android:layout_marginTop="@dimen/five"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="@dimen/ten"
+                        android:drawableLeft="@drawable/ic_gym_icon"
+                        android:drawablePadding="@dimen/six"
+                        android:fontFamily="@font/sans_regular"
+                        android:text="Weightlifter/Fitness Coach"
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="@dimen/sixteen" />
+
+                    <TextView
+                        android:id="@+id/detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/time"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center_vertical"
+                        android:text="             K. Ravi Kumar hails from Berhampur in Odisha. He started weightlifting at the Veer Hanuman Club in the city. K. Ravi Kumar was originally a bodybuilder for 7 years before he took up weightlifting. However, after his trainer Narayan Sahu's counsel he changed his attention towards weightlifting..."
+                        android:textColor="@color/textcol"
+                        android:textSize="@dimen/thirteen"
+                        android:layout_marginTop="@dimen/six"/>
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/fifteen"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:background="@color/textcol"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="@dimen/ten"
+                    android:src="@drawable/online_icon"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="1on 1 Personal Training"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/thirteen"
+                    android:layout_marginLeft="@dimen/six"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="@dimen/ten"
+                    android:src="@drawable/online_icon"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Group Fitness Instructions"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/thirteen"
+                    android:layout_marginLeft="@dimen/six"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginRight="@dimen/fifteen"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="@dimen/ten"
+                    android:src="@drawable/online_icon"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Weight Management Expert"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/thirteen"
+                    android:layout_marginLeft="@dimen/six"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="@dimen/ten"
+                    android:src="@drawable/online_icon"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Strength &amp; Conditioning Expert"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/thirteen"
+                    android:layout_marginLeft="@dimen/six"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/fifteen"
+                android:layout_marginBottom="@dimen/fifteen"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:background="@color/textcol"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/singletxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/thirty"
+                        android:text="SINGLE"
+                        android:paddingLeft="@dimen/fifteen"
+                        android:paddingRight="@dimen/fifteen"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:background="@drawable/selected_bg"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/raleway"
+                        android:textSize="@dimen/twelve"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/grouptxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/thirty"
+                        android:text="GROUP"
+                        android:paddingLeft="@dimen/fifteen"
+                        android:paddingRight="@dimen/fifteen"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:background="@drawable/selection_drawable"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:fontFamily="@font/raleway"
+                        android:textSize="@dimen/twelve"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/packagestxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/thirty"
+                        android:text="PACKAGES"
+                        android:paddingLeft="@dimen/fifteen"
+                        android:paddingRight="@dimen/fifteen"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:background="@drawable/selection_drawable"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:fontFamily="@font/raleway"
+                        android:textSize="@dimen/twelve"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fifteen">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 on 1 Session"
+                        android:checked="true"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/raleway"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/seventeen"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:id="@+id/salesprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="Rs. 299.00"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/fifteen"
+                        android:layout_toLeftOf="@+id/favourite"
+                        android:layout_marginRight="@dimen/five"
+                        android:fontFamily="@font/sans_bold"/>
+
+                    <TextView
+                        android:id="@+id/regularprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="Rs. 599.00"
+                        android:textColor="@color/colorGrey1"
+                        android:textSize="@dimen/fifteen"
+                        android:layout_toLeftOf="@+id/favourite"
+                        android:layout_marginRight="@dimen/ten"
+                        android:fontFamily="@font/sans_regular"/>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/fifteen"
+                android:layout_marginBottom="@dimen/five"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:background="@color/textcol"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sixty"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/booknow"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/forty"
+                        android:text="BOOK NOW"
+                        android:layout_marginLeft="@dimen/fifteen"
+                        android:layout_marginRight="@dimen/fifteen"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:background="@drawable/selected_bg"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/raleway"
+                        android:textSize="@dimen/twelve"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/chooseslot"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/forty"
+                        android:text="CHOOSE YOUR SLOT"
+                        android:layout_marginLeft="@dimen/fifteen"
+                        android:layout_marginRight="@dimen/fifteen"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:background="@drawable/selected_bg"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/raleway"
+                        android:textSize="@dimen/twelve"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

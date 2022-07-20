@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/fifteen"
+        android:orientation="vertical"
+        android:background="@drawable/slot_dialog_bg">
+
+        <TextView
+            android:id="@+id/itemname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/five"
+            android:fontFamily="@font/raleway"
+            android:gravity="center_vertical"
+            android:text="You are scheduling a session with trainer K Ravi Kumar"
+            android:textColor="@color/mdtp_accent_color_dark"
+            android:textStyle="bold"
+            android:textSize="@dimen/seventeen" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten">
+
+        <TextView
+            android:id="@+id/datetxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/five"
+            android:fontFamily="@font/raleway"
+            android:gravity="center_vertical"
+            android:text="Choose a Date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fifteen" />
+
+            <TextView
+                android:id="@+id/pickdate"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/thirty"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/raleway"
+                android:paddingLeft="@dimen/fifteen"
+                android:paddingRight="@dimen/fifteen"
+                android:background="@drawable/selected_bg"
+                android:gravity="center_vertical"
+                android:text="Pick Date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/thirteen" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/ten"
+            android:fontFamily="@font/raleway"
+            android:gravity="center_vertical"
+            android:text="Select Time Slot"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fifteen" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timeslots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/ten"
+            android:fontFamily="@font/raleway"
+            android:gravity="center_vertical"
+            android:text="TERMS &amp; CONDITIONS"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:textSize="@dimen/seventeen" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/five"
+            android:fontFamily="@font/raleway"
+            android:gravity="center_vertical"
+            android:text="     Once you request and book a session we will provide you a confirmation of the.."
+            android:textColor="@color/black"
+            android:textSize="@dimen/thirteen" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/confirmbook"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty"
+                android:text="CONFIRM &amp; PROCEED"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:background="@drawable/selected_bg"
+                android:textColor="@color/white"
+                android:fontFamily="@font/raleway"
+                android:textSize="@dimen/twelve"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

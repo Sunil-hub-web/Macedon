@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_bold"
+                android:text="Address Details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty_five">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_regular"
+                android:text="Please enter your Address Details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fifteen">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:orientation="vertical">
+
+                <!--<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="Locality"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_locality"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="City"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="State"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="Country"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="PinCode"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_zip"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="Address1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_House"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:fontFamily="@font/sans_regular"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberSigned"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/rupee_foradian"
+                    android:text="Address2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edit_street"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_marginTop="@dimen/five"
+                    android:layout_weight="1"
+                    android:background="@drawable/selection_drawable"
+                    android:drawablePadding="@dimen/twenty"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/eighteen"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/login_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/thirty"
+                    android:layout_marginTop="@dimen/twenty_five"
+                    android:layout_marginRight="@dimen/thirty"
+                    android:background="@drawable/login_btn_bg"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center"
+                    android:text="Add Address"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sixteen"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

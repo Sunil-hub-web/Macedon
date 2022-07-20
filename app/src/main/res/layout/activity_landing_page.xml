@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.LandingPage">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:layout_above="@+id/bottomlayout"/>
+
+    <RelativeLayout
+        android:id="@+id/bottomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hundred"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/btn_skip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_toLeftOf="@+id/tabview"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="Skip"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="bold" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorGravity="center" />
+
+        <TextView
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_toRightOf="@+id/tabview"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Next"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

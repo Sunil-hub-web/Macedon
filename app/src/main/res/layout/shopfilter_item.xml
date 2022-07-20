@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/five"
+    android:layout_marginRight="@dimen/five">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/forty"
+        android:padding="@dimen/ten"
+        android:text="Protien"
+        android:textColor="@color/textcol"
+        android:background="@drawable/shop_filter_item_bg"
+        android:fontFamily="@font/raleway"
+        android:textSize="@dimen/twelve"/>
+
+</LinearLayout>

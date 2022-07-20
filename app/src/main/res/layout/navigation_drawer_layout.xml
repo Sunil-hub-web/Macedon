@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainlayout"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/two_hundred_fifty"
+        android:layout_height="@dimen/sixty">
+
+        <ImageView
+            android:id="@+id/usericon"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:src="@drawable/user"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/five"
+            android:padding="@dimen/six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/usericon"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/eight"
+            android:text="Ranjeet"
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/nav_ItemOrder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Item Order"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_items_order"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+    <TextView
+        android:id="@+id/nav_Subscriptions"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Subscriptions"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_subscription"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Activity &amp; Records"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_activity_record"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+    <TextView
+        android:id="@+id/nev_CompletedSession"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Completed Session"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_completed_session"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+    <TextView
+        android:id="@+id/nav_GymMembership"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Gym Membership"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_gym_membership"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+   <!-- <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Loyalty"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_loyality"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>-->
+
+    <TextView
+        android:id="@+id/userprofile_txt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="My Profile"
+        android:gravity="center"
+        android:drawableLeft="@drawable/user_profile"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+    <!--<TextView
+        android:id="@+id/address_txt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="My Address"
+        android:gravity="center"
+        android:drawableLeft="@drawable/user_location"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>-->
+
+    <TextView
+        android:id="@+id/logout_txt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:text="Logout"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_logout"
+        android:paddingLeft="@dimen/fifteen"
+        android:paddingRight="@dimen/fifteen"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textcol1"
+        android:textSize="@dimen/fifteen"/>
+
+
+
+
+</LinearLayout>

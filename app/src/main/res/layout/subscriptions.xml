@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiogroup">
+
+            <RadioButton
+                android:id="@+id/planName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic Plan"
+                android:textSize="@dimen/twenty_size"
+                android:fontFamily="@font/sans_bold"
+                android:paddingLeft="@dimen/ten"
+                android:textColor="@color/colorPrimaryDark">
+
+            </RadioButton>
+
+            <View
+                android:layout_width="@dimen/sixty"
+                android:layout_height="@dimen/three"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginLeft="@dimen/forty"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:fontFamily="@font/sans_bold"
+            android:text="Attend unmilited worhoutin a membership period"
+            android:layout_marginLeft="@dimen/forty"
+            android:textColor="@color/colorGrey2"
+            android:textSize="@dimen/textsize"
+            android:layout_below="@+id/radiogroup"/>
+
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
+            android:fontFamily="@font/sans_bold"
+            android:text="1278.72"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/eighteen"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_alignParentRight="true"/>
+
+        <ImageView
+            android:id="@+id/symbol"
+            android:layout_width="@dimen/fifteen"
+            android:layout_height="@dimen/fifteen"
+            android:layout_marginTop="@dimen/ten"
+            android:src="@drawable/india_rupee_currency_symbol"
+            android:layout_marginRight="@dimen/five"
+            android:layout_toLeftOf="@+id/price"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

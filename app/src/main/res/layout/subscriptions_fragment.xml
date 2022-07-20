@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lin_MacPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/ten"
+                android:background="@drawable/shop_filter_item_bg">
+
+                <!-- <ImageView
+                     android:id="@+id/icon"
+                     android:layout_width="@dimen/forty"
+                     android:layout_height="@dimen/forty"
+                     android:background="@color/colorPrimaryDark"
+                     android:src="@drawable/ic_gym_icon"
+                     android:padding="@dimen/ten"
+                     app:tint="@color/white" />-->
+
+                <TextView
+                    android:id="@+id/text_MacPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ten"
+                    android:text="Mac Pass"
+                    android:gravity="center"
+                    android:textColor="@color/textcol"
+                    android:fontFamily="@font/raleway"
+                    android:textSize="@dimen/twelve"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_TrannerPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/ten"
+                android:background="@drawable/shop_filter_item_bg">
+
+                <!--<ImageView
+                    android:id="@+id/icon1"
+                    android:layout_width="@dimen/forty"
+                    android:layout_height="@dimen/forty"
+                    android:background="@color/colorPrimaryDark"
+                    android:src="@drawable/ic_gym_icon"
+                    android:padding="@dimen/ten"
+                    app:tint="@color/white" />-->
+
+                <TextView
+                    android:id="@+id/text_TrannerPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ten"
+                    android:text="Tranner Pass"
+                    android:gravity="center"
+                    android:textColor="@color/textcol"
+                    android:fontFamily="@font/raleway"
+                    android:textSize="@dimen/twelve"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_DieticainPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/ten"
+                android:background="@drawable/shop_filter_item_bg">
+
+                <!--<ImageView
+                    android:id="@+id/icon2"
+                    android:layout_width="@dimen/forty"
+                    android:layout_height="@dimen/forty"
+                    android:background="@color/colorPrimaryDark"
+                    android:src="@drawable/ic_gym_icon"
+                    android:padding="@dimen/ten"
+                    app:tint="@color/white" />-->
+
+                <TextView
+                    android:id="@+id/text_DieticainPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ten"
+                    android:text="Dieticain Pass"
+                    android:gravity="center"
+                    android:textColor="@color/textcol"
+                    android:fontFamily="@font/raleway"
+                    android:textSize="@dimen/twelve"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen"
+            android:id="@+id/recyclerShowPlane">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

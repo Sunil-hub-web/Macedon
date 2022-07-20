@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hundred"
+        android:elevation="@dimen/five"
+        android:layout_margin="@dimen/ten"
+        app:cardCornerRadius="@dimen/six">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/vw"
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="match_parent"
+                    android:background="#6E56AC"/>
+
+                
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_toRightOf="@+id/vw"
+                    android:layout_toLeftOf="@+id/ritlayout"
+                    android:text="SESSION"
+                    android:textColor="@color/colorGrey1"
+                    android:textSize="@dimen/eighteen"
+                    android:fontFamily="@font/sans_bold"/>
+                
+                
+                <RelativeLayout
+                    android:id="@+id/ritlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/five">
+
+
+
+                    <TextView
+                        android:id="@+id/salesprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rs 199.00"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="#6E56AC"
+                        android:textSize="@dimen/sixteen"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"/>
+
+
+                    <TextView
+                        android:id="@+id/regularprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rs 250.00"
+                        android:fontFamily="@font/sans_regular"
+                        android:textColor="@color/colorGrey1"
+                        android:textSize="@dimen/sixteen"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@+id/salesprice"/>
+
+
+                    <TextView
+                        android:id="@+id/payconsult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/five"
+                        android:paddingBottom="@dimen/five"
+                        android:paddingLeft="@dimen/ten"
+                        android:paddingRight="@dimen/ten"
+                        android:background="#6E56AC"
+                        android:text="PAY &amp; CONSULT"
+                        android:fontFamily="@font/raleway"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/twelve"
+                        android:layout_alignParentBottom="true"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

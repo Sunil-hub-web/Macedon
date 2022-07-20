@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Login">
+
+    <ImageView
+        android:id="@+id/img_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitEnd"
+        android:src="@drawable/login_bg" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:background="@drawable/background_gradient" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/fifty"
+        android:paddingBottom="@dimen/fifty">
+
+        <ImageView
+            android:id="@+id/applogo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hundred_fifty"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/app_logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/applogo"
+            android:layout_marginTop="@dimen/ten"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:text="IT NEVER GET EASIER, YOU JUST GET STRONGER"
+            android:textColor="@color/white"
+            android:textSize="@dimen/eighteen" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/social_layout"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginBottom="@dimen/twenty_five"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:text="SIGNUP WITH"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twenty_two" />
+
+
+        <LinearLayout
+            android:id="@+id/social_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:layout_above="@+id/login_btn"
+            android:layout_marginLeft="@dimen/thirty"
+            android:layout_marginRight="@dimen/thirty"
+            android:layout_marginBottom="@dimen/twenty_five"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_faceBook"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/five"
+                android:layout_weight="1"
+                android:background="@drawable/social_btn_bg"
+                android:drawableLeft="@drawable/ic_icons8_facebook_f"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:paddingLeft="@dimen/fifteen"
+                android:paddingRight="@dimen/fifteen"
+                android:text="Facebook"
+                android:textColor="@color/textcol"
+                android:textSize="@dimen/sixteen"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_googleLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_weight="1"
+                android:background="@drawable/social_btn_bg"
+                android:drawableLeft="@drawable/google_icon"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:paddingLeft="@dimen/fifteen"
+                android:paddingRight="@dimen/fifteen"
+                android:text="Google"
+                android:textColor="@color/textcol"
+                android:textSize="@dimen/sixteen"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/thirty"
+            android:layout_marginRight="@dimen/thirty"
+            android:background="@drawable/login_btn_bg"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:text="Login With Mobile Number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

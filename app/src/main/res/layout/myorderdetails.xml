@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/five"
+        app:cardCornerRadius="@dimen/eight">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/five">
+
+                <ImageView
+                    android:id="@+id/itemimage"
+                    android:layout_width="@dimen/ninety"
+                    android:layout_height="@dimen/ninety"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/shop_a"
+                    android:padding="@dimen/three"/>
+
+                <ImageView
+                    android:layout_width="@dimen/twenty"
+                    android:layout_height="@dimen/twenty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/radio_veg"
+                    android:padding="@dimen/three"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/itemimage"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_itemname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Optimum Nutrition Gold Standard "
+                        android:layout_alignParentTop="true"
+                        android:textColor="@color/black"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/fifteen"
+                        android:layout_marginRight="@dimen/five"
+                        android:fontFamily="@font/raleway"/>
+
+
+                  <!--  <ToggleButton
+                        android:id="@+id/favourite"
+                        android:layout_width="@dimen/twenty"
+                        android:layout_height="@dimen/twenty"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_toggle"
+                        android:textColor="@color/transparent"/>-->
+
+                    <RelativeLayout
+                        android:id="@+id/id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_itemname"
+                        android:layout_marginTop="@dimen/five">
+
+                        <TextView
+                            android:id="@id/orderId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Order Id : "
+                            android:fontFamily="@font/sans_bold"
+                            android:textColor="#9EA5A6"
+                            android:textSize="@dimen/textsize"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/text_orderId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/five"
+                            android:layout_toRightOf="@+id/orderId"
+                            android:text="dsafgghhh"
+                            android:fontFamily="@font/sans_bold"
+                            android:textColor="#9EA5A6"
+                            android:textSize="@dimen/textsize"
+                            android:textStyle="bold"></TextView>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/id">
+
+                        <TextView
+                            android:id="@+id/orderDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Order Date : "
+                            android:textColor="#9EA5A6"
+                            android:textSize="@dimen/textsize"
+                            android:fontFamily="@font/sans_bold"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/text_orderDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/five"
+                            android:layout_toRightOf="@+id/orderDate"
+                            android:text="25.05.2012"
+                            android:textColor="#9EA5A6"
+                            android:fontFamily="@font/sans_bold"
+                            android:textSize="@dimen/textsize"
+                            android:textStyle="bold"></TextView>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/pricelayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/date"
+                        android:layout_marginTop="@dimen/five">
+
+                        <TextView
+                            android:id="@+id/salesprice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:text="Rs."
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/fifteen"
+                            android:layout_marginRight="@dimen/five"
+                            android:fontFamily="@font/sans_bold"/>
+
+                        <TextView
+                            android:id="@+id/regularprice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:text="3,499.00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/fifteen"
+                            android:layout_toRightOf="@+id/salesprice"
+                            android:layout_marginRight="@dimen/ten"
+                            android:fontFamily="@font/sans_regular"/>
+
+                       <!-- <TextView
+                            android:id="@+id/discount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:text="12% OFF"
+                            android:textColor="@color/btn_yellow"
+                            android:textSize="@dimen/twelve"
+                            android:layout_toLeftOf="@+id/favourite"
+                            android:fontFamily="@font/raleway"/>
+-->
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

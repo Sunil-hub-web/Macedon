@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MobileLogin">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitEnd"
+        android:src="@drawable/login_bg" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:background="@drawable/background_gradient" />
+
+   <!-- <ImageView
+        android:id="@+id/close_bt"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        android:src="@drawable/close_icon"
+        android:layout_margin="@dimen/twenty"
+        android:padding="@dimen/five"
+        android:layout_alignParentLeft="true"
+        app:tint="@color/white" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/fifty"
+        android:paddingBottom="@dimen/fifty">
+
+        <ImageView
+            android:id="@+id/applogo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hundred_fifty"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/app_logo" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/applogo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/mobiletxt"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get started"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/twenty_three"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/raleway"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter mobile number to continue "
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/seventeen"
+                android:layout_marginTop="@dimen/ten"
+                android:textColor="@color/white"
+                android:fontFamily="@font/raleway"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/mobiletxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile No."
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/twenty_five"
+            android:layout_above="@+id/numberlayout"
+            android:fontFamily="@font/raleway"/>
+
+
+        <RelativeLayout
+            android:id="@+id/numberlayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_centerInParent="true"
+            android:paddingLeft="@dimen/twenty_five"
+            android:paddingRight="@dimen/twenty_five"
+            android:layout_marginBottom="@dimen/thirty">
+
+            <RelativeLayout
+                android:id="@+id/leftlayout"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/flag"
+                    android:layout_width="@dimen/thirty"
+                    android:layout_height="@dimen/thirty"
+                    android:src="@drawable/flag_icon"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:id="@+id/countrycode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+91"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:textSize="@dimen/eighteen"
+                    android:textColorHint="@color/white"
+                    android:gravity="center"
+                    android:layout_toRightOf="@+id/flag"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/sans_regular"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_toRightOf="@+id/leftlayout">
+
+
+                <EditText
+                    android:id="@+id/phone_number_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/eighteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:hint="Mobile number"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:text=""
+                    android:paddingLeft="@dimen/ten"
+                    android:background="@drawable/number_ed"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorGrey2"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/sendotp_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty_five"
+            android:background="@drawable/login_btn_bg"
+            android:layout_below="@+id/numberlayout"
+            android:text="Send OTP"
+            android:layout_marginLeft="@dimen/twenty_five"
+            android:layout_marginRight="@dimen/twenty_five"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen"
+            android:fontFamily="@font/raleway"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

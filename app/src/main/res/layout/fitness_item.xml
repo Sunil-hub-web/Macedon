@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/five"
+        app:cardCornerRadius="@dimen/eight">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:id="@+id/itemimage"
+                    android:layout_width="@dimen/ninety"
+                    android:layout_height="@dimen/ninety"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:padding="@dimen/three"
+                    android:src="@drawable/shop_a" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/itemimage"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/itemname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_toLeftOf="@+id/favourite"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center_vertical"
+                        android:text="Optimum Nutrition Gold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fifteen" />
+
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/itemname"
+                        android:layout_toLeftOf="@+id/favourite"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center_vertical"
+                        android:text="Optimum Nutrition Gold Standard WHEY"
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="@dimen/twelve" />
+
+                    <LinearLayout
+                        android:id="@+id/ratelayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/address"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/five"
+                            android:padding="@dimen/three"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/rating"
+                                android:layout_width="@dimen/thirty"
+                                android:layout_height="@dimen/twenty"
+                                android:background="@drawable/rating_bg"
+                                android:fontFamily="@font/raleway"
+                                android:gravity="center"
+                                android:text="4.4"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/nine" />
+
+                            <TextView
+                                android:id="@+id/review"
+                                android:layout_width="@dimen/seventy"
+                                android:layout_height="@dimen/twenty"
+                                android:background="@drawable/review_bg"
+                                android:fontFamily="@font/raleway"
+                                android:gravity="center"
+                                android:text="Excellent"
+                                android:textColor="#11772D"
+                                android:textSize="@dimen/nine" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/pricelayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ratelayout"
+                        android:layout_marginTop="@dimen/five"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="@dimen/ten"
+                            android:layout_toLeftOf="@+id/favourite"
+                            android:fontFamily="@font/sans_regular"
+                            android:text="05:30 AM - 09:00 PM"
+                            android:textColor="@color/colorGrey2"
+                            android:textSize="@dimen/fifteen" />
+
+                        <TextView
+                            android:layout_width="@dimen/ninety"
+                            android:layout_height="@dimen/thirty"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/box"
+                            android:fontFamily="@font/raleway"
+                            android:gravity="center"
+                            android:text="View Details"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/nine" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/textcol" />
+
+
+            <LinearLayout
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/ten"
+                android:paddingRight="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/zumba"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/ic_gym_icon"
+                    android:drawablePadding="@dimen/ten"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Zumba"
+                    android:textColor="@color/textcol"
+                    android:textSize="@dimen/ten" />
+
+                <TextView
+                    android:id="@+id/gym"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:drawableLeft="@drawable/ic_gym_icon"
+                    android:drawablePadding="@dimen/ten"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Gym Workout"
+                    android:textColor="@color/textcol"
+                    android:textSize="@dimen/ten" />
+
+                <TextView
+                    android:id="@+id/yoga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:drawableLeft="@drawable/ic_gym_icon"
+                    android:drawablePadding="@dimen/ten"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center_vertical"
+                    android:text="Yoga"
+                    android:textColor="@color/textcol"
+                    android:textSize="@dimen/ten" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

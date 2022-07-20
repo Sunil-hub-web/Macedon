@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_editOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textSize="@dimen/twenty"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/twenty"
+                android:textColor="@color/colorPrimary">
+
+            </TextView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/hundred_twenty"
+                android:layout_height="@dimen/hundred_twenty"
+                android:src="@drawable/user"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:id="@+id/edit_userNmae"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:background="@drawable/selection_drawable"
+                android:fontFamily="@font/sans_regular"
+                android:gravity="center_vertical"
+                android:hint="User Name"
+                android:layout_margin="@dimen/fifteen"
+                android:textColor="@color/colorGrey2"
+                android:paddingLeft="@dimen/twenty"/>
+
+            <EditText
+                android:id="@+id/edit_emailId"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:background="@drawable/selection_drawable"
+                android:fontFamily="@font/sans_regular"
+                android:gravity="center_vertical"
+                android:hint="Email Id"
+                android:layout_margin="@dimen/fifteen"
+                android:textColor="@color/colorGrey2"
+                android:paddingLeft="@dimen/twenty"/>
+
+            <EditText
+                android:id="@+id/edit_MobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:background="@drawable/selection_drawable"
+                android:fontFamily="@font/sans_regular"
+                android:gravity="center_vertical"
+                android:hint="Contact No"
+                android:layout_margin="@dimen/fifteen"
+                android:textColor="@color/colorGrey2"
+                android:paddingLeft="@dimen/twenty"/>
+
+            <EditText
+                android:id="@+id/edit_Gender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:background="@drawable/selection_drawable"
+                android:fontFamily="@font/sans_regular"
+                android:gravity="center_vertical"
+                android:hint="Gender"
+                android:layout_margin="@dimen/fifteen"
+                android:textColor="@color/colorGrey2"
+                android:paddingLeft="@dimen/twenty"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/fifteen"
+                android:background="@drawable/selection_drawable">
+
+
+                <RadioButton
+                    android:id="@+id/rdio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:layout_margin="@dimen/ten"
+                    android:textSize="@dimen/eighteen"
+                    />
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:layout_marginLeft="@dimen/fifty"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:textSize="@dimen/eighteen"/>
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/btn_UpdateAddress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/thirty"
+                android:layout_marginRight="@dimen/thirty"
+                android:background="@drawable/login_btn_bg"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/twenty"
+                android:text="Update Address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sixteen"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/usericon"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_marginLeft="@dimen/five"
+            android:padding="@dimen/five"
+            android:src="@drawable/user" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_toRightOf="@+id/usericon"
+            android:fontFamily="@font/raleway"
+            android:text="Hi, Ranjeet"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve_size"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/img_Search"/>
+
+        <ImageView
+            android:id="@+id/img_Search"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/locationlayout"
+            android:padding="@dimen/five"
+            android:src="@drawable/baseline_search"
+            app:tint="@color/white" />
+
+        <RelativeLayout
+            android:id="@+id/locationlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/eight">
+
+            <ImageView
+                android:id="@+id/locicon"
+                android:layout_width="@dimen/thirty"
+                android:layout_height="@dimen/thirty"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/five"
+                android:src="@drawable/location_icon"
+                app:tint="@color/white">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/locationtext"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/nav_header_height"
+                android:layout_toRightOf="@+id/locicon"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_down"
+                android:text="Cuttack"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_size"
+                android:textStyle="bold">
+
+            </TextView>
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/cart"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/five"
+            android:padding="@dimen/ten"
+            android:src="@drawable/ic_shop"
+            android:visibility="gone"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/nav_view"
+        android:layout_below="@+id/header" />
+
+    <RelativeLayout
+        android:id="@+id/networkConnection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/two_hundred_fifty"
+                android:layout_height="@dimen/two_hundred"
+                android:layout_gravity="center"
+                android:src="@drawable/internet_access_error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ooops!"
+                android:textColor="#000000"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/nettext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="No Internet Connection found"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="ON YOUR DATA OR WIFI AND HIT RESTART"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/restartapp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="@dimen/twenty"
+                android:background="@drawable/login_btn_bg"
+                android:text="Restart"
+                android:textColor="#090909"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>

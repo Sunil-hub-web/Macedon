@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="@dimen/fifty"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/ten"
+                    android:src="@drawable/back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/five"
+                    android:layout_toRightOf="@+id/usericon"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center"
+                    android:text="Delivery Location"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/eighteen" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/hundred"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_toRightOf="@+id/usericon"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:text="Choose delivery location"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/twenty">
+
+                <AutoCompleteTextView
+                    android:id="@+id/serachLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:ems="10"
+                    android:layout_margin="@dimen/ten"
+                    android:background="@drawable/searchlocation_bg"
+                    android:hint="Enter Your Location"
+                    android:drawableLeft="@drawable/ic_baseline_search"
+                    android:paddingLeft="@dimen/twenty"
+                    android:drawablePadding="@dimen/twenty">
+
+                </AutoCompleteTextView>
+
+
+                <TextView
+                    android:id="@+id/text_CurrentLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/thirty_five"
+                    android:text="Use My Location"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/cursor"
+                    android:drawablePadding="@dimen/twenty"
+                    android:textSize="@dimen/edittextsize"
+                    android:textColor="#ED1A0A">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_AddressDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Show your Curent Location"
+                    android:textSize="@dimen/edittextsize"
+                    android:textColor="#1F4A5B"
+                    android:gravity="center"
+                    android:layout_below="@id/text_CurrentLocation"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/thirty"></TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

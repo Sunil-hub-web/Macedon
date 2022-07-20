@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/eight"
+        app:cardElevation="@dimen/five"
+        android:layout_margin="@dimen/fifteen">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/ten">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="Subscriptions Name:"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_below="@+id/radiogroup"/>
+
+                <TextView
+                    android:id="@+id/subscriptions"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="Basic Plan"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_below="@+id/radiogroup"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="GYM Name:"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_below="@+id/radiogroup"/>
+
+                <TextView
+                    android:id="@+id/gymName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="Bhubaneshwar Health Club"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_below="@+id/radiogroup"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="GYM Location:"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_below="@+id/radiogroup"/>
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="NISER Campus, Bhubaneshwar"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_below="@+id/radiogroup"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:text="Plan Details :"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/colorGrey2"
+                android:textSize="@dimen/edittextsize"
+                android:layout_below="@+id/radiogroup"/>
+
+            <TextView
+                android:id="@+id/planDetails"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_bold"
+                android:hint=""
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/edittextsize"
+                android:layout_below="@+id/radiogroup"/>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>
