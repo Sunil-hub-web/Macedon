@@ -38,6 +38,7 @@ public class MobileLogin extends AppCompatActivity {
     String mobileno;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_login);
 
@@ -66,6 +67,7 @@ public class MobileLogin extends AppCompatActivity {
                     userLogin(mobileno);
 
                 }
+
                /* Intent i = new Intent(getApplicationContext(), OTPVerification.class);
                 startActivity(i);*/
 
@@ -91,16 +93,22 @@ public class MobileLogin extends AppCompatActivity {
 
                     String status = jsonObject.getString("status");
 
-                    if(status.equals("true")){
+                    if(status.equals("200")){
 
-                        String message = jsonObject.getString("message");
-                        String otp = jsonObject.getString("otp");
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String successstatus = jsonObject_message.getString("status");
+                        JSONObject jsonObject_status = new JSONObject(successstatus);
+                        String contact_otp = jsonObject_status.getString("contact_otp");
+                        String login_otp = jsonObject_status.getString("login_otp");
 
-                        sessionManager.setUserOTP(otp);
-                        sessionManager.setUserMobileNO(mobileNo);
+                        sessionManager.setUserOTP(login_otp);
+                        sessionManager.setUserMobileNO(contact_otp);
 
 
-                        Toast.makeText(MobileLogin.this, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MobileLogin.this, "Otp Send Success", Toast.LENGTH_SHORT).show();
 
                         Intent i = new Intent(getApplicationContext(), OTPVerification.class);
                         startActivity(i);

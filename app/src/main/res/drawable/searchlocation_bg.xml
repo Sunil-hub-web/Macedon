@@ -15,8 +15,8 @@
         android:dashWidth="1dp"></stroke>
 
     <corners
-        android:bottomRightRadius="@dimen/thirty"
-        android:topRightRadius="@dimen/thirty"
-        android:topLeftRadius="@dimen/thirty"
-        android:bottomLeftRadius="@dimen/thirty"/>
+        android:bottomRightRadius="@dimen/twenty"
+        android:topRightRadius="@dimen/twenty"
+        android:topLeftRadius="@dimen/twenty"
+        android:bottomLeftRadius="@dimen/twenty"/>
 </shape>

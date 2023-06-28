@@ -1,19 +1,13 @@
 package in.co.macedon.models;
 
-import java.util.ArrayList;
-
-public class Category_ModelClass {
+public class AllServicesModel {
 
     String service_master_id,service_master_name,image;
-    ArrayList<CenterServicesModel> servicesModels;
 
-    public Category_ModelClass(String service_master_id, String service_master_name, String image,
-                               ArrayList<CenterServicesModel> servicesModels) {
-
+    public AllServicesModel(String service_master_id, String service_master_name, String image) {
         this.service_master_id = service_master_id;
         this.service_master_name = service_master_name;
         this.image = image;
-        this.servicesModels = servicesModels;
     }
 
     public String getService_master_id() {
@@ -40,11 +34,4 @@ public class Category_ModelClass {
         this.image = image;
     }
 
-    public ArrayList<CenterServicesModel> getServicesModels() {
-        return servicesModels;
-    }
-
-    public void setServicesModels(ArrayList<CenterServicesModel> servicesModels) {
-        this.servicesModels = servicesModels;
-    }
 }

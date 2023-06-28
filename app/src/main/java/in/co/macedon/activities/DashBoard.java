@@ -125,9 +125,8 @@ public class DashBoard extends AppCompatActivity {
             getLocation();
         }
 
-        Intent intent = getIntent();
-
-        not_updated = intent.getStringExtra("not_updated");
+//        Intent intent = getIntent();
+//        not_updated = intent.getStringExtra("not_updated");
 
         intrenetCheck();
 
@@ -191,7 +190,6 @@ public class DashBoard extends AppCompatActivity {
         restartapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 intrenetCheck();
 
@@ -426,7 +424,11 @@ public class DashBoard extends AppCompatActivity {
             Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
             networkConnection.setVisibility(View.GONE);
 
-            if (not_updated.equals("not_updated")) {
+            locationlayout.setVisibility(View.VISIBLE);
+            cart.setVisibility(View.GONE);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+
+          /*  if (not_updated.equals("not_updated")) {
 
                 //fl.removeAllViews();
 
@@ -446,7 +448,7 @@ public class DashBoard extends AppCompatActivity {
                 locationlayout.setVisibility(View.VISIBLE);
                 cart.setVisibility(View.GONE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
-            }
+            }*/
 
 
         }

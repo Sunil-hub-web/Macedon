@@ -64,7 +64,18 @@ public class OTPVerification extends AppCompatActivity {
 
                 }else{
 
-                    OTPVerifaction(phone_number,OTPV);
+                    String optDet = pinView.getText().toString().trim();
+
+                    if (optDet.equals(OTPV)){
+
+                        getUserDetails(phone_number);
+
+                    }else{
+
+                        Toast.makeText(OTPVerification.this, "Enter Your Valide Otp", Toast.LENGTH_SHORT).show();
+
+                    }
+
                 }
 
               /*  Intent i = new Intent(getApplicationContext(), DashBoard.class);
@@ -75,13 +86,13 @@ public class OTPVerification extends AppCompatActivity {
         });
     }
 
-    public void OTPVerifaction(String mobileNo,String OTP){
+    public void getUserDetails(String mobileNo){
 
         ProgressDialog progressDialog = new ProgressDialog(OTPVerification.this);
-        progressDialog.setMessage("OTP Verification Please Wait...");
+        progressDialog.setMessage("User Details Please Wait...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.verifyOTP, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.getUserData, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -93,40 +104,33 @@ public class OTPVerification extends AppCompatActivity {
 
                     String status = jsonObject.getString("status");
 
-                    if(status.equals("true")){
+                    if(status.equals("200")){
 
-                        String message = jsonObject.getString("message");
-                        String Profile_status = jsonObject.getString("Profile_status");
-                        String data = jsonObject.getString("data");
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String successstatus = jsonObject_message.getString("status");
+                        JSONObject jsonObject_status = new JSONObject(successstatus);
+                        String user_id = jsonObject_status.getString("user_id");
+                        String fullname = jsonObject_status.getString("fullname");
+                        String email = jsonObject_status.getString("email");
+                        String contact = jsonObject_status.getString("contact");
+                        String isLoggedIn = jsonObject_status.getString("isLoggedIn");
 
-                        JSONObject jsonObject_data = new JSONObject(data);
-
-                        String id = jsonObject_data.getString("id");
-                        String user_name = jsonObject_data.getString("user_name");
-
-                        sessionManager.setUserId(id);
-                        sessionManager.setUserName(user_name);
+                        sessionManager.setUserId(user_id);
+                        sessionManager.setUserName(fullname);
+                        sessionManager.setUserMobileNO(contact);
+                        sessionManager.setuserEmail(email);
 
                         sessionManager.setLogin();
 
-                        Toast.makeText(OTPVerification.this, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OTPVerification.this, "Login In SuccessFully", Toast.LENGTH_SHORT).show();
 
-                        if(Profile_status.equals("not_updated")){
-
-
-
-                            Intent i = new Intent(getApplicationContext(), DashBoard.class);
-                            i.putExtra("not_updated","not_updated");
-                            startActivity(i);
-                            finish();
-
-                        }else{
-
-                            Intent i = new Intent(getApplicationContext(), DashBoard.class);
-                            i.putExtra("not_updated","updated");
-                            startActivity(i);
-                            finish();
-                        }
+                        Intent i = new Intent(getApplicationContext(), DashBoard.class);
+                        i.putExtra("not_updated","not_updated");
+                        startActivity(i);
+                        finish();
 
                     }
 
@@ -150,8 +154,6 @@ public class OTPVerification extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-
-                params.put("otp",OTP);
                 params.put("contact",mobileNo);
                 return params;
             }

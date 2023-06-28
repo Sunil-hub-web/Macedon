@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/social_layout"
+            android:layout_above="@+id/login_btn"
             android:layout_marginTop="@dimen/ten"
             android:layout_marginBottom="@dimen/twenty_five"
             android:fontFamily="@font/raleway"
@@ -59,7 +59,7 @@
             android:textSize="@dimen/twenty_two" />
 
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:id="@+id/social_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fifty"
@@ -107,7 +107,7 @@
                 android:textStyle="bold" />
 
 
-        </LinearLayout>
+        </LinearLayout>-->
 
 
         <TextView

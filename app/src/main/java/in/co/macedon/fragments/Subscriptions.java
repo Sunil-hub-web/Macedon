@@ -66,7 +66,7 @@ public class Subscriptions extends Fragment {
         lin_MacPass = view.findViewById(R.id.lin_MacPass);
 
 
-        userSubscription();
+        //userSubscription();
 
         text_MacPass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +119,7 @@ public class Subscriptions extends Fragment {
         return view;
     }
 
-    public void userSubscription(){
+   /* public void userSubscription(){
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Subscription Details Please Wait.....");
@@ -194,5 +194,5 @@ public class Subscriptions extends Fragment {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
-    }
+    }*/
 }

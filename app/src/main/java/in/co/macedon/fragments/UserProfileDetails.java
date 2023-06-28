@@ -77,7 +77,7 @@ public class UserProfileDetails extends Fragment {
 
         userid = sessionManager.getUserID();
 
-        viewUserProfile(userid);
+      //  viewUserProfile(userid);
 
         text_editOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +130,7 @@ public class UserProfileDetails extends Fragment {
                     str_emailId = edit_emailId.getText().toString().trim();
 
 
-                    UpdateUserProfile(userid,str_userNmae,str_emailId,selectPaymentOption);
+             //       UpdateUserProfile(userid,str_userNmae,str_emailId,selectPaymentOption);
 
 
                 }
@@ -142,13 +142,14 @@ public class UserProfileDetails extends Fragment {
         return view;
     }
 
+/*
     public void viewUserProfile(String userId) {
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Retrive User Details");
         progressDialog.show();
 
-        String url = AppURL.viewuserProfile+userId;
+     //   String url = AppURL.viewuserProfile+userId;
 
         Log.d("url",url);
 
@@ -293,6 +294,7 @@ public class UserProfileDetails extends Fragment {
 
 
     }
+*/
 
     public boolean isValidEmail(final String email) {
 

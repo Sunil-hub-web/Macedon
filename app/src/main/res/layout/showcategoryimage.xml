@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeImageView"
+        android:layout_width="@dimen/hundred_twenty"
+        android:layout_height="@dimen/hundred_twenty"
+        android:layout_margin="@dimen/ten"
+        android:padding="@dimen/five"
+        android:scaleType="fitXY"
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="@dimen/five" />
+
+
+</RelativeLayout>
