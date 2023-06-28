@@ -254,7 +254,7 @@ public class HomeFragment extends Fragment {
                                     service_master_id,service_master_name,image
                             );*/
 
-                            categoryDetails.add(category_modelClass);
+                           // categoryDetails.add(category_modelClass);
 
                             Log.d("categoryDetails",categoryDetails.toString());
                         }
