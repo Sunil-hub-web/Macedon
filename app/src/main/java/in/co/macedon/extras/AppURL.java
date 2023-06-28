@@ -8,6 +8,9 @@ public class AppURL {
     public static final String user_home = BaseUrl+"user_home";
     public static final String select_city = BaseUrl+"select_city";
     public static final String AllService = BaseUrl+"AllService";
+    public static final String view_profile = BaseUrl+"view_profile";
+    public static final String update_profile = BaseUrl+"update_profile";
+    public static final String macedon_membership = BaseUrl+"macedon_membership";
 
 
 

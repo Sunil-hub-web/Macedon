@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -63,20 +65,23 @@ import in.co.macedon.adapters.AllServicesAdapter;
 import in.co.macedon.adapters.BannerAdapter;
 import in.co.macedon.adapters.CategoryAdapter;
 import in.co.macedon.adapters.ExploreMoreAdapters;
+import in.co.macedon.adapters.TestimonialAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.extras.SessionManager;
 import in.co.macedon.models.AllServicesModel;
 import in.co.macedon.models.Banner_ModelClass;
 import in.co.macedon.models.Category_ModelClass;
 import in.co.macedon.models.CenterServicesModel;
+import in.co.macedon.models.TestimonialModel;
 
 public class HomeFragment extends Fragment {
 
     ViewPager2 viewpagerBanner;
     BannerAdapter bannerAdapter;
     ArrayList<Banner_ModelClass> banner ;
-    RecyclerView categoryRecycler,allservicesRecycler;
+    RecyclerView categoryRecycler,allservicesRecycler,testimonialRecycler;
     CategoryAdapter categoryAdapter;
+    TestimonialAdapter testimonialAdapter;
     ArrayList<Category_ModelClass> categoryDetails;
     GridLayoutManager gridLayoutManager;
     SwipeRefreshLayout swiprefresh;
@@ -94,16 +99,21 @@ public class HomeFragment extends Fragment {
     SessionManager sessionManager;
     AllServicesAdapter allServicesAdapter;
     ArrayList<AllServicesModel> allServicesModels = new ArrayList<>();
+    ArrayList<TestimonialModel> testimonialModels = new ArrayList<>();
     ArrayList<CenterServicesModel> servicesModelArrayList;
+    ScrollView scrollView;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         viewpagerBanner = v.findViewById(R.id.viewpagerBanner);
         categoryRecycler = v.findViewById(R.id.categoryRecycler);
         allservicesRecycler = v.findViewById(R.id.allservicesRecycler);
+        scrollView = v.findViewById(R.id.scrollView);
+        testimonialRecycler = v.findViewById(R.id.testimonialRecycler);
        // swiprefresh = v.findViewById(R.id.swiprefresh);
 
         sessionManager = new SessionManager(getContext());
@@ -113,6 +123,9 @@ public class HomeFragment extends Fragment {
         viewpagerBanner.setClipChildren(false);
         viewpagerBanner.setOffscreenPageLimit(3);
         viewpagerBanner.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        scrollView.fullScroll(View.FOCUS_DOWN);
+        scrollView.setSmoothScrollingEnabled(true);
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
@@ -166,7 +179,18 @@ public class HomeFragment extends Fragment {
             }
         });*/
 
-        showAddress_Dialog();
+        if (sessionManager.getCityId().equals("DEFAULT")){
+
+            showAddress_Dialog();
+
+        }else{
+
+            String strcityid = sessionManager.getCityId();
+            String strareaid = sessionManager.getAreaId();
+
+            getHomeDeatils(userId,strcityid,strareaid);
+        }
+
 
         return v;
     }
@@ -232,6 +256,9 @@ public class HomeFragment extends Fragment {
                         categoryDetails = new ArrayList<>();
                         servicesModelArrayList = new ArrayList<>();
 
+                        categoryDetails.clear();
+                        servicesModelArrayList.clear();
+
                         JSONArray jsonArray_category = new JSONArray(Service_List);
 
                         for(int j=0;j<jsonArray_category.length();j++) {
@@ -248,22 +275,62 @@ public class HomeFragment extends Fragment {
                             for (int i = 0;i<jsonArray_center.length();i++){
 
                                 JSONObject jsonObject_center = jsonArray_center.getJSONObject(i);
+                                String center_id = jsonObject_center.getString("center_id");
+                                String profile_image = jsonObject_center.getString("profile_image");
+                                String center_name = jsonObject_center.getString("center_name");
+                                String city_id = jsonObject_center.getString("city_id");
+                                String city_name = jsonObject_center.getString("city_name");
+                                String area_id = jsonObject_center.getString("area_id");
+                                String areaname = jsonObject_center.getString("areaname");
+
+                                CenterServicesModel centerServicesModel = new CenterServicesModel(
+                                        center_id,profile_image,center_name,city_id,city_name,area_id,areaname
+                                );
+
+                                servicesModelArrayList.add(centerServicesModel);
                             }
 
-                            /*Category_ModelClass category_modelClass = new Category_ModelClass(
-                                    service_master_id,service_master_name,image
-                            );*/
+                            Category_ModelClass category_modelClass = new Category_ModelClass(
+                                    service_master_id,service_master_name,image,servicesModelArrayList
+                            );
 
-                           // categoryDetails.add(category_modelClass);
+                            categoryDetails.add(category_modelClass);
 
                             Log.d("categoryDetails",categoryDetails.toString());
                         }
 
-                        gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+                        //gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                         categoryAdapter = new CategoryAdapter(categoryDetails,getContext());
-                        categoryRecycler.setLayoutManager(gridLayoutManager);
+                        categoryRecycler.setLayoutManager(linearLayoutManager);
                         categoryRecycler.setHasFixedSize(true);
+                        categoryRecycler.smoothScrollToPosition(0);
                         categoryRecycler.setAdapter(categoryAdapter);
+
+                        testimonialModels.clear();
+
+                        JSONArray jsonArray_testimonial = new JSONArray(testimonial_dtl);
+
+                        for (int k=0;k<jsonArray_testimonial.length();k++){
+
+                            JSONObject jsonObject_testimonial = jsonArray_testimonial.getJSONObject(k);
+                            String testimonial_id = jsonObject_testimonial.getString("testimonial_id");
+                            String name = jsonObject_testimonial.getString("name");
+                            String image = jsonObject_testimonial.getString("image");
+                            String message = jsonObject_testimonial.getString("message");
+
+                            TestimonialModel testimonial_Model = new TestimonialModel(
+                                    testimonial_id,name,image,message
+                            );
+                            testimonialModels.add(testimonial_Model);
+                        }
+
+                        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+                        testimonialAdapter = new TestimonialAdapter(testimonialModels,getContext());
+                        testimonialRecycler.setLayoutManager(linearLayoutManager1);
+                        testimonialRecycler.setHasFixedSize(true);
+                        testimonialRecycler.smoothScrollToPosition(0);
+                        testimonialRecycler.setAdapter(testimonialAdapter);
 
                     }
                 } catch (JSONException e) {
@@ -345,9 +412,10 @@ public class HomeFragment extends Fragment {
         dialogConfirm.getWindow().setWindowAnimations(R.style.DialogAnimation);
         dialogConfirm.setContentView(R.layout.selectaddress);
         dialogConfirm.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialogConfirm.setCancelable(false);
         //dialogConfirm.setCanceledOnTouchOutside(true);
-        Window window = dialogConfirm.getWindow();
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+       // Window window = dialogConfirm.getWindow();
+      //  window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         getYourcity();
 
@@ -414,6 +482,9 @@ public class HomeFragment extends Fragment {
 
                     areaname  = parent.getItemAtPosition(position).toString();
                     areaId = hashMap_Area.get(areaname);
+
+                    sessionManager.setCityId(cityid);
+                    sessionManager.setAreaId(areaId);
 
                     getHomeDeatils(userId,cityid,areaId);
                     getAllServices();

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,8 @@ public class AllServicesAdapter extends RecyclerView.Adapter<AllServicesAdapter.
 
         String image = "https://www.macedon.in/uploads/"+servicesModel.getImage();
         Picasso.with(context).load(image).into(holder.shapeImageView);
+
+        holder.centername.setText(servicesModel.getService_master_name());
     }
 
     @Override
@@ -51,11 +54,13 @@ public class AllServicesAdapter extends RecyclerView.Adapter<AllServicesAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ShapeableImageView shapeImageView;
+        TextView centername;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             shapeImageView = itemView.findViewById(R.id.shapeImageView);
+            centername = itemView.findViewById(R.id.centername);
         }
     }
 }

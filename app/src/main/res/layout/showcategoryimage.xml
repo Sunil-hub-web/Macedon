@@ -4,16 +4,39 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeImageView"
-        android:layout_width="@dimen/hundred_twenty"
-        android:layout_height="@dimen/hundred_twenty"
-        android:layout_margin="@dimen/ten"
-        android:padding="@dimen/five"
-        android:scaleType="fitXY"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="@dimen/five" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeImageView"
+            android:layout_width="@dimen/hundred"
+            android:layout_height="@dimen/hundred"
+            android:layout_margin="@dimen/five"
+            android:padding="@dimen/five"
+            android:scaleType="fitXY"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="@dimen/five" />
+
+        <TextView
+            android:id="@+id/centername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fashion"
+            android:fontFamily="@font/sans_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize"
+            android:layout_marginBottom="@dimen/ten"
+            android:layout_gravity="center">
+
+        </TextView>
+
+
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

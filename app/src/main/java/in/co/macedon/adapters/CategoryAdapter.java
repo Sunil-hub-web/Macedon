@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -38,7 +38,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cateogry,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cateogry_list,parent,false);
         return new CategoryAdapter.ViewHolder(view);
     }
 
@@ -49,37 +49,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         Log.d("category_daetails",category_daetails.toString());
 
-        String image = "https://www.macedon.in/uploads/"+category.getCat_img();
-        Picasso.with(context).load(image).into(holder.img_Category);
+//        String image = "https://www.macedon.in/uploads/"+category.getCat_img();
+//        Picasso.with(context).load(image).into(holder.img_Category);
 
-        holder.productName.setText(category.getCat_name());
+        holder.productName.setText(category.getService_master_name());
 
-        holder.img_Category.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String ctaegoryName = category.getCat_name();
-
-                if(ctaegoryName.equals("Trainer")){
-
-                    Intent i = new Intent(context, TrainerActivity.class);
-                    context.startActivity(i);
-
-                }else if(ctaegoryName.equals("Ditician")){
-
-                    Intent i = new Intent(context, Dietician.class);
-                    context.startActivity(i);
-
-                }else if(ctaegoryName.equals("Fitness")){
-
-                    Intent i = new Intent(context, FitnessCentre.class);
-                    context.startActivity(i);
-
-                }
-
-            }
-        });
-
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
+        CenterDetailsAdapter centerDetailsAdapter = new CenterDetailsAdapter(context,category.getServicesModels());
+        holder.showCenterRecycler.setLayoutManager(linearLayoutManager);
+        holder.showCenterRecycler.setHasFixedSize(true);
+        holder.showCenterRecycler.setAdapter(centerDetailsAdapter);
 
     }
 
@@ -92,12 +71,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         ImageView img_Category;
         TextView productName;
+        RecyclerView showCenterRecycler;
 
         public ViewHolder(@NonNull  View itemView) {
             super(itemView);
 
-            img_Category = itemView.findViewById(R.id.img_Category);
             productName = itemView.findViewById(R.id.productName);
+            showCenterRecycler = itemView.findViewById(R.id.showCenterRecycler);
         }
     }
 }

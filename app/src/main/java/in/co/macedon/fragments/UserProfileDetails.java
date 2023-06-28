@@ -48,10 +48,10 @@ import in.co.macedon.extras.SessionManager;
 
 public class UserProfileDetails extends Fragment {
 
-    EditText edit_userNmae, edit_emailId, edit_MobileNo,edit_Gender;
+    EditText edit_userNmae, edit_emailId, edit_MobileNo, edit_Gender;
     String str_userNmae, str_emailId, str_MobileNo, str_Gender, userid, selectPaymentOption;
     RadioButton rdio_male, radio_female, selectedRadioButton;
-    TextView btn_UpdateAddress,text_editOption;
+    TextView btn_UpdateAddress, text_editOption;
     SessionManager sessionManager;
     RadioGroup radioGroup;
 
@@ -77,7 +77,7 @@ public class UserProfileDetails extends Fragment {
 
         userid = sessionManager.getUserID();
 
-      //  viewUserProfile(userid);
+        viewUserProfile(userid);
 
         text_editOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +94,6 @@ public class UserProfileDetails extends Fragment {
                 edit_MobileNo.setEnabled(false);
             }
         });
-
 
 
         btn_UpdateAddress.setOnClickListener(new View.OnClickListener() {
@@ -128,13 +127,20 @@ public class UserProfileDetails extends Fragment {
 
                     str_userNmae = edit_userNmae.getText().toString().trim();
                     str_emailId = edit_emailId.getText().toString().trim();
+                    str_MobileNo = edit_MobileNo.getText().toString().trim();
 
+                    if (selectPaymentOption.equals("Male")){
 
-             //       UpdateUserProfile(userid,str_userNmae,str_emailId,selectPaymentOption);
+                        UpdateUserProfile(userid,str_userNmae,str_emailId,str_MobileNo,"1");
+
+                    }else{
+
+                        UpdateUserProfile(userid,str_userNmae,str_emailId,str_MobileNo,"2");
+                    }
+
 
 
                 }
-
 
             }
         });
@@ -142,18 +148,13 @@ public class UserProfileDetails extends Fragment {
         return view;
     }
 
-/*
     public void viewUserProfile(String userId) {
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Retrive User Details");
+        progressDialog.setMessage("View User Details...");
         progressDialog.show();
 
-     //   String url = AppURL.viewuserProfile+userId;
-
-        Log.d("url",url);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.view_profile, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -164,49 +165,42 @@ public class UserProfileDetails extends Fragment {
 
                     String status = jsonObject.getString("status");
 
-                    if (status.equals("true")) {
+                    if (status.equals("200")) {
 
-                        String message = jsonObject.getString("message");
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String successstatus = jsonObject_message.getString("status");
+                        JSONObject jsonObject_status = new JSONObject(successstatus);
+                        String user_id = jsonObject_status.getString("user_id");
+                        String fullname = jsonObject_status.getString("fullname");
+                        String email = jsonObject_status.getString("email");
+                        String contact = jsonObject_status.getString("contact");
+                        String profile_image = jsonObject_status.getString("profile_image");
+                        String gender = jsonObject_status.getString("gender");
 
-                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                        if (gender.equals("1")){
 
-                        String data = jsonObject.getString("data");
+                            edit_Gender.setText("Male");
 
-                        JSONArray jsonArray_data = new JSONArray(data);
+                        }else{
 
-                        for (int i = 0; i <= jsonArray_data.length(); i++) {
-
-                            JSONObject jsonObject_data = jsonArray_data.getJSONObject(i);
-
-                            String contact_no = jsonObject_data.getString("contact_no");
-                            String id = jsonObject_data.getString("id");
-                            String email = jsonObject_data.getString("email");
-                            String gender = jsonObject_data.getString("gender");
-                            String user_name = jsonObject_data.getString("user_name");
-
-                            if(email.equals("null")){
-
-                                radioGroup.setVisibility(View.VISIBLE);
-                                edit_Gender.setVisibility(View.GONE);
-
-                            }else{
-
-                                edit_Gender.setVisibility(View.VISIBLE);
-                                edit_Gender.setText(gender);
-                                edit_emailId.setText(email);
-                                edit_userNmae.setText(user_name);
-                                radioGroup.setVisibility(View.GONE);
-
-                            }
-
-                            edit_emailId.setEnabled(false);
-                            edit_userNmae.setEnabled(false);
-                            edit_Gender.setEnabled(false);
-                            edit_MobileNo.setEnabled(false);
-
-                            edit_MobileNo.setText(contact_no);
-
+                            edit_Gender.setText("FeMale");
                         }
+
+                        radioGroup.setVisibility(View.GONE);
+                        edit_Gender.setVisibility(View.VISIBLE);
+
+                        edit_emailId.setText(email);
+                        edit_userNmae.setText(fullname);
+                        edit_MobileNo.setText(contact);
+
+                        edit_emailId.setEnabled(false);
+                        edit_userNmae.setEnabled(false);
+                        edit_Gender.setEnabled(false);
+                        edit_MobileNo.setEnabled(false);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -223,7 +217,16 @@ public class UserProfileDetails extends Fragment {
                 Toast.makeText(getContext(), "" + error, Toast.LENGTH_SHORT).show();
 
             }
-        });
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("user_id",userId);
+                return params;
+            }
+        };
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
@@ -232,15 +235,14 @@ public class UserProfileDetails extends Fragment {
 
     }
 
-    public void UpdateUserProfile(String userId, String userName, String emailId, String gender) {
+    public void UpdateUserProfile(String user_id, String full_name, String e_mail, String contact_number, String gender) {
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Retrive User Details");
         progressDialog.show();
 
-        String url = AppURL.viewuserProfile + userId;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, AppURL.update_profile, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -252,14 +254,27 @@ public class UserProfileDetails extends Fragment {
 
                     String status = jsonObject.getString("status");
 
-                    if (status.equals("true")) {
+                    if (status.equals("200")) {
 
-                        String message = jsonObject.getString("message");
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String statusmessage = jsonObject_message.getString("status");
 
-                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), statusmessage, Toast.LENGTH_SHORT).show();
 
-                        viewUserProfile(userId);
+                        viewUserProfile(user_id);
 
+                    }else{
+
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String statusmessage = jsonObject_message.getString("status");
+
+                        Toast.makeText(getActivity(), statusmessage, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -281,8 +296,10 @@ public class UserProfileDetails extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<>();
-                params.put("user_name", userName);
-                params.put("email", emailId);
+                params.put("user_id", user_id);
+                params.put("full_name", full_name);
+                params.put("e_mail", e_mail);
+                params.put("contact_number", contact_number);
                 params.put("gender", gender);
                 return params;
             }
@@ -294,7 +311,6 @@ public class UserProfileDetails extends Fragment {
 
 
     }
-*/
 
     public boolean isValidEmail(final String email) {
 

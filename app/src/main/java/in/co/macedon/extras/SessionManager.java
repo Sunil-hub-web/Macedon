@@ -22,6 +22,8 @@ public class SessionManager {
     private static final String USERID = "userid";
     private static final String USERNAME = "username";
     private static final String IS_LOGIN = "islogin";
+    private static final String CITY_ID = "cityid";
+    private static final String AREA_ID = "areaid";
 
 
     public SessionManager(Context context){
@@ -78,6 +80,29 @@ public class SessionManager {
 
     }
 
+    public void setCityId(String cityid){
+
+        editor.putString(CITY_ID,cityid);
+        editor.commit();
+    }
+
+    public String getCityId(){
+
+        return sharedprefernce.getString(CITY_ID,"DEFAULT");
+
+    }
+
+    public Boolean isLogin(){
+        return sharedprefernce.getBoolean(IS_LOGIN, false);
+
+    }
+    public void setLogin(){
+
+        editor.putBoolean(IS_LOGIN, true);
+        editor.commit();
+
+    }
+
     public void setUserName(String username){
 
         editor.putString(USERNAME,username);
@@ -90,14 +115,15 @@ public class SessionManager {
 
     }
 
-    public Boolean isLogin(){
-        return sharedprefernce.getBoolean(IS_LOGIN, false);
+    public void setAreaId(String areaid){
 
-    }
-    public void setLogin(){
-
-        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(AREA_ID,areaid);
         editor.commit();
+    }
+
+    public String getAreaId(){
+
+        return sharedprefernce.getString(AREA_ID,"DEFAULT");
 
     }
 
