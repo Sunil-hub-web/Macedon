@@ -52,7 +52,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/twenty_size"/>
 
-            <TextView
+         <!--   <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/ten"
@@ -61,7 +61,7 @@
                 android:layout_margin="@dimen/ten"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/textsize"/>
+                android:textSize="@dimen/textsize"/>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -156,8 +156,5 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-
 
 </RelativeLayout>

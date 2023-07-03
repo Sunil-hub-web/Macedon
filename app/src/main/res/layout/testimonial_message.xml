@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:layout_width="@dimen/three_hundred_fifty"
+        android:layout_width="@dimen/three_hundred"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/homecard_back1"
@@ -18,7 +18,7 @@
             android:text=""
             android:fontFamily="@font/sans_bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize"
+            android:textSize="@dimen/twelve_size"
             android:layout_margin="@dimen/ten">
 
         </TextView>
@@ -42,11 +42,10 @@
                 android:id="@+id/reviewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
                 android:fontFamily="@font/sans_bold"
                 android:textColor="@color/black"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/edittextsize"
+                android:textSize="@dimen/textsize"
                 android:layout_marginLeft="@dimen/twenty"
                 android:layout_marginBottom="@dimen/ten"
                 android:layout_toRightOf="@id/reviewImage">

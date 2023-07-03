@@ -49,25 +49,30 @@ import java.util.Locale;
 
 import in.co.macedon.R;
 import in.co.macedon.extras.SessionManager;
+import in.co.macedon.fragments.AboutFragment;
 import in.co.macedon.fragments.CompletedSession;
+import in.co.macedon.fragments.FAQSFragment;
 import in.co.macedon.fragments.GymMembership;
 import in.co.macedon.fragments.HelpFragment;
 import in.co.macedon.fragments.HomeFragment;
 import in.co.macedon.fragments.MyOrder;
+import in.co.macedon.fragments.PrivacyPolicyFragment;
+import in.co.macedon.fragments.ProfileDetailsFragment;
 import in.co.macedon.fragments.ScanFragment;
 import in.co.macedon.fragments.ShopFragment;
 import in.co.macedon.fragments.Subscriptions;
+import in.co.macedon.fragments.TermsConditionsFragment;
 import in.co.macedon.fragments.UserProfileDetails;
 
 public class DashBoard extends AppCompatActivity {
 
     BottomNavigationView navView;
-    FrameLayout fl;
-    ImageView usericon, cart,img_Search;
-    TextView logout_txt, address_txt, userprofile_txt,nav_Subscriptions,nav_ItemOrder,
-            nev_CompletedSession,userName,nav_GymMembership;
-
-    RelativeLayout networkConnection,locationlayout,header;
+    public static FrameLayout fl;
+    public static ImageView usericon, cart,img_Search;
+    public static TextView logout_txt, userprofile_txt,nav_Subscriptions,nav_Home,
+            nev_CompletedSession,userName,nav_GymMembership,userNamedet;
+    public static TextView address_txt;
+    public static RelativeLayout networkConnection,locationlayout,header;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
     String not_updated;
@@ -107,6 +112,7 @@ public class DashBoard extends AppCompatActivity {
         restartapp = findViewById(R.id.restartapp);
         img_Search = findViewById(R.id.img_Search);
         userName = findViewById(R.id.userName);
+
 
         name = sessionManager.getUserName();
         userName.setText("Hi, " + name);
@@ -148,7 +154,7 @@ public class DashBoard extends AppCompatActivity {
                         cart.setVisibility(View.VISIBLE);
                         img_Search.setVisibility(View.GONE);
                         //fl.removeAllViews();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShopFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new GymMembership()).commit();
                         break;
 
                     case R.id.navigation_notifications:
@@ -162,7 +168,7 @@ public class DashBoard extends AppCompatActivity {
                         locationlayout.setVisibility(View.VISIBLE);
                         cart.setVisibility(View.GONE);
                         //fl.removeAllViews();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HelpFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileDetailsFragment()).commit();
                         break;
 
                 }
@@ -183,6 +189,7 @@ public class DashBoard extends AppCompatActivity {
         usericon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 ShowConfrmPay();
             }
         });
@@ -224,30 +231,51 @@ public class DashBoard extends AppCompatActivity {
         dialogConfirm.getWindow().setWindowAnimations(R.style.DialogAnimation);
         dialogConfirm.setContentView(R.layout.navigation_drawer_layout);
         dialogConfirm.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        //dialogConfirm.setCanceledOnTouchOutside(true);
+        dialogConfirm.setCanceledOnTouchOutside(true);
+        dialogConfirm.setCancelable(true);
         dialogConfirm.getWindow().setGravity(Gravity.LEFT);
         Window window = dialogConfirm.getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        logout_txt = dialogConfirm.findViewById(R.id.logout_txt);
+     //   logout_txt = dialogConfirm.findViewById(R.id.logout_txt);
         userprofile_txt = dialogConfirm.findViewById(R.id.userprofile_txt);
         nav_Subscriptions = dialogConfirm.findViewById(R.id.nav_Subscriptions);
-        nav_ItemOrder = dialogConfirm.findViewById(R.id.nav_ItemOrder);
+       // nav_ItemOrder = dialogConfirm.findViewById(R.id.nav_ItemOrder);
         nev_CompletedSession = dialogConfirm.findViewById(R.id.nev_CompletedSession);
         nav_GymMembership = dialogConfirm.findViewById(R.id.nav_GymMembership);
+        userNamedet = dialogConfirm.findViewById(R.id.userNamedet);
+        nav_Home = dialogConfirm.findViewById(R.id.nav_Home);
         //address_txt = dialogConfirm.findViewById(R.id.address_txt);
 
+        userNamedet.setText("Hi, " + name);
+
+        nav_Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                userNamedet.setText("Hi, " + name);
+                dialogConfirm.dismiss();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                HomeFragment userProfileDetails = new HomeFragment();
+                ft.replace(R.id.nav_host_fragment, userProfileDetails);
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
 
         userprofile_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                locationlayout.setVisibility(View.VISIBLE);
+                locationlayout.setVisibility(View.GONE);
                 cart.setVisibility(View.GONE);
+                img_Search.setVisibility(View.GONE);
                 fl.removeAllViews();
+                userName.setText("Privacy Policy");
                 dialogConfirm.dismiss();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                UserProfileDetails userProfileDetails = new UserProfileDetails();
+                PrivacyPolicyFragment userProfileDetails = new PrivacyPolicyFragment();
                 ft.replace(R.id.nav_host_fragment, userProfileDetails);
                 ft.addToBackStack(null);
                 ft.commit();
@@ -258,20 +286,21 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                locationlayout.setVisibility(View.VISIBLE);
+                locationlayout.setVisibility(View.GONE);
                 cart.setVisibility(View.GONE);
+                img_Search.setVisibility(View.GONE);
                 fl.removeAllViews();
-                userName.setText("Subscriptions");
+                userName.setText("About As");
                 dialogConfirm.dismiss();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                Subscriptions subscriptions = new Subscriptions();
+                AboutFragment subscriptions = new AboutFragment();
                 ft.replace(R.id.nav_host_fragment, subscriptions);
                 ft.addToBackStack(null);
                 ft.commit();
             }
         });
 
-        nav_ItemOrder.setOnClickListener(new View.OnClickListener() {
+       /* nav_ItemOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -289,20 +318,22 @@ public class DashBoard extends AppCompatActivity {
                 ft.commit();
 
             }
-        });
+        });*/
 
         nev_CompletedSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                locationlayout.setVisibility(View.VISIBLE);
+
+                locationlayout.setVisibility(View.GONE);
                 cart.setVisibility(View.GONE);
-                img_Search.setVisibility(View.VISIBLE);
-                userName.setText("Completed Session");
+                img_Search.setVisibility(View.GONE);
                 fl.removeAllViews();
                 dialogConfirm.dismiss();
+                userName.setText("FAQS");
+
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                CompletedSession completedSession = new CompletedSession();
+                FAQSFragment completedSession = new FAQSFragment();
                 ft.replace(R.id.nav_host_fragment, completedSession);
                 ft.addToBackStack(null);
                 ft.commit();
@@ -317,43 +348,17 @@ public class DashBoard extends AppCompatActivity {
                 locationlayout.setVisibility(View.GONE);
                 cart.setVisibility(View.GONE);
                 img_Search.setVisibility(View.GONE);
-                userName.setText("Gym Membership");
+                userName.setText("Terms & Conditions");
                 fl.removeAllViews();
                 dialogConfirm.dismiss();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                GymMembership gymMembership = new GymMembership();
+                TermsConditionsFragment gymMembership = new TermsConditionsFragment();
                 ft.replace(R.id.nav_host_fragment, gymMembership);
                 ft.addToBackStack(null);
                 ft.commit();
 
             }
         });
-
-
-        logout_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AlertDialog.Builder(DashBoard.this)
-                        .setTitle("Logout!!")
-                        .setMessage("Are you sure you want to Logout?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                Intent i = new Intent(getApplicationContext(), Login.class);
-                                startActivity(i);
-
-                                sessionManager.logoutUser();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
-            }
-        });
-
 
         LinearLayout mainlayout = dialogConfirm.findViewById(R.id.mainlayout);
         mainlayout.setOnClickListener(new View.OnClickListener() {

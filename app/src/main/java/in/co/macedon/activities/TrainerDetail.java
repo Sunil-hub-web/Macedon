@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import in.co.macedon.R;
-import in.co.macedon.adapters.ExploreMoreAdapters;
 import in.co.macedon.adapters.TimeslotAdapter;
-import in.co.macedon.models.TimeSlotGetSet;
+import in.co.macedon.models.CenterTimeingSlot;
 import in.co.macedon.models.TrainerImageGetSet;
 
 import android.app.DatePickerDialog;
@@ -48,7 +47,7 @@ public class TrainerDetail extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabview;
     private ArrayList<TrainerImageGetSet> urls = new ArrayList<TrainerImageGetSet>();
-    private ArrayList<TimeSlotGetSet> timeslots = new ArrayList<TimeSlotGetSet>();
+    private ArrayList<CenterTimeingSlot> timeslots = new ArrayList<CenterTimeingSlot>();
     TextView regularprice, chooseslot, datetxt;
     RecyclerView timeslotsrecycler;
     DatePickerDialog datePickerDialog;
@@ -102,14 +101,14 @@ public class TrainerDetail extends AppCompatActivity {
         Window window = dialogConfirm.getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        timeslots = new ArrayList<TimeSlotGetSet>();
-        timeslots.add(new TimeSlotGetSet("14:45 - 15:45"));
-        timeslots.add(new TimeSlotGetSet("16:00 - 17:00"));
-        timeslots.add(new TimeSlotGetSet("17:15 - 18:15"));
-        timeslots.add(new TimeSlotGetSet("18:30 - 19:30"));
-        timeslots.add(new TimeSlotGetSet("19:45 - 20:45"));
-        timeslots.add(new TimeSlotGetSet("21:00 - 22:00"));
-        timeslots.add(new TimeSlotGetSet("22:15 - 23:15"));
+        timeslots = new ArrayList<CenterTimeingSlot>();
+       /* timeslots.add(new CenterTimeingSlot("14:45 - 15:45"));
+        timeslots.add(new CenterTimeingSlot("16:00 - 17:00"));
+        timeslots.add(new CenterTimeingSlot("17:15 - 18:15"));
+        timeslots.add(new CenterTimeingSlot("18:30 - 19:30"));
+        timeslots.add(new CenterTimeingSlot("19:45 - 20:45"));
+        timeslots.add(new CenterTimeingSlot("21:00 - 22:00"));
+        timeslots.add(new CenterTimeingSlot("22:15 - 23:15"));*/
 
         timeslotsrecycler = dialogConfirm.findViewById(R.id.timeslots);
 

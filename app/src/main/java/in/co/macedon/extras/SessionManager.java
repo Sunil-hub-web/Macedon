@@ -24,6 +24,7 @@ public class SessionManager {
     private static final String IS_LOGIN = "islogin";
     private static final String CITY_ID = "cityid";
     private static final String AREA_ID = "areaid";
+    private static final String CITY_NAME = "cityname";
 
 
     public SessionManager(Context context){
@@ -31,6 +32,18 @@ public class SessionManager {
         this.context =  context;
         sharedprefernce = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = sharedprefernce.edit();
+    }
+
+    public void setCityName(String cityname ){
+
+        editor.putString(CITY_NAME,cityname);
+        editor.commit();
+
+    }
+
+    public String getCityName(){
+
+        return  sharedprefernce.getString(CITY_NAME,"DEFAULT");
     }
 
     public void setUserOTP(String id ){

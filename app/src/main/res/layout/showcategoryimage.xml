@@ -7,18 +7,19 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/categorydata">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeImageView"
-            android:layout_width="@dimen/hundred"
-            android:layout_height="@dimen/hundred"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/ninety"
             android:layout_margin="@dimen/five"
             android:padding="@dimen/five"
             android:scaleType="fitXY"
             app:shapeAppearanceOverlay="@style/circleImageView"
             app:strokeColor="@color/colorPrimary"
-            app:strokeWidth="@dimen/five" />
+            app:strokeWidth="@dimen/three" />
 
         <TextView
             android:id="@+id/centername"
@@ -27,7 +28,7 @@
             android:text="Fashion"
             android:fontFamily="@font/sans_bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize"
+            android:textSize="@dimen/twelve_size"
             android:layout_marginBottom="@dimen/ten"
             android:layout_gravity="center">
 

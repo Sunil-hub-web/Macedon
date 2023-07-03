@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryRecycler">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/listnotFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Center List Not Found"
+        android:fontFamily="@font/sans_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/edittextsize"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/fifty"
+        android:layout_marginRight="@dimen/fifty"
+        android:background="@drawable/autocomplate_bg"
+        android:padding="@dimen/twenty"
+        android:visibility="gone"/>
+
+</RelativeLayout>

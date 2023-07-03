@@ -14,25 +14,26 @@
 
         <ImageView
             android:id="@+id/usericon"
-            android:layout_width="@dimen/fifty"
-            android:layout_height="@dimen/fifty"
-            android:layout_marginLeft="@dimen/five"
+            android:layout_width="@dimen/thirty_five"
+            android:layout_height="@dimen/thirty_five"
             android:padding="@dimen/five"
-            android:src="@drawable/user" />
+            android:src="@drawable/altmenuicon"
+            app:tint="#27639F"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toLeftOf="@+id/img_Search"
             android:layout_toRightOf="@+id/usericon"
             android:fontFamily="@font/raleway"
             android:text="Hi, Ranjeet"
             android:textColor="@color/white"
             android:textSize="@dimen/twelve_size"
-            android:textStyle="bold"
-            android:layout_toLeftOf="@+id/img_Search"/>
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/img_Search"
@@ -69,7 +70,6 @@
                 android:layout_toRightOf="@+id/locicon"
                 android:fontFamily="@font/raleway"
                 android:gravity="center"
-                android:drawableRight="@drawable/baseline_keyboard_arrow_down"
                 android:text="Cuttack"
                 android:textColor="@color/white"
                 android:textSize="@dimen/twelve_size"

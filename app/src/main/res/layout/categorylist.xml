@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/ten"
+        android:layout_marginStart="@dimen/five"
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginEnd="@dimen/five"
+        android:layout_marginBottom="@dimen/five"
+        android:elevation="@dimen/four"
+        android:id="@+id/cardViewDet">
+
+        <LinearLayout
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:background="@drawable/homecard_back1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_Category"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred_twenty"
+                android:background="@drawable/selection_drawable"
+                android:scaleType="fitXY"
+                android:src="@drawable/fitness">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/centerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:text="Fashion"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_size">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/centerLoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginBottom="@dimen/ten"
+                android:drawableLeft="@drawable/location_on"
+                android:drawablePadding="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:text="Fashion"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_size">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

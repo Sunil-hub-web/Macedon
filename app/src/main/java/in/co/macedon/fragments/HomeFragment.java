@@ -113,11 +113,12 @@ public class HomeFragment extends Fragment {
         categoryRecycler = v.findViewById(R.id.categoryRecycler);
         allservicesRecycler = v.findViewById(R.id.allservicesRecycler);
         scrollView = v.findViewById(R.id.scrollView);
-        testimonialRecycler = v.findViewById(R.id.testimonialRecycler);
+       // testimonialRecycler = v.findViewById(R.id.testimonialRecycler);
        // swiprefresh = v.findViewById(R.id.swiprefresh);
 
         sessionManager = new SessionManager(getContext());
         userId = sessionManager.getUserID();
+        DashBoard.address_txt.setText(sessionManager.getCityName());
 
         viewpagerBanner.setClipToPadding(false);
         viewpagerBanner.setClipChildren(false);
@@ -189,9 +190,11 @@ public class HomeFragment extends Fragment {
             String strareaid = sessionManager.getAreaId();
 
             getHomeDeatils(userId,strcityid,strareaid);
+
+            getAllServices(strcityid);
+
+            //DashBoard.address_txt.setText(sessionManager.getCityName());
         }
-
-
         return v;
     }
 
@@ -309,7 +312,7 @@ public class HomeFragment extends Fragment {
 
                         testimonialModels.clear();
 
-                        JSONArray jsonArray_testimonial = new JSONArray(testimonial_dtl);
+                       /* JSONArray jsonArray_testimonial = new JSONArray(testimonial_dtl);
 
                         for (int k=0;k<jsonArray_testimonial.length();k++){
 
@@ -330,7 +333,7 @@ public class HomeFragment extends Fragment {
                         testimonialRecycler.setLayoutManager(linearLayoutManager1);
                         testimonialRecycler.setHasFixedSize(true);
                         testimonialRecycler.smoothScrollToPosition(0);
-                        testimonialRecycler.setAdapter(testimonialAdapter);
+                        testimonialRecycler.setAdapter(testimonialAdapter);*/
 
                     }
                 } catch (JSONException e) {
@@ -461,6 +464,8 @@ public class HomeFragment extends Fragment {
                     cityid = hashMap_City.get(cityname);
                     getArea(cityid);
 
+                   // DashBoard.address_txt.setText(sessionManager.getCityName());
+
 
                 }
             }
@@ -486,8 +491,11 @@ public class HomeFragment extends Fragment {
                     sessionManager.setCityId(cityid);
                     sessionManager.setAreaId(areaId);
 
+                    sessionManager.setCityName(cityname);
+
                     getHomeDeatils(userId,cityid,areaId);
-                    getAllServices();
+
+                    getAllServices(cityid);
 
                     dialogConfirm.dismiss();
                 }
@@ -637,7 +645,7 @@ public class HomeFragment extends Fragment {
         requestQueue.add(stringRequest);
 
     }
-    public void getAllServices(){
+    public void getAllServices(String cityId){
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("All Serivices Pleae Wait....");
@@ -661,6 +669,7 @@ public class HomeFragment extends Fragment {
                         String data = jsonObject.getString("data");
 
                         JSONArray jsonArray_data = new JSONArray(data);
+
                         for (int i=0;i<jsonArray_data.length();i++){
 
                             JSONObject jsonObject_data = jsonArray_data.getJSONObject(i);
@@ -673,9 +682,10 @@ public class HomeFragment extends Fragment {
                             allServicesModels.add(allServices_Model);
                         }
 
-                        AllServicesAdapter adpater = new AllServicesAdapter(allServicesModels, getContext());
-                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext().getApplicationContext(), 3);
-                        allservicesRecycler.setLayoutManager(gridLayoutManager);
+                        AllServicesAdapter adpater = new AllServicesAdapter(allServicesModels, getContext(),cityId);
+                       // GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext().getApplicationContext(), 3);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+                        allservicesRecycler.setLayoutManager(linearLayoutManager);
                         allservicesRecycler.setItemAnimator(new DefaultItemAnimator());
                         allservicesRecycler.setAdapter(adpater);
 

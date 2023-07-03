@@ -14,23 +14,24 @@
             android:id="@+id/usericon"
             android:layout_width="@dimen/fifty"
             android:layout_height="@dimen/fifty"
-            android:src="@drawable/user"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/five"
-            android:padding="@dimen/six"/>
+            android:padding="@dimen/six"
+            android:src="@drawable/user" />
 
         <TextView
+            android:id="@+id/userNamedet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/usericon"
             android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/eight"
-            android:text="Ranjeet"
+            android:layout_toRightOf="@+id/usericon"
             android:fontFamily="@font/roboto_thin"
+            android:text="Ranjeet"
             android:textColor="@color/black"
             android:textSize="@dimen/sixteen"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -40,32 +41,35 @@
         android:background="@color/colorPrimary"/>
 
     <TextView
-        android:id="@+id/nav_ItemOrder"
+
+        android:id="@+id/nav_Home"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="Item Order"
+        android:text="Home"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_items_order"
+        android:drawableLeft="@drawable/ic_home"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
         android:textColor="@color/textcol1"
-        android:textSize="@dimen/fifteen"/>
+        android:textSize="@dimen/fifteen"
+
+        />
 
     <TextView
         android:id="@+id/nav_Subscriptions"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="Subscriptions"
+        android:text="About"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_subscription"
+        android:drawableLeft="@drawable/aboutfaqhelpquestionicon"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
         android:textColor="@color/textcol1"
         android:textSize="@dimen/fifteen"/>
 
-    <TextView
+   <!-- <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
         android:text="Activity &amp; Records"
@@ -75,15 +79,15 @@
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
         android:textColor="@color/textcol1"
-        android:textSize="@dimen/fifteen"/>
+        android:textSize="@dimen/fifteen"/>-->
 
     <TextView
         android:id="@+id/nev_CompletedSession"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="Completed Session"
+        android:text="Faqs"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_completed_session"
+        android:drawableLeft="@drawable/faqfaqshel"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
@@ -94,9 +98,9 @@
         android:id="@+id/nav_GymMembership"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="Gym Membership"
+        android:text="Terms &amp; Conditions"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_gym_membership"
+        android:drawableLeft="@drawable/termsanconditions"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
@@ -119,27 +123,27 @@
         android:id="@+id/userprofile_txt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="My Profile"
+        android:text="Privacy Policy"
         android:gravity="center"
-        android:drawableLeft="@drawable/user_profile"
+        android:drawableLeft="@drawable/file"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
         android:textColor="@color/textcol1"
         android:textSize="@dimen/fifteen"/>
 
-    <!--<TextView
-        android:id="@+id/address_txt"
+<!--    <TextView
+        android:id="@+id/wallet_txt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="My Address"
+        android:text="My Wallet"
         android:gravity="center"
-        android:drawableLeft="@drawable/user_location"
+        android:drawableLeft="@drawable/wallet50"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
         android:textColor="@color/textcol1"
-        android:textSize="@dimen/fifteen"/>-->
+        android:textSize="@dimen/fifteen"/>
 
     <TextView
         android:id="@+id/logout_txt"
@@ -152,7 +156,7 @@
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"
         android:textColor="@color/textcol1"
-        android:textSize="@dimen/fifteen"/>
+        android:textSize="@dimen/fifteen"/>-->
 
 
 

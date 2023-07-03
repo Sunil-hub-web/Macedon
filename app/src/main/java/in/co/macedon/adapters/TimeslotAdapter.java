@@ -15,16 +15,16 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import in.co.macedon.R;
-import in.co.macedon.models.TimeSlotGetSet;
+import in.co.macedon.models.CenterTimeingSlot;
 
 public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.ProgramViewHolder> {
 
-    private ArrayList<TimeSlotGetSet> fooditem;
+    private ArrayList<CenterTimeingSlot> centerTimeingSlots;
     Context context;
     private int currentSelectedPosition = RecyclerView.NO_POSITION, oldposition;
 
-    public TimeslotAdapter(ArrayList<TimeSlotGetSet> fooditem, Context context) {
-        this.fooditem = fooditem;
+    public TimeslotAdapter(ArrayList<CenterTimeingSlot> fooditem, Context context) {
+        this.centerTimeingSlots = fooditem;
         this.context = context;
 
     }
@@ -32,6 +32,7 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Progra
     @NonNull
     @Override
     public TimeslotAdapter.ProgramViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View view = inflater.inflate(R.layout.timeslot_item, viewGroup, false);
 
@@ -40,37 +41,9 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Progra
 
     @Override
     public void onBindViewHolder(@NonNull final TimeslotAdapter.ProgramViewHolder programViewHolder, final int i) {
-        final TimeSlotGetSet My_list = fooditem.get(i);
 
-        programViewHolder.exname.setText(My_list.getTimeslots());
-
-        if(currentSelectedPosition==i){
-            Log.d("ghtxzrfgB_a : ",""+ currentSelectedPosition);
-            Log.d("ghtxzrfgB_b : ",""+ i);
-
-            programViewHolder.exname.setTextColor(ContextCompat.getColor(context, R.color.white));
-            programViewHolder.mainlayout.setBackgroundResource(R.drawable.shop_filter_selected);
-            programViewHolder.icon.setColorFilter(ContextCompat.getColor(context, R.color.white));
-//            programViewHolder.icon.setColorFilter(ContextCompat.getColor(context, R.color.white), android.graphics.PorterDuff.Mode.MULTIPLY);
-
-        }else{
-            programViewHolder.exname.setTextColor(ContextCompat.getColor(context, R.color.textcol));
-//            programViewHolder.exname.setBackgroundColor(context.getResources().getColor(R.color.transparent));
-            programViewHolder.mainlayout.setBackgroundResource(R.drawable.selection_drawable);
-            programViewHolder.icon.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimaryDark));
-//            programViewHolder.icon.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimaryDark), android.graphics.PorterDuff.Mode.MULTIPLY);
-        }
-
-        programViewHolder.mainlayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                currentSelectedPosition = programViewHolder.getAdapterPosition();
-                Log.d("ghtxzrfgB_c : ",""+ currentSelectedPosition);
-                notifyDataSetChanged();
-            }
-        });
-
+        CenterTimeingSlot currenttime = centerTimeingSlots.get(i);
+        programViewHolder.exname.setText(currenttime.getFromtime()+"-"+currenttime.getTotime()+"  "+currenttime.getDay());
     }
 
     @Override
@@ -81,7 +54,7 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Progra
     @Override
     public int getItemCount() {
 
-        return fooditem.size();
+        return centerTimeingSlots.size();
     }
 
     public class ProgramViewHolder extends RecyclerView.ViewHolder {

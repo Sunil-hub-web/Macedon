@@ -1,6 +1,7 @@
 package in.co.macedon.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -15,6 +19,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import in.co.macedon.R;
+import in.co.macedon.fragments.Category_Fragment;
+import in.co.macedon.fragments.SingleProduct_Fragment;
 import in.co.macedon.models.CenterServicesModel;
 
 public class CenterDetailsAdapter extends RecyclerView.Adapter<CenterDetailsAdapter.ViewHolder> {
@@ -45,6 +51,36 @@ public class CenterDetailsAdapter extends RecyclerView.Adapter<CenterDetailsAdap
 
         holder.centerName.setText(centerModel.getCenter_name());
         holder.centerLoc.setText(centerModel.getCity_name()+",  "+centerModel.getAreaname());
+
+        holder.cardView_Center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SingleProduct_Fragment singleProductFragment = new SingleProduct_Fragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("centerId",centerModel.getCenter_id());
+                singleProductFragment.setArguments(bundle);
+                FragmentTransaction transaction =((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, singleProductFragment); // Add your fragment class
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        holder.img_Category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SingleProduct_Fragment singleProductFragment = new SingleProduct_Fragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("centerId",centerModel.getCenter_id());
+                singleProductFragment.setArguments(bundle);
+                FragmentTransaction transaction =((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, singleProductFragment); // Add your fragment class
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
     }
 
     @Override
@@ -56,6 +92,7 @@ public class CenterDetailsAdapter extends RecyclerView.Adapter<CenterDetailsAdap
 
         ImageView img_Category;
         TextView centerName,centerLoc;
+        CardView cardView_Center;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +100,7 @@ public class CenterDetailsAdapter extends RecyclerView.Adapter<CenterDetailsAdap
             img_Category = itemView.findViewById(R.id.img_Category);
             centerName = itemView.findViewById(R.id.centerName);
             centerLoc = itemView.findViewById(R.id.centerLoc);
+            cardView_Center = itemView.findViewById(R.id.cardView_Center);
         }
     }
 }

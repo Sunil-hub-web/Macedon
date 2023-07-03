@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/ten">
+
+        <TextView
+            android:id="@+id/nav_Subscriptions"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:text="Subscriptions"
+            android:drawableLeft="@drawable/ic_subscription"
+            android:paddingLeft="@dimen/fifteen"
+            android:paddingRight="@dimen/fifteen"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:textColor="@color/textcol1"
+            android:textSize="@dimen/fifteen"
+            android:drawablePadding="@dimen/ten"
+            android:background="@drawable/autocomplate_bg"/>
+
+        <TextView
+            android:id="@+id/nev_CompletedSession"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:text="Completed Session"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_completed_session"
+            android:paddingLeft="@dimen/fifteen"
+            android:paddingRight="@dimen/fifteen"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/textcol1"
+            android:textSize="@dimen/fifteen"
+            android:drawablePadding="@dimen/ten"
+            android:background="@drawable/autocomplate_bg"
+            android:layout_marginTop="@dimen/ten"/>
+
+       <!-- <TextView
+            android:id="@+id/nav_GymMembership"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:text="Gym Membership"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_gym_membership"
+            android:paddingLeft="@dimen/fifteen"
+            android:paddingRight="@dimen/fifteen"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/textcol1"
+            android:textSize="@dimen/fifteen"/>-->
+
+        <!-- <TextView
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/fifty"
+             android:text="Loyalty"
+             android:gravity="center"
+             android:drawableLeft="@drawable/ic_loyality"
+             android:paddingLeft="@dimen/fifteen"
+             android:paddingRight="@dimen/fifteen"
+             android:fontFamily="@font/raleway"
+             android:textColor="@color/textcol1"
+             android:textSize="@dimen/fifteen"/>-->
+
+        <TextView
+            android:id="@+id/userprofile_txt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:text="My Profile"
+            android:gravity="center"
+            android:drawableLeft="@drawable/user_profile"
+            android:paddingLeft="@dimen/fifteen"
+            android:paddingRight="@dimen/fifteen"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/textcol1"
+            android:textSize="@dimen/fifteen"
+            android:drawablePadding="@dimen/ten"
+            android:background="@drawable/autocomplate_bg"
+            android:layout_marginTop="@dimen/ten"/>
+
+        <TextView
+            android:id="@+id/wallet_txt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:text="My Wallet"
+            android:gravity="center"
+            android:drawableLeft="@drawable/wallet50"
+            android:paddingLeft="@dimen/fifteen"
+            android:paddingRight="@dimen/fifteen"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/textcol1"
+            android:textSize="@dimen/fifteen"
+            android:drawablePadding="@dimen/ten"
+            android:background="@drawable/autocomplate_bg"
+            android:layout_marginTop="@dimen/ten"/>
+
+        <TextView
+            android:id="@+id/logout_txt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:text="Logout"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_logout"
+            android:paddingLeft="@dimen/fifteen"
+            android:paddingRight="@dimen/fifteen"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/textcol1"
+            android:textSize="@dimen/fifteen"
+            android:drawablePadding="@dimen/ten"
+            android:background="@drawable/autocomplate_bg"
+            android:layout_marginTop="@dimen/ten"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

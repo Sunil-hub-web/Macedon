@@ -11,6 +11,8 @@ public class AppURL {
     public static final String view_profile = BaseUrl+"view_profile";
     public static final String update_profile = BaseUrl+"update_profile";
     public static final String macedon_membership = BaseUrl+"macedon_membership";
+    public static final String Single_center_Page = BaseUrl+"Single_center_Page";
+    public static final String Single_Service_Page = BaseUrl+"Single_Service_Page";
 
 
 

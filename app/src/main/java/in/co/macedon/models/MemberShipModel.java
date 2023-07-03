@@ -2,10 +2,10 @@ package in.co.macedon.models;
 
 public class MemberShipModel {
 
-    String package_id,package_name,package_duration,package_price,package_description,service_category;
+    String package_id,package_name,package_duration,package_price,package_description,service_category,class_week,service_id;
 
     public MemberShipModel(String package_id, String package_name, String package_duration, String package_price,
-                           String package_description, String service_category) {
+                           String package_description, String service_category,String class_week,String service_id) {
 
         this.package_id = package_id;
         this.package_name = package_name;
@@ -13,6 +13,8 @@ public class MemberShipModel {
         this.package_price = package_price;
         this.package_description = package_description;
         this.service_category = service_category;
+        this.class_week = class_week;
+        this.service_id = service_id;
     }
 
     public String getPackage_id() {
@@ -61,5 +63,21 @@ public class MemberShipModel {
 
     public void setService_category(String service_category) {
         this.service_category = service_category;
+    }
+
+    public String getClass_week() {
+        return class_week;
+    }
+
+    public void setClass_week(String class_week) {
+        this.class_week = class_week;
+    }
+
+    public String getService_id() {
+        return service_id;
+    }
+
+    public void setService_id(String service_id) {
+        this.service_id = service_id;
     }
 }

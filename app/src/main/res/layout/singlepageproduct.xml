@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/ten">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/hundred_fifty"
+                    app:cardCornerRadius="@dimen/fifteen">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/viewpagerBanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        </androidx.viewpager2.widget.ViewPager2>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/ten"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/AddressDdetails"
+                        android:background="@drawable/autocomplate_bg"
+                        android:elevation="@dimen/five"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/centerLoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/fifteen"
+                            android:layout_marginBottom="@dimen/ten"
+                            android:layout_marginTop="@dimen/ten"
+                            android:drawableLeft="@drawable/location_on"
+                            android:drawablePadding="@dimen/ten"
+                            android:fontFamily="@font/sans_bold"
+                            android:text="Fashion"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_size">
+
+                        </TextView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/addressDet"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/fifteen"
+                                android:layout_marginBottom="@dimen/ten"
+                                android:fontFamily="@font/sans_bold"
+                                android:text="Address : "
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/twelve_size">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/address_Det"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/fifteen"
+                                android:layout_marginBottom="@dimen/ten"
+                                android:fontFamily="@font/sans_bold"
+                                android:text="Address"
+                                android:layout_toRightOf="@id/addressDet"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/twelve_size">
+
+                            </TextView>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="0.8"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/pincode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/fifteen"
+                                    android:layout_marginBottom="@dimen/ten"
+                                    android:fontFamily="@font/sans_bold"
+                                    android:text="pincode : "
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twelve_size">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/pin_code"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/fifteen"
+                                    android:layout_marginBottom="@dimen/ten"
+                                    android:fontFamily="@font/sans_bold"
+                                    android:text="1234567890"
+                                    android:layout_toRightOf="@id/pincode"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twelve_size">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1.2"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/contact_No"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/fifteen"
+                                    android:layout_marginBottom="@dimen/ten"
+                                    android:fontFamily="@font/sans_bold"
+                                    android:text="Contact No : "
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twelve_size">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/contactNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/fifteen"
+                                    android:layout_marginBottom="@dimen/ten"
+                                    android:fontFamily="@font/sans_bold"
+                                    android:text="123456789000000"
+                                    android:layout_toRightOf="@id/contact_No"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twelve_size">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/Email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/fifteen"
+                                android:layout_marginBottom="@dimen/ten"
+                                android:fontFamily="@font/sans_bold"
+                                android:text="Email : "
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/twelve_size">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/emailName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/fifteen"
+                                android:layout_marginBottom="@dimen/ten"
+                                android:fontFamily="@font/sans_bold"
+                                android:text="Fashion"
+                                android:layout_toRightOf="@id/Email"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/twelve_size">
+
+                            </TextView>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/hundred"
+                        app:cardCornerRadius="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/ten">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.viewpager2.widget.ViewPager2
+                                android:id="@+id/viewpagerAddeds"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="50dp"
+                                android:paddingEnd="50dp">
+
+                            </androidx.viewpager2.widget.ViewPager2>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Membership Plan"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/ten"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/memberShipPlanDet">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ten">
+
+                        <TextView
+                            android:id="@+id/about"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/ten"
+                            android:fontFamily="@font/rupee_foradian"
+                            android:text="Know More About"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_size">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/fitnessName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/five"
+                            android:layout_marginBottom="@dimen/ten"
+                            android:fontFamily="@font/sans_bold"
+                            android:layout_toRightOf="@id/about"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_size">
+
+                        </TextView>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="3"
+                        android:layout_marginTop="@dimen/five">
+
+                        <TextView
+                            android:id="@+id/text_Amenities"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Amenities"
+                            android:fontFamily="@font/sans_bold"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_size"
+                            android:gravity="center"
+                            android:background="@drawable/autocomplate_bg"
+                            android:padding="@dimen/ten"
+                            android:layout_margin="@dimen/three"/>
+
+                        <TextView
+                            android:id="@+id/text_SheduleClass"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Shedule Class"
+                            android:fontFamily="@font/sans_bold"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_size"
+                            android:gravity="center"
+                            android:layout_margin="@dimen/three"
+                            android:background="@drawable/autocomplate_bg"
+                            android:padding="@dimen/ten"/>
+
+                        <TextView
+                            android:id="@+id/text_CustomerReview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Customer Review"
+                            android:fontFamily="@font/sans_bold"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:textSize="@dimen/twelve_size"
+                            android:background="@drawable/autocomplate_bg"
+                            android:padding="@dimen/ten"
+                            android:layout_margin="@dimen/three"/>
+
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/aboutgymRecycler"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/thirty">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <TextView
+                        android:id="@+id/text_ReviewAndRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Review And Rating"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:textSize="@dimen/edittextsize"
+                        android:background="@drawable/autocomplate_bg"
+                        android:padding="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/thirty"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

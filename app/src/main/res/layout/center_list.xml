@@ -1,55 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="@dimen/three_hundred"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/homecard_back1"
-        android:layout_margin="@dimen/five"
-        android:elevation="@dimen/five">
+        app:cardCornerRadius="@dimen/ten"
+        android:layout_marginStart="@dimen/five"
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginEnd="@dimen/five"
+        android:layout_marginBottom="@dimen/five"
+        android:elevation="@dimen/four"
+        android:id="@+id/cardView_Center">
 
-        <ImageView
-            android:id="@+id/img_Category"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/hundred_eighty"
-            android:src="@drawable/fitness"
-            android:scaleType="fitXY"
-            android:background="@drawable/selection_drawable">
-
-        </ImageView>
-
-        <TextView
-            android:id="@+id/centerName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="@dimen/hundred_fifty"
             android:layout_height="wrap_content"
-            android:text="Fashion"
-            android:fontFamily="@font/sans_bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize"
-            android:layout_marginLeft="@dimen/fifteen"
-            android:layout_marginTop="@dimen/ten"
-            android:layout_marginBottom="@dimen/ten">
+            android:background="@drawable/homecard_back1"
+            android:orientation="vertical">
 
-        </TextView>
 
-        <TextView
-            android:id="@+id/centerLoc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fashion"
-            android:fontFamily="@font/sans_bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize"
-            android:drawableLeft="@drawable/location_on"
-            android:drawablePadding="@dimen/ten"
-            android:layout_marginLeft="@dimen/fifteen"
-            android:layout_marginBottom="@dimen/ten">
+            <ImageView
+                android:id="@+id/img_Category"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred_twenty"
+                android:background="@drawable/selection_drawable"
+                android:scaleType="fitXY"
+                android:src="@drawable/fitness">
 
-        </TextView>
+            </ImageView>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/centerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:text="Fashion"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_size">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/centerLoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginBottom="@dimen/ten"
+                android:drawableLeft="@drawable/location_on"
+                android:drawablePadding="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:text="Fashion"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_size">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
 
 </RelativeLayout>

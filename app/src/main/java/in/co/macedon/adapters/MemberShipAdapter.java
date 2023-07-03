@@ -18,10 +18,12 @@ public class MemberShipAdapter extends RecyclerView.Adapter<MemberShipAdapter.Vi
 
     Context context;
     ArrayList<MemberShipModel> memberShipModels;
-    public MemberShipAdapter(ArrayList<MemberShipModel> memberShip_models, Context context) {
+    String SingleProduct;
+    public MemberShipAdapter(ArrayList<MemberShipModel> memberShip_models, Context context, String singleProduct) {
 
         this.context = context;
         this.memberShipModels = memberShip_models;
+        this.SingleProduct = SingleProduct;
     }
 
     @NonNull

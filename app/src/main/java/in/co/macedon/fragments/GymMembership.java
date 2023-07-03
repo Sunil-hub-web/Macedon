@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 import in.co.macedon.R;
 import in.co.macedon.adapters.MemberShipAdapter;
-import in.co.macedon.adapters.TestimonialAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.models.MemberShipModel;
 
@@ -96,14 +95,14 @@ public class GymMembership extends Fragment {
                                 String service_category = jsonObject_member.getString("service_category");
 
                                 MemberShipModel memberShipModel = new MemberShipModel(
-                                        package_id, package_name, package_duration, package_price, package_description, service_category
+                                        package_id, package_name, package_duration, package_price, package_description, service_category,"",""
                                 );
 
                                 memberShip_Models.add(memberShipModel);
                             }
 
                             linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                            memberShipAdapter = new MemberShipAdapter(memberShip_Models,getContext());
+                            memberShipAdapter = new MemberShipAdapter(memberShip_Models,getContext(), "GyamMemberShip");
                             membershipRecycler.setLayoutManager(linearLayoutManager);
                             membershipRecycler.setHasFixedSize(true);
                             membershipRecycler.smoothScrollToPosition(0);
