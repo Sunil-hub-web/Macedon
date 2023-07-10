@@ -36,7 +36,7 @@ public class ProfileDetailsFragment extends Fragment {
         logout_txt = view.findViewById(R.id.logout_txt);
         userprofile_txt = view.findViewById(R.id.userprofile_txt);
         nav_Subscriptions = view.findViewById(R.id.nav_Subscriptions);
-        // nav_ItemOrder = dialogConfirm.findViewById(R.id.nav_ItemOrder);
+        wallet_txt = view.findViewById(R.id.wallet_txt);
         nev_CompletedSession = view.findViewById(R.id.nev_CompletedSession);
 
         sessionManager = new SessionManager(getContext());
@@ -90,6 +90,24 @@ public class ProfileDetailsFragment extends Fragment {
                 ft.addToBackStack(null);
                 ft.commit();
 
+            }
+        });
+
+        wallet_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DashBoard.locationlayout.setVisibility(View.VISIBLE);
+                DashBoard.cart.setVisibility(View.GONE);
+                DashBoard.img_Search.setVisibility(View.VISIBLE);
+                DashBoard.userName.setText("Completed Session");
+                DashBoard.fl.removeAllViews();
+
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                Wallet_Fragment wallet_fragment = new Wallet_Fragment();
+                ft.replace(R.id.nav_host_fragment, wallet_fragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
 

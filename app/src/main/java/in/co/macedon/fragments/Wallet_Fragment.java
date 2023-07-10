@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,43 +35,47 @@ import java.util.Map;
 
 import in.co.macedon.R;
 import in.co.macedon.adapters.CompleteSessionAdapter;
-import in.co.macedon.adapters.SubscriptionAdapter;
+import in.co.macedon.adapters.WalletAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.extras.SessionManager;
 import in.co.macedon.models.CompleteSession_ModelClass;
-import in.co.macedon.models.Subscriptions_ModelClass;
+import in.co.macedon.models.WalletModel;
 
-public class CompletedSession extends Fragment {
+public class Wallet_Fragment extends Fragment {
 
-    RecyclerView recyclerCompleteSession;
+    RecyclerView showWalletRecycler;
     CompleteSessionAdapter completeSessionAdapter;
     LinearLayoutManager linearLayoutManager;
-    ArrayList<CompleteSession_ModelClass> comp_session = new ArrayList<>();
+    ArrayList<WalletModel> walletModels = new ArrayList<>();
     SessionManager sessionManager;
+    WalletAdapter walletAdapter;
+    Double cr_balance,dr_balance,crdr_balance,totcr_balance = 0.0,totdr_balance = 0.0;
+
+    TextView showAmount;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull  LayoutInflater inflater,
-                             @Nullable  ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.completedsession_fragment,container,false);
+        View view = inflater.inflate(R.layout.walletfragment,container,false);
 
-        recyclerCompleteSession = view.findViewById(R.id.recyclerCompleteSession);
-        sessionManager = new SessionManager(getActivity());
+        showWalletRecycler = view.findViewById(R.id.showWalletRecycler);
+        showAmount = view.findViewById(R.id.showAmount);
 
-        userCompletedsession(sessionManager.getUserID());
-
+        sessionManager = new SessionManager(getContext());
+        userwallet(sessionManager.getUserID());
         return view;
     }
 
-    public void userCompletedsession(String user_id){
+    public void userwallet(String user_id){
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Subscription Details Please Wait.....");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.completedsession, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.wallet, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -92,38 +97,56 @@ public class CompletedSession extends Fragment {
                         if (responsecode.equals("00")){
 
                             JSONObject jsonObject1_status = new JSONObject(statusdat);
-                            String completedsession = jsonObject1_status.getString("completedsession");
-                            JSONArray jsonArray_completedsession = new JSONArray(completedsession);
+                            String wallet = jsonObject1_status.getString("wallet");
+                            JSONArray jsonArray_wallet = new JSONArray(wallet);
 
-                            for (int i=0;i<jsonArray_completedsession.length();i++){
+                            for (int i=0;i<jsonArray_wallet.length();i++){
 
-                                JSONObject jsonObject_completedsession = jsonArray_completedsession.getJSONObject(i);
+                                JSONObject jsonObject_wallet = jsonArray_wallet.getJSONObject(i);
 
-                                String scan_id = jsonObject_completedsession.getString("scan_id");
-                                String center_id = jsonObject_completedsession.getString("center_id");
-                                String user_id = jsonObject_completedsession.getString("user_id");
-                                String date = jsonObject_completedsession.getString("date");
-                                String time = jsonObject_completedsession.getString("time");
-                                String user_membership_history_id = jsonObject_completedsession.getString("user_membership_history_id");
-                                String commition_amount = jsonObject_completedsession.getString("commition_amount");
-                                String center_name = jsonObject_completedsession.getString("center_name");
+                                String wallet_id = jsonObject_wallet.getString("wallet_id");
+                                String user_id = jsonObject_wallet.getString("user_id");
+                                String amount = jsonObject_wallet.getString("amount");
+                                String payment_type = jsonObject_wallet.getString("payment_type");
+                                String wallet_status = jsonObject_wallet.getString("wallet_status");
+                                String remark = jsonObject_wallet.getString("remark");
+                                String created_date = jsonObject_wallet.getString("created_date");
+
+                                if (payment_type.equals("1")){
+
+                                    cr_balance = Double.parseDouble(amount);
+                                    totcr_balance = cr_balance + totcr_balance;
+
+                                    Log.d("paymentdet",cr_balance+","+totcr_balance);
 
 
-                                CompleteSession_ModelClass completeSession_modelClass = new CompleteSession_ModelClass(
-                                        scan_id,center_id,user_id,date,time,user_membership_history_id,
-                                        commition_amount,center_name
-                                    );
+                                }else{
 
-                                    comp_session.add(completeSession_modelClass);
+                                    dr_balance = Double.parseDouble(amount);
+                                    totdr_balance = dr_balance + totdr_balance;
+
+                                    Log.d("paymentdet1",dr_balance+","+totdr_balance);
+
+                                }
+
+                                WalletModel walletModel = new WalletModel(
+                                        wallet_id,user_id,amount,payment_type,wallet_status,remark,created_date
+                                );
+
+                                walletModels.add(walletModel);
 
                             }
 
                             linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-                            completeSessionAdapter = new CompleteSessionAdapter(comp_session,getActivity());
-                            recyclerCompleteSession.setLayoutManager(linearLayoutManager);
-                            recyclerCompleteSession.setHasFixedSize(true);
-                            recyclerCompleteSession.setItemAnimator(new DefaultItemAnimator());
-                            recyclerCompleteSession.setAdapter(completeSessionAdapter);
+                            walletAdapter = new WalletAdapter(walletModels,getActivity());
+                            showWalletRecycler.setLayoutManager(linearLayoutManager);
+                            showWalletRecycler.setHasFixedSize(true);
+                            showWalletRecycler.setItemAnimator(new DefaultItemAnimator());
+                            showWalletRecycler.setAdapter(walletAdapter);
+
+                            crdr_balance = totcr_balance - totdr_balance;
+
+                            showAmount.setText(String.valueOf(crdr_balance));
 
                         }else{
 

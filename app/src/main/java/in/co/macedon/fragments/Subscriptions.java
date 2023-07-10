@@ -2,6 +2,7 @@ package in.co.macedon.fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,11 +30,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import in.co.macedon.R;
-import in.co.macedon.activities.MobileLogin;
 import in.co.macedon.adapters.SubscriptionAdapter;
 import in.co.macedon.extras.AppURL;
+import in.co.macedon.extras.SessionManager;
 import in.co.macedon.models.Subscriptions_ModelClass;
 
 public class Subscriptions extends Fragment {
@@ -42,12 +46,12 @@ public class Subscriptions extends Fragment {
     SubscriptionAdapter subscriptionAdapter;
     LinearLayoutManager linearLayoutManager;
     LinearLayout lin_MacPass,lin_TrannerPass,lin_DieticainPass;
-
     ArrayList<Subscriptions_ModelClass> subscription_MacPass = new ArrayList<>();
     ArrayList<Subscriptions_ModelClass> subscription_TrannerPass = new ArrayList<>();
-    ArrayList<Subscriptions_ModelClass> subscription_DieticainPass = new ArrayList<>();
     ArrayList<Subscriptions_ModelClass> subscriptionDetails = new ArrayList<>();
+    ArrayList<Subscriptions_ModelClass> subscriptionDetails1 = new ArrayList<>();
 
+    SessionManager sessionManager;
 
     @Nullable
     @Override
@@ -55,32 +59,31 @@ public class Subscriptions extends Fragment {
                              @Nullable  ViewGroup container,
                              @Nullable  Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.subscriptions_fragment,container,false);
+        View view = inflater.inflate(R.layout.subscriptionsfragment,container,false);
 
         text_MacPass = view.findViewById(R.id.text_MacPass);
         text_TrannerPass = view.findViewById(R.id.text_TrannerPass);
-        text_DieticainPass = view.findViewById(R.id.text_DieticainPass);
         recyclerShowPlane = view.findViewById(R.id.recyclerShowPlane);
-        lin_DieticainPass = view.findViewById(R.id.lin_DieticainPass);
         lin_TrannerPass = view.findViewById(R.id.lin_TrannerPass);
         lin_MacPass = view.findViewById(R.id.lin_MacPass);
 
+        sessionManager = new SessionManager(getActivity());
 
-        //userSubscription();
+        userSubscription(sessionManager.getUserID());
 
         text_MacPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscription_MacPass);
+                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails);
                 recyclerShowPlane.setLayoutManager(linearLayoutManager);
                 recyclerShowPlane.setHasFixedSize(true);
                 recyclerShowPlane.setAdapter(subscriptionAdapter);
 
                 lin_MacPass.setBackgroundResource(R.drawable.shop_filter_selected);
                 text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
-                text_DieticainPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
+
             }
         });
 
@@ -89,43 +92,26 @@ public class Subscriptions extends Fragment {
             public void onClick(View v) {
 
                 linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscription_TrannerPass);
+                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails1);
                 recyclerShowPlane.setLayoutManager(linearLayoutManager);
                 recyclerShowPlane.setHasFixedSize(true);
                 recyclerShowPlane.setAdapter(subscriptionAdapter);
 
                 lin_MacPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
                 text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_selected);
-                text_DieticainPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
-            }
-        });
-
-        text_DieticainPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscription_DieticainPass);
-                recyclerShowPlane.setLayoutManager(linearLayoutManager);
-                recyclerShowPlane.setHasFixedSize(true);
-                recyclerShowPlane.setAdapter(subscriptionAdapter);
-
-                lin_MacPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
-                text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
-                text_DieticainPass.setBackgroundResource(R.drawable.shop_filter_selected);
             }
         });
 
         return view;
     }
 
-   /* public void userSubscription(){
+    public void userSubscription(String user_id){
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Subscription Details Please Wait.....");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppURL.subcription, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.Subscription, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -136,45 +122,77 @@ public class Subscriptions extends Fragment {
 
                     String status = jsonObject.getString("status");
 
-                    if(status.equals("true")){
+                    if (status.equals("200")){
 
-                        String message = jsonObject.getString("message");
-                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String statusdat = jsonObject_message.getString("status");
 
-                        String subscription = jsonObject.getString("subscription");
-                        JSONArray jsonArray_subscription = new JSONArray(subscription);
+                        if (responsecode.equals("00")){
 
-                        for (int i=0;i<jsonArray_subscription.length();i++){
 
-                            JSONObject jsonObject_subscription = jsonArray_subscription.getJSONObject(i);
+                            JSONObject jsonObject1_status = new JSONObject(statusdat);
+                            String membershipplan = jsonObject1_status.getString("membershipplan");
+                            JSONArray jsonArray_membershipplan = new JSONArray(membershipplan);
 
-                            String membership_id = jsonObject_subscription.getString("membership_id");
-                            String membership_name = jsonObject_subscription.getString("membership_name");
-                            String membership_period = jsonObject_subscription.getString("membership_period");
-                            String membership_amount = jsonObject_subscription.getString("membership_amount");
-                            String membership_description = jsonObject_subscription.getString("membership_description");
-                            String no_of_class = jsonObject_subscription.getString("no_of_class");
+                            for (int i=0;i<jsonArray_membershipplan.length();i++){
 
-                            Subscriptions_ModelClass subscriptions_modelClass = new Subscriptions_ModelClass(
-                                    membership_id,membership_name,membership_description,membership_amount,membership_period,no_of_class
-                            );
+                                JSONObject jsonObject_membershipplan = jsonArray_membershipplan.getJSONObject(i);
 
-                            subscriptionDetails.add(subscriptions_modelClass);
+                                String user_membership_history_id = jsonObject_membershipplan.getString("user_membership_history_id");
+                                String package_name = jsonObject_membershipplan.getString("package_name");
+                                String package_duration = jsonObject_membershipplan.getString("package_duration");
+                                String total_sesson = jsonObject_membershipplan.getString("total_sesson");
+                                String package_price = jsonObject_membershipplan.getString("package_price");
+                                String purchace_date = jsonObject_membershipplan.getString("purchace_date");
+                                String expair_date = jsonObject_membershipplan.getString("expair_date");
+                                String paid_amount = jsonObject_membershipplan.getString("paid_amount");
+                                String Center_Name = jsonObject_membershipplan.getString("Center_Name");
+                                String Center_Id = jsonObject_membershipplan.getString("Center_Id");
 
-                            subscription_MacPass.add(subscriptions_modelClass);
+                                if (Center_Id.equals("1")){
 
-                            subscription_TrannerPass.add(subscriptions_modelClass);
+                                    Subscriptions_ModelClass subscriptions_modelClass = new Subscriptions_ModelClass(
+                                            user_membership_history_id,package_name,package_duration,total_sesson,package_price,purchace_date,
+                                            expair_date,paid_amount,Center_Id,Center_Name
+                                    );
 
-                            subscription_DieticainPass.add(subscriptions_modelClass);
+                                    subscriptionDetails.add(subscriptions_modelClass);
 
+                                }else{
+
+                                    Subscriptions_ModelClass subscriptions_modelClass = new Subscriptions_ModelClass(
+                                            user_membership_history_id,package_name,package_duration,total_sesson,package_price,purchace_date,
+                                            expair_date,paid_amount,Center_Id,Center_Name
+                                    );
+
+                                    subscriptionDetails1.add(subscriptions_modelClass);
+                                }
+                            }
+
+                            lin_MacPass.setBackgroundResource(R.drawable.shop_filter_selected);
+                            text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
+
+                            linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                            subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails);
+                            recyclerShowPlane.setLayoutManager(linearLayoutManager);
+                            recyclerShowPlane.setHasFixedSize(true);
+                            recyclerShowPlane.setAdapter(subscriptionAdapter);
+
+                        }else{
+
+                            Toast.makeText(getContext(), statusdat, Toast.LENGTH_SHORT).show();
                         }
+                    }else{
 
-                        linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                        subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails);
-                        recyclerShowPlane.setLayoutManager(linearLayoutManager);
-                        recyclerShowPlane.setHasFixedSize(true);
-                        recyclerShowPlane.setAdapter(subscriptionAdapter);
-
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String statusdat = jsonObject_message.getString("status");
+                        Toast.makeText(getContext(), statusdat, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -190,9 +208,18 @@ public class Subscriptions extends Fragment {
                 error.printStackTrace();
 
             }
-        });
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("user_id",user_id);
+                Log.d("userid",user_id);
+                return params;
+            }
+        };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
-    }*/
+    }
 }

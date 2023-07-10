@@ -46,6 +46,7 @@ public class GymMembership extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.membership_frag, container, false);
+
         membershipRecycler = view.findViewById(R.id.membershipRecycler);
 
         getMemberShip();

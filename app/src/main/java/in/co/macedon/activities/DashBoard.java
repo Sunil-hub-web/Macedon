@@ -51,6 +51,7 @@ import in.co.macedon.R;
 import in.co.macedon.extras.SessionManager;
 import in.co.macedon.fragments.AboutFragment;
 import in.co.macedon.fragments.CompletedSession;
+import in.co.macedon.fragments.ContactUsFragment;
 import in.co.macedon.fragments.FAQSFragment;
 import in.co.macedon.fragments.GymMembership;
 import in.co.macedon.fragments.HelpFragment;
@@ -253,11 +254,15 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                userNamedet.setText("Hi, " + name);
+                locationlayout.setVisibility(View.GONE);
+                cart.setVisibility(View.GONE);
+                img_Search.setVisibility(View.GONE);
+                fl.removeAllViews();
+                userName.setText("Contact Us");
                 dialogConfirm.dismiss();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                HomeFragment userProfileDetails = new HomeFragment();
-                ft.replace(R.id.nav_host_fragment, userProfileDetails);
+                ContactUsFragment contactUsFragment = new ContactUsFragment();
+                ft.replace(R.id.nav_host_fragment, contactUsFragment);
                 ft.addToBackStack(null);
                 ft.commit();
 

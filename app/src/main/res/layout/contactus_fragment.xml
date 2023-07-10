@@ -12,35 +12,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/ten"
-            android:layout_below="@+id/include">
+            android:layout_marginTop="@dimen/fifty"
+            android:layout_below="@+id/include"
+            >
 
             <TextView
-                android:id="@+id/text_header"
+                android:id="@+id/text_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sans_bold"
                 android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/fifteen"
                 android:textColor="@color/black"
                 android:textSize="@dimen/twenty_size">
 
             </TextView>
 
             <TextView
-                android:id="@+id/text_details"
+                android:id="@+id/text_phono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_thin"
-                android:layout_marginTop="@dimen/twenty"
-                android:justificationMode="inter_word"
-                android:lineSpacingExtra="5dp"
-                android:lineSpacingMultiplier="1"
+                android:fontFamily="@font/sans_bold"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/fifteen"
                 android:textColor="@color/black"
-                android:layout_marginLeft="@dimen/fifteen"
-                android:layout_marginRight="@dimen/fifteen"
-                android:textSize="@dimen/twelve_size">
+                android:textSize="@dimen/twenty_size">
 
             </TextView>
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_bold"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/fifteen"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty_size">
+
+            </TextView>
+
         </LinearLayout>
 
     </ScrollView>

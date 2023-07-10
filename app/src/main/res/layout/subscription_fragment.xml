@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/five">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/autocomplate_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/ten"
+            android:elevation="@dimen/five">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Package Name"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_regular">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_PackageName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Membership For"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_regular">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_MembershipFor"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Duration"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_regular">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_Duration"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Start Date"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_regular">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_StartDate"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Expire Date"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_regular">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_ExpireDate"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Purchase Date"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_regular">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_PurchaseDate"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"
+                    android:fontFamily="@font/sans_bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

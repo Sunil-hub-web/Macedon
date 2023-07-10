@@ -2,15 +2,43 @@ package in.co.macedon.models;
 
 public class CompleteSession_ModelClass {
 
-    String date,time,gymName,gymLocation,inTime,outTime;
+    String scan_id,center_id,user_id,date,time,user_membership_history_id,commition_amount,center_name;
 
-    public CompleteSession_ModelClass(String date, String time, String gymName, String gymLocation, String inTime, String outTime) {
+    public CompleteSession_ModelClass(String scan_id, String center_id, String user_id, String date, String time,
+                                      String user_membership_history_id, String commition_amount,
+                                      String center_name) {
+        this.scan_id = scan_id;
+        this.center_id = center_id;
+        this.user_id = user_id;
         this.date = date;
         this.time = time;
-        this.gymName = gymName;
-        this.gymLocation = gymLocation;
-        this.inTime = inTime;
-        this.outTime = outTime;
+        this.user_membership_history_id = user_membership_history_id;
+        this.commition_amount = commition_amount;
+        this.center_name = center_name;
+    }
+
+    public String getScan_id() {
+        return scan_id;
+    }
+
+    public void setScan_id(String scan_id) {
+        this.scan_id = scan_id;
+    }
+
+    public String getCenter_id() {
+        return center_id;
+    }
+
+    public void setCenter_id(String center_id) {
+        this.center_id = center_id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getDate() {
@@ -29,35 +57,27 @@ public class CompleteSession_ModelClass {
         this.time = time;
     }
 
-    public String getGymName() {
-        return gymName;
+    public String getUser_membership_history_id() {
+        return user_membership_history_id;
     }
 
-    public void setGymName(String gymName) {
-        this.gymName = gymName;
+    public void setUser_membership_history_id(String user_membership_history_id) {
+        this.user_membership_history_id = user_membership_history_id;
     }
 
-    public String getGymLocation() {
-        return gymLocation;
+    public String getCommition_amount() {
+        return commition_amount;
     }
 
-    public void setGymLocation(String gymLocation) {
-        this.gymLocation = gymLocation;
+    public void setCommition_amount(String commition_amount) {
+        this.commition_amount = commition_amount;
     }
 
-    public String getInTime() {
-        return inTime;
+    public String getCenter_name() {
+        return center_name;
     }
 
-    public void setInTime(String inTime) {
-        this.inTime = inTime;
-    }
-
-    public String getOutTime() {
-        return outTime;
-    }
-
-    public void setOutTime(String outTime) {
-        this.outTime = outTime;
+    public void setCenter_name(String center_name) {
+        this.center_name = center_name;
     }
 }

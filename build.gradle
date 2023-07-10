@@ -5,6 +5,8 @@ buildscript {
     repositories {
         google()
         jcenter()
+
+        mavenCentral()
         
     }
     dependencies {
@@ -21,7 +23,7 @@ allprojects {
         google()
         jcenter()
 
-        google()
+        mavenCentral()
 
         // If you're using a version of Gradle lower than 4.1, you must instead use:
         // maven {

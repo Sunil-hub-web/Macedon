@@ -41,13 +41,12 @@
         android:background="@color/colorPrimary"/>
 
     <TextView
-
         android:id="@+id/nav_Home"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
-        android:text="Home"
+        android:text="Contact Us"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_home"
+        android:drawableLeft="@drawable/contact_mail"
         android:paddingLeft="@dimen/fifteen"
         android:paddingRight="@dimen/fifteen"
         android:fontFamily="@font/raleway"

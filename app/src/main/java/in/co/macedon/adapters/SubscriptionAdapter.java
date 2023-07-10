@@ -34,7 +34,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
     @Override
     public SubscriptionAdapter.ViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.subscriptions,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.subscription_fragment,parent,false);
         return new ViewHolder(view);
     }
 
@@ -43,13 +43,16 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
         Subscriptions_ModelClass subsc = subscription.get(position);
 
-        holder.planName.setText(subsc.getMembership_name());
-        holder.price.setText(subsc.getMembership_price());
-        holder.description.setText(Html.fromHtml(subsc.getMembership_description()));
+        holder.text_PackageName.setText(subsc.getPackage_name());
+        holder.text_MembershipFor.setText(subsc.getCenter_Name());
+        holder.text_Duration.setText(Html.fromHtml(subsc.getPackage_duration()+" Days "+subsc.getTotal_sesson()+" sesson "));
+        holder.text_StartDate.setText(Html.fromHtml(subsc.getPurchace_date()));
+        holder.text_ExpireDate.setText(Html.fromHtml(subsc.getExpair_date()));
+        holder.text_PurchaseDate.setText(Html.fromHtml(subsc.getPurchace_date()));
 
-        holder.planName.setChecked(lastSelectedPosition == position);
+       // holder.text_StartDate.setChecked(lastSelectedPosition == position);
 
-        holder.planName.setChecked(lastSelectedPosition == position);
+       // holder.planName.setChecked(lastSelectedPosition == position);
 
         /*holder.planName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,16 +84,18 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        RadioButton planName;
-        TextView price,description;
+        TextView text_PackageName,text_MembershipFor,text_Duration,text_StartDate,text_ExpireDate,text_PurchaseDate;
         public ViewHolder(@NonNull  View itemView) {
             super(itemView);
 
-            description = itemView.findViewById(R.id.description);
-            price = itemView.findViewById(R.id.price);
-            planName = itemView.findViewById(R.id.planName);
+            text_PackageName = itemView.findViewById(R.id.text_PackageName);
+            text_MembershipFor = itemView.findViewById(R.id.text_MembershipFor);
+            text_Duration = itemView.findViewById(R.id.text_Duration);
+            text_StartDate = itemView.findViewById(R.id.text_StartDate);
+            text_ExpireDate = itemView.findViewById(R.id.text_ExpireDate);
+            text_PurchaseDate = itemView.findViewById(R.id.text_PurchaseDate);
 
-            planName.setOnClickListener(new View.OnClickListener() {
+           /* planName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -101,7 +106,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
                     Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
         }
     }
 }

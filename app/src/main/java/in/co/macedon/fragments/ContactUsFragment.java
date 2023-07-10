@@ -28,19 +28,21 @@ import org.json.JSONObject;
 import in.co.macedon.R;
 import in.co.macedon.extras.AppURL;
 
-public class PrivacyPolicyFragment extends Fragment {
+public class ContactUsFragment extends Fragment {
 
-    TextView text_header,text_details;
+    TextView text_address,text_phono,text_email;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.privacypolicyfragment,container,false);
+        View view = inflater.inflate(R.layout.contactus_fragment,container,false);
 
-        text_header = view.findViewById(R.id.text_header);
-        text_details = view.findViewById(R.id.text_details);
+        text_address = view.findViewById(R.id.text_address);
+        text_phono = view.findViewById(R.id.text_phono);
+        text_email = view.findViewById(R.id.text_email);
 
         aboutAsData();
 
@@ -50,7 +52,7 @@ public class PrivacyPolicyFragment extends Fragment {
     public void aboutAsData(){
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Privacy Policy Details");
+        progressDialog.setMessage("Contact Us Details");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, AppURL.cms, new Response.Listener<String>() {
@@ -79,12 +81,15 @@ public class PrivacyPolicyFragment extends Fragment {
                             JSONObject jsonObject_cms = jsonArray_cms.getJSONObject(i);
                             String page_name = jsonObject_cms.getString("page_name");
 
-                            if (page_name.equals("Privacy Policy")){
+                            if (page_name.equals("Contact Us")){
 
-                                String details = jsonObject_cms.getString("details");
+                                String address = jsonObject_cms.getString("address");
+                                String phone = jsonObject_cms.getString("phone");
+                                String email = jsonObject_cms.getString("email");
 
-                               // text_header.setText(page_name);
-                                text_details.setText(Html.fromHtml(details));
+                                text_address.setText(address);
+                                text_phono.setText(Html.fromHtml(phone));
+                                text_email.setText(Html.fromHtml(email));
 
                             }
                         }

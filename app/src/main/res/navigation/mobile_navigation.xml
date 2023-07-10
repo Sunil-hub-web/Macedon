@@ -20,7 +20,7 @@
         android:id="@+id/navigation_notifications"
         android:name="in.co.macedon.fragments.ScanFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_scanner" />
 
     <fragment
         android:id="@+id/navigation_help"

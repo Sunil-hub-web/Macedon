@@ -42,10 +42,10 @@ public class CompleteSessionAdapter extends RecyclerView.Adapter<CompleteSession
 
         holder.date.setText(Html.fromHtml("<font color='#288DE9'>Date :<br></font>"+comp_session.getDate()));
         holder.time.setText(Html.fromHtml("<font color='#288DE9'>Time :<br></font>"+comp_session.getTime()));
-        holder.gymName.setText(Html.fromHtml("<font color='#288DE9'>GymName :<br></font>"+comp_session.getGymName()));
-        holder.gymLocation.setText(Html.fromHtml("<font color='#288DE9'>GymLocation :<br></font>"+comp_session.getGymLocation()));
-        holder.inTime.setText(Html.fromHtml("<font color='#288DE9'>InTime :<br></font>"+comp_session.getInTime()));
-        holder.outTime.setText(Html.fromHtml("<font color='#288DE9'>OutTime :<br></font>"+comp_session.getOutTime()));
+        holder.gymName.setText(Html.fromHtml("<font color='#288DE9'>GymName :<br></font>"+comp_session.getCenter_name()));
+      //  holder.gymLocation.setText(Html.fromHtml("<font color='#288DE9'>GymLocation :<br></font>"+comp_session.getGymLocation()));
+      //  holder.inTime.setText(Html.fromHtml("<font color='#288DE9'>InTime :<br></font>"+comp_session.getInTime()));
+     //   holder.outTime.setText(Html.fromHtml("<font color='#288DE9'>OutTime :<br></font>"+comp_session.getOutTime()));
 
     }
 
@@ -62,12 +62,12 @@ public class CompleteSessionAdapter extends RecyclerView.Adapter<CompleteSession
         public ViewHolder(@NonNull  View itemView) {
             super(itemView);
 
-            outTime = itemView.findViewById(R.id.outTime);
+            //outTime = itemView.findViewById(R.id.outTime);
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
             gymName = itemView.findViewById(R.id.gymName);
-            gymLocation = itemView.findViewById(R.id.gymLocation);
-            inTime = itemView.findViewById(R.id.inTime);
+           // gymLocation = itemView.findViewById(R.id.gymLocation);
+           // inTime = itemView.findViewById(R.id.inTime);
         }
     }
 }

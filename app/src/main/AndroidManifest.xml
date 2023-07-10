@@ -15,8 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.DeliveryLocation"></activity>
-        <activity android:name=".activities.SearchPage"></activity>
+        <activity
+            android:name=".activities.ScannerClass"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".activities.DeliveryLocation" />
+        <activity android:name=".activities.SearchPage" />
         <activity android:name=".activities.CheckInternetConnection" />
         <activity android:name=".activities.CartActivity" />
         <activity android:name=".activities.TrainerDetail" />
