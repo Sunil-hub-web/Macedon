@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/homecard_back1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/backimage"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/forty"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/ten"
+            android:src="@drawable/back_arrow"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/fifteen"
+            android:fontFamily="@font/sans_bold"
+            android:gravity="center"
+            android:text="COUPON DISCOUNT"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize" />
+
+        <EditText
+            android:id="@+id/edit_couponecode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:background="@drawable/textfieldback"
+            android:hint="Enter Coupon Code"
+            android:padding="@dimen/twelve"></EditText>
+
+        <TextView
+            android:id="@+id/btn_ApplyCoupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginRight="@dimen/fifty"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/twenty"
+            android:background="@drawable/login_btn_bg"
+            android:fontFamily="@font/sans_bold"
+            android:gravity="center"
+            android:padding="@dimen/fifteen"
+            android:text="Apply Coupon"
+            android:backgroundTint="@color/twitter_color"
+            android:textColor="@color/mdtp_white"
+            android:textSize="@dimen/edittextsize" />
+
+    </LinearLayout>
+
+</RelativeLayout>

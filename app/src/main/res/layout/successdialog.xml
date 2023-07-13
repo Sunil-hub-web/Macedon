@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty"
                     android:background="@drawable/autocomplate_bg"
-                    android:text="Done"
+                    android:text="Back To Scann"
                     android:textColor="@color/twitter_color"
                     android:layout_gravity="center"
                     android:textAllCaps="false"

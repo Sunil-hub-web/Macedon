@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.AddedsAdapter;
 import in.co.macedon.adapters.CenterAmetiesAdapter;
 import in.co.macedon.adapters.ImageSliderAdapter;
@@ -94,6 +95,11 @@ public class SingleProduct_Fragment extends Fragment {
         text_CustomerReview = view.findViewById(R.id.text_CustomerReview);
         viewpagerAddeds = view.findViewById(R.id.viewpagerAddeds);
         text_ReviewAndRating = view.findViewById(R.id.text_ReviewAndRating);
+
+        DashBoard.locationlayout.setVisibility(View.VISIBLE);
+        DashBoard.cart.setVisibility(View.GONE);
+        DashBoard.fl.removeAllViews();
+   //     DashBoard.userName.setText("Package Detils");
 
         Bundle arguments = getArguments();
         if (arguments!=null){
@@ -422,7 +428,7 @@ public class SingleProduct_Fragment extends Fragment {
                         }
 
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-                        memberShipPlanAdapter = new MemberShipPlanAdapter(getContext(),centerActivityModels,centerPackageModels,centerPackageArray);
+                        memberShipPlanAdapter = new MemberShipPlanAdapter(getContext(),centerActivityModels,centerPackageModels,centerPackageArray,center_id);
                         memberShipPlanDet.setHasFixedSize(true);
                         memberShipPlanDet.setLayoutManager(linearLayoutManager);
                         memberShipPlanDet.setAdapter(memberShipPlanAdapter);

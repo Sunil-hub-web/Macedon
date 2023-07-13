@@ -20,7 +20,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import in.co.macedon.R;
-import in.co.macedon.models.CenterTimeingSlot;
 import in.co.macedon.models.MemberShipModel;
 import in.co.macedon.models.SingleCenterActivityModel;
 
@@ -34,13 +33,16 @@ public class MemberShipPlanAdapter extends RecyclerView.Adapter<MemberShipPlanAd
     Dialog dialogConfirm;
     LinearLayoutManager linearLayoutManager;
     MemberShipAdapter1 memberShipAdapter;
+    String center_id;
     public MemberShipPlanAdapter(Context context, ArrayList<SingleCenterActivityModel> centerActivityModels,
-                                 ArrayList<MemberShipModel> centerPackageModels, ArrayList<String> centerPackageArray) {
+                                 ArrayList<MemberShipModel> centerPackageModels, ArrayList<String> centerPackageArray,
+                                 String center_id) {
 
         this.context = context;
         this.centerActivityModelArrayList = centerActivityModels;
         this.centerPackageModelArrayList = centerPackageModels;
         this.centerPackageArray = centerPackageArray;
+        this.center_id = center_id;
     }
 
     @NonNull
@@ -89,7 +91,8 @@ public class MemberShipPlanAdapter extends RecyclerView.Adapter<MemberShipPlanAd
                     RecyclerView memberPackageRecycler = dialogConfirm.findViewById(R.id.memberPackageRecycler);
 
                     linearLayoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
-                    memberShipAdapter = new MemberShipAdapter1(centerPackageModelArrayList1,context,"SingleProduct");
+                    memberShipAdapter = new MemberShipAdapter1(centerPackageModelArrayList1,context,
+                            "SingleProduct",dialogConfirm,centerActivity.getService_master_id(),center_id);
                     memberPackageRecycler.setLayoutManager(linearLayoutManager);
                     memberPackageRecycler.setHasFixedSize(true);
                     memberPackageRecycler.smoothScrollToPosition(0);

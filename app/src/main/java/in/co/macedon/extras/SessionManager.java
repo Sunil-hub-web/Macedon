@@ -25,6 +25,7 @@ public class SessionManager {
     private static final String CITY_ID = "cityid";
     private static final String AREA_ID = "areaid";
     private static final String CITY_NAME = "cityname";
+    private static final String WALLET_AMOUNT = "walletamount";
 
 
     public SessionManager(Context context){
@@ -32,6 +33,18 @@ public class SessionManager {
         this.context =  context;
         sharedprefernce = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = sharedprefernce.edit();
+    }
+
+    public void setWalletAmount(Float walletAmount){
+
+        editor.putFloat(WALLET_AMOUNT,walletAmount);
+        editor.commit();
+
+    }
+
+    public Float getWalletAmount(){
+
+        return  sharedprefernce.getFloat(WALLET_AMOUNT,0);
     }
 
     public void setCityName(String cityname ){

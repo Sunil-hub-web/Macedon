@@ -137,7 +137,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/btn_UpdateAddress"
+                android:id="@+id/btn_BuyNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_btn_bg"

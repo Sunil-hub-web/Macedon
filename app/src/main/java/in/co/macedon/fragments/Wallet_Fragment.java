@@ -50,8 +50,8 @@ public class Wallet_Fragment extends Fragment {
     SessionManager sessionManager;
     WalletAdapter walletAdapter;
     Double cr_balance,dr_balance,crdr_balance,totcr_balance = 0.0,totdr_balance = 0.0;
-
     TextView showAmount;
+
 
     @Nullable
     @Override
@@ -134,9 +134,7 @@ public class Wallet_Fragment extends Fragment {
                                 );
 
                                 walletModels.add(walletModel);
-
                             }
-
                             linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
                             walletAdapter = new WalletAdapter(walletModels,getActivity());
                             showWalletRecycler.setLayoutManager(linearLayoutManager);
@@ -147,6 +145,8 @@ public class Wallet_Fragment extends Fragment {
                             crdr_balance = totcr_balance - totdr_balance;
 
                             showAmount.setText(String.valueOf(crdr_balance));
+
+                            sessionManager.setWalletAmount(crdr_balance.floatValue());
 
                         }else{
 

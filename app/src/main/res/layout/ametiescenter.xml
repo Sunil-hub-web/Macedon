@@ -16,7 +16,7 @@
         android:id="@+id/cardView_Center">
 
         <LinearLayout
-            android:layout_width="@dimen/hundred_twenty"
+            android:layout_width="@dimen/hundred_ten"
             android:layout_height="wrap_content"
             android:background="@drawable/homecard_back1"
             android:orientation="vertical">
@@ -25,9 +25,10 @@
             <ImageView
                 android:id="@+id/img_Category"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/hundred"
+                android:layout_height="@dimen/eighty"
                 android:scaleType="fitXY"
-                android:src="@drawable/fitness">
+                android:src="@drawable/fitness"
+                android:layout_margin="@dimen/five">
 
             </ImageView>
 
@@ -38,6 +39,7 @@
                 android:layout_marginLeft="@dimen/fifteen"
                 android:layout_marginTop="@dimen/ten"
                 android:layout_marginBottom="@dimen/ten"
+                android:layout_marginRight="@dimen/five"
                 android:fontFamily="@font/sans_bold"
                 android:text="Fashion"
                 android:textColor="@color/black"

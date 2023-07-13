@@ -404,14 +404,12 @@ public class DashBoard extends AppCompatActivity {
                 }, 4 * 1000);
             }
         }
-       /* else {
+        else {
 
-            text_name.setText("Home Page");
+          //  userNamedet.setText("Hi, " + name);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
-            MainActivity.fragmentManager.beginTransaction()
-                    .replace(R.id.framLayout,new Homepage(),"testID").addToBackStack(null).commit();
-
-        }*/
+        }
     }
 
     public void intrenetCheck(){

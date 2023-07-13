@@ -18,5 +18,7 @@ public class AppURL {
     public static final String completedsession = BaseUrl+"completedsession";
     public static final String wallet = BaseUrl+"wallet";
     public static final String scanqrcode = BaseUrl+"scanqrcode";
+    public static final String coupondata = BaseUrl+"coupondata";
+    public static final String BuyMembership = BaseUrl+"BuyMembership";
 
 }

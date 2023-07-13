@@ -11,6 +11,7 @@ import in.co.macedon.fragments.UserProfileDetails;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +34,7 @@ import java.util.Map;
 
 public class OTPVerification extends AppCompatActivity {
 
-    TextView verifyotp_btn;
+    TextView verifyotp_btn,resendotp;
     String phone_number,OTPV;
     SessionManager sessionManager;
     PinView pinView;
@@ -54,6 +55,7 @@ public class OTPVerification extends AppCompatActivity {
 
         verifyotp_btn = findViewById(R.id.verifyotp_btn);
         pinView = findViewById(R.id.pinView);
+        resendotp = findViewById(R.id.resendotp);
         verifyotp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +84,14 @@ public class OTPVerification extends AppCompatActivity {
                 startActivity(i);
                 finish();*/
 
+            }
+        });
+
+        resendotp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                userLogin(phone_number);
             }
         });
     }
@@ -154,6 +164,78 @@ public class OTPVerification extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
+                params.put("contact",mobileNo);
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(OTPVerification.this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+
+    }
+    public void userLogin(String mobileNo){
+
+        ProgressDialog progressDialog = new ProgressDialog(OTPVerification.this);
+        progressDialog.setMessage("OTP Send Your Mobile No");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.userLogin, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String status = jsonObject.getString("status");
+
+                    if(status.equals("200")){
+
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_message = new JSONObject(messages);
+                        String responsecode = jsonObject_message.getString("responsecode");
+                        String successstatus = jsonObject_message.getString("status");
+                        JSONObject jsonObject_status = new JSONObject(successstatus);
+                        String contact_otp = jsonObject_status.getString("contact_otp");
+                        String login_otp = jsonObject_status.getString("login_otp");
+
+                        sessionManager.setUserOTP(login_otp);
+                        sessionManager.setUserMobileNO(contact_otp);
+
+
+                        Toast.makeText(OTPVerification.this, "Otp Send Success", Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                error.printStackTrace();
+                Toast.makeText(OTPVerification.this, ""+error, Toast.LENGTH_SHORT).show();
+
+                Log.d("error",error.toString());
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+
                 params.put("contact",mobileNo);
                 return params;
             }
