@@ -83,8 +83,6 @@ public class DashBoard extends AppCompatActivity {
     GoogleMap mMap;
     String name,mobileNo,image,userid,addressDetails;
     SessionManager sessionManager;
-
-
     private int FINE_LOCATION_ACCESS_REQUEST_CODE = 10001;
     LocationManager locationManager;
     FusedLocationProviderClient fusedLocationProviderClient;

@@ -119,6 +119,7 @@ public class HomeFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         userId = sessionManager.getUserID();
         DashBoard.address_txt.setText(sessionManager.getCityName());
+        DashBoard.header.setVisibility(View.VISIBLE);
 
         viewpagerBanner.setClipToPadding(false);
         viewpagerBanner.setClipChildren(false);

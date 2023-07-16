@@ -1,119 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
 
-    <LinearLayout
+    android:theme="@style/StatusBarColor">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/ten">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/nav_Subscriptions"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/fifty"
-            android:text="Subscriptions"
-            android:drawableLeft="@drawable/ic_subscription"
-            android:paddingLeft="@dimen/fifteen"
-            android:paddingRight="@dimen/fifteen"
-            android:fontFamily="@font/raleway"
-            android:gravity="center"
-            android:textColor="@color/textcol1"
-            android:textSize="@dimen/fifteen"
-            android:drawablePadding="@dimen/ten"
-            android:background="@drawable/autocomplate_bg"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/nev_CompletedSession"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fifty"
-            android:text="Completed Session"
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_completed_session"
-            android:paddingLeft="@dimen/fifteen"
-            android:paddingRight="@dimen/fifteen"
-            android:fontFamily="@font/raleway"
-            android:textColor="@color/textcol1"
-            android:textSize="@dimen/fifteen"
-            android:drawablePadding="@dimen/ten"
-            android:background="@drawable/autocomplate_bg"
-            android:layout_marginTop="@dimen/ten"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-       <!-- <TextView
-            android:id="@+id/nav_GymMembership"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fifty"
-            android:text="Gym Membership"
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_gym_membership"
-            android:paddingLeft="@dimen/fifteen"
-            android:paddingRight="@dimen/fifteen"
-            android:fontFamily="@font/raleway"
-            android:textColor="@color/textcol1"
-            android:textSize="@dimen/fifteen"/>-->
+                <ImageView
+                    android:id="@+id/image_back"
+                    android:layout_width="@dimen/thirty"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:src="@drawable/back">
 
-        <!-- <TextView
-             android:layout_width="match_parent"
-             android:layout_height="@dimen/fifty"
-             android:text="Loyalty"
-             android:gravity="center"
-             android:drawableLeft="@drawable/ic_loyality"
-             android:paddingLeft="@dimen/fifteen"
-             android:paddingRight="@dimen/fifteen"
-             android:fontFamily="@font/raleway"
-             android:textColor="@color/textcol1"
-             android:textSize="@dimen/fifteen"/>-->
 
-        <TextView
-            android:id="@+id/userprofile_txt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fifty"
-            android:text="My Profile"
-            android:gravity="center"
-            android:drawableLeft="@drawable/user_profile"
-            android:paddingLeft="@dimen/fifteen"
-            android:paddingRight="@dimen/fifteen"
-            android:fontFamily="@font/raleway"
-            android:textColor="@color/textcol1"
-            android:textSize="@dimen/fifteen"
-            android:drawablePadding="@dimen/ten"
-            android:background="@drawable/autocomplate_bg"
-            android:layout_marginTop="@dimen/ten"/>
+                </ImageView>
 
-        <TextView
-            android:id="@+id/wallet_txt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fifty"
-            android:text="My Wallet"
-            android:gravity="center"
-            android:drawableLeft="@drawable/wallet50"
-            android:paddingLeft="@dimen/fifteen"
-            android:paddingRight="@dimen/fifteen"
-            android:fontFamily="@font/raleway"
-            android:textColor="@color/textcol1"
-            android:textSize="@dimen/fifteen"
-            android:drawablePadding="@dimen/ten"
-            android:background="@drawable/autocomplate_bg"
-            android:layout_marginTop="@dimen/ten"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="@dimen/hundred_twenty"
+                    android:layout_height="@dimen/hundred_twenty"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:src="@drawable/user"
+                    android:layout_toRightOf="@+id/image_back"/>
 
-        <TextView
-            android:id="@+id/logout_txt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fifty"
-            android:text="Logout"
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_logout"
-            android:paddingLeft="@dimen/fifteen"
-            android:paddingRight="@dimen/fifteen"
-            android:fontFamily="@font/raleway"
-            android:textColor="@color/textcol1"
-            android:textSize="@dimen/fifteen"
-            android:drawablePadding="@dimen/ten"
-            android:background="@drawable/autocomplate_bg"
-            android:layout_marginTop="@dimen/ten"/>
+                <TextView
+                    android:id="@+id/centerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:layout_toRightOf="@id/profile_image"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="Sunil Kumar Dash"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/edittextsize"
+                    android:textStyle="bold" />
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/editProfile"
+                    android:layout_width="@dimen/thirty"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:src="@drawable/edit_profile">
 
+
+                </ImageView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="Statistics"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="Show All"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:fontFamily="@font/sans_regular"
+                android:text="120 Km, Last 7 Days"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two_hundred"
+                tools:context=".MainActivity"
+                android:layout_marginTop="@dimen/fifteen"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginRight="@dimen/fifteen"
+                android:background="@drawable/barcht_background"
+                android:elevation="@dimen/five">
+
+                <!--Ui component for our bar chart-->
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/idBarChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginTop="@dimen/fifteen"
+                android:fontFamily="@font/sans_bold"
+                android:text="Today"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:layout_margin="@dimen/fifteen"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="Distance"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="Time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="calorie "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="15 Km"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="20:10 min"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:fontFamily="@font/sans_regular"
+                    android:text="100000 "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginRight="@dimen/five"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nav_Subscriptions"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/fifty"
+                    android:text="Subscriptions"
+                    android:paddingLeft="@dimen/fifteen"
+                    android:paddingRight="@dimen/fifteen"
+                    android:fontFamily="@font/raleway"
+                    android:gravity="center"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/fifteen"
+                    android:layout_margin="@dimen/five"
+                    android:background="@drawable/autocomplate_bg"
+                    android:elevation="5dp"/>
+
+                <TextView
+                    android:id="@+id/nev_CompletedSession"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/fifty"
+                    android:text="Completed Session"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/fifteen"
+                    android:paddingRight="@dimen/fifteen"
+                    android:layout_margin="@dimen/five"
+                    android:fontFamily="@font/raleway"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/fifteen"
+                    android:elevation="5dp"
+                    android:background="@drawable/autocomplate_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginRight="@dimen/five"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/wallet_txt"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/fifty"
+                    android:text="My Wallet"
+                    android:layout_margin="@dimen/five"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/fifteen"
+                    android:paddingRight="@dimen/fifteen"
+                    android:fontFamily="@font/raleway"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/fifteen"
+                    android:elevation="5dp"
+                    android:background="@drawable/autocomplate_bg"/>
+
+                <TextView
+                    android:id="@+id/logout_txt"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/fifty"
+                    android:text="Logout"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/fifteen"
+                    android:paddingRight="@dimen/fifteen"
+                    android:fontFamily="@font/raleway"
+                    android:textColor="@color/textcol1"
+                    android:textSize="@dimen/fifteen"
+                    android:elevation="@dimen/five"
+                    android:layout_margin="@dimen/five"
+                    android:background="@drawable/autocomplate_bg"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
