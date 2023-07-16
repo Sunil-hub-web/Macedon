@@ -29,4 +29,9 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="StatusBarColor" parent="AppTheme">
+        <item name="android:statusBarColor">#F5F5F5
+        </item>
+    </style>
+
 </resources>

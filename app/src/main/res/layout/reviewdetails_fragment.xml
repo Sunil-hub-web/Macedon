@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:background="@drawable/autocomplate_bg">
+
+            <TextView
+                android:id="@+id/packageName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:gravity="center"
+                android:text="OverAll Experience"
+                android:textColor="@color/colorGrey2"
+                android:textSize="@dimen/edittextsize" />
+
+
+        </LinearLayout>
+
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            style="@android:style/Widget.Material.Light.RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:numStars="5"
+            android:progressTint="@color/facebook_color"
+            android:stepSize="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/ten">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:fontFamily="@font/sans_bold"
+                android:gravity="left"
+                android:text="Feedback your Experience"
+                android:textColor="@color/colorGrey2"
+                android:textSize="@dimen/edittextsize"
+                />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/twitter_color"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginRight="@dimen/hundred_fifty"/>
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/twenty">
+
+                <TextView
+                    android:id="@+id/equipmentFacility"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_weight="0.9"
+                    android:fontFamily="@font/sans_bold"
+                    android:gravity="left"
+                    android:text="Equipment / Facility"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/textsize" />
+
+
+                <RatingBar
+                    android:id="@+id/ratingBar_Equipment"
+                    style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:numStars="5"
+                    android:progressTint="@color/facebook_color"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/trainerStaf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_weight="0.9"
+                    android:fontFamily="@font/sans_bold"
+                    android:gravity="left"
+                    android:text="Trainer / Staf"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/textsize" />
+
+
+                <RatingBar
+                    android:id="@+id/ratingBar_Trainer"
+                    style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:numStars="5"
+                    android:progressTint="@color/facebook_color"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/atmosphere"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_weight="0.9"
+                    android:fontFamily="@font/sans_bold"
+                    android:gravity="left"
+                    android:text="Atmosphere"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/textsize" />
+
+
+                <RatingBar
+                    android:id="@+id/ratingBar_Atmosphere"
+                    style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:numStars="5"
+                    android:progressTint="@color/facebook_color"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/hygiene"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_weight="0.9"
+                    android:fontFamily="@font/sans_bold"
+                    android:gravity="left"
+                    android:text="Hygiene"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/textsize" />
+
+
+                <RatingBar
+                    android:id="@+id/ratingBar_Hygiene"
+                    style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:numStars="5"
+                    android:progressTint="@color/facebook_color"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/valueForMoney"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_weight="0.9"
+                    android:fontFamily="@font/sans_bold"
+                    android:gravity="left"
+                    android:text="Value For Money"
+                    android:textColor="@color/colorGrey2"
+                    android:textSize="@dimen/textsize" />
+
+
+                <RatingBar
+                    android:id="@+id/ratingBar_ValueMoney"
+                    style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:numStars="5"
+                    android:progressTint="@color/facebook_color"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edit_ProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:background="@drawable/textfieldback"
+                android:gravity="top"
+                android:hint="Write your opinions"
+                android:padding="@dimen/fifteen" />
+
+            <TextView
+                android:id="@+id/btn_BuyNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/twenty"
+                android:background="@drawable/payment_back"
+                android:fontFamily="@font/sans_bold"
+                android:gravity="center"
+                android:padding="@dimen/fifteen"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/edittextsize" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -22,9 +22,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -34,7 +31,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,18 +41,15 @@ import java.util.Map;
 
 import in.co.macedon.R;
 import in.co.macedon.activities.DashBoard;
-import in.co.macedon.activities.ScannerClass;
-import in.co.macedon.adapters.WalletAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.extras.SessionManager;
-import in.co.macedon.models.WalletModel;
 
 public class PackageFragment extends Fragment {
 
-    TextView packageName,priceDetails,packagedurtion,packageprice,messageDet,btn_CouponCode,btn_BuyNow,text_Name,
+    TextView packageName,priceDetails,packagedurtion,messageDet,btn_CouponCode,btn_BuyNow,text_Name,
             text_Email,text_Contact,subTotalPrice,couponPrice,grandTotalPrice,btn_StartDate;
     String strpackageName,strpriceDetails,strpackagedurtion,strpackageprice,strmessageDet,userId,date,
-            str_coupon = "",data,service_master_id,memberModelId,center_id;
+            str_coupon = "",data,service_master_id,memberModelId,center_id,messagepass;
     SessionManager sessionManager;
     Dialog dialog;
     int year, month, day, hour, minute;
@@ -70,12 +63,12 @@ public class PackageFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.packges_fragment,container,false);
+        View view = inflater.inflate(R.layout.gympackges_fragment,container,false);
 
         packageName = view.findViewById(R.id.packageName);
         priceDetails = view.findViewById(R.id.priceDetails);
         packagedurtion = view.findViewById(R.id.packagedurtion);
-        packageprice = view.findViewById(R.id.packageprice);
+       // packageprice = view.findViewById(R.id.packageprice);
         messageDet = view.findViewById(R.id.messageDet);
         btn_CouponCode = view.findViewById(R.id.btn_CouponCode);
         btn_BuyNow = view.findViewById(R.id.btn_BuyNow);
@@ -106,16 +99,26 @@ public class PackageFragment extends Fragment {
             service_master_id = arguments.getString("service_master_id");
             memberModelId = arguments.getString("memberModelId");
             center_id = arguments.getString("center_id");
+            messagepass = arguments.getString("messagepass");
 
             packageName.setText(strpackageName);
             priceDetails.setText("RS "+strpriceDetails+" /-");
             packagedurtion.setText("Package Duration  "+strpackagedurtion+"  Days");
-            packageprice.setText("Class Per Week Rs  "+strpackageprice+" /-");
+           // packageprice.setText("Class Per Week Rs  "+strpackageprice+" /-");
             messageDet.setText(strmessageDet);
             text_Name.setText(sessionManager.getUserName());
             text_Email.setText(sessionManager.getUserEmail());
             text_Contact.setText(sessionManager.getUserMobileno());
 
+        }
+
+        if (messagepass.equals("gymMemberdetail")){
+
+            btn_StartDate.setVisibility(View.INVISIBLE);
+
+        }else {
+
+            btn_StartDate.setVisibility(View.VISIBLE);
         }
 
         String data = "0";

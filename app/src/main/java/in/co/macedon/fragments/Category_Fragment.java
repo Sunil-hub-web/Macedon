@@ -133,10 +133,10 @@ public class Category_Fragment extends Fragment {
 
                             }
 
-                            // LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
-                            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+                           // GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
                             CategoryListAdapter centerDetailsAdapter = new CategoryListAdapter(getContext(),servicesModelArrayList);
-                            categoryRecycler.setLayoutManager(gridLayoutManager);
+                            categoryRecycler.setLayoutManager(linearLayoutManager);
                             categoryRecycler.setHasFixedSize(true);
                             categoryRecycler.setAdapter(centerDetailsAdapter);
 

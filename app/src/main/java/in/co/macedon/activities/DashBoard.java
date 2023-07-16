@@ -59,6 +59,7 @@ import in.co.macedon.fragments.HomeFragment;
 import in.co.macedon.fragments.MyOrder;
 import in.co.macedon.fragments.PrivacyPolicyFragment;
 import in.co.macedon.fragments.ProfileDetailsFragment;
+import in.co.macedon.fragments.ReviewRating_Fragment;
 import in.co.macedon.fragments.ScanFragment;
 import in.co.macedon.fragments.ShopFragment;
 import in.co.macedon.fragments.Subscriptions;
@@ -83,8 +84,6 @@ public class DashBoard extends AppCompatActivity {
     GoogleMap mMap;
     String name,mobileNo,image,userid,addressDetails;
     SessionManager sessionManager;
-
-
     private int FINE_LOCATION_ACCESS_REQUEST_CODE = 10001;
     LocationManager locationManager;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -434,7 +433,8 @@ public class DashBoard extends AppCompatActivity {
 
             locationlayout.setVisibility(View.VISIBLE);
             cart.setVisibility(View.GONE);
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ReviewRating_Fragment()).commit();
 
           /*  if (not_updated.equals("not_updated")) {
 

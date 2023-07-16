@@ -11,7 +11,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_margin="@dimen/fifteen">
 
@@ -172,120 +172,31 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/twenty_size"/>
 
-                    <!--   <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_marginTop="@dimen/ten"
-                           android:fontFamily="@font/sans_bold"
-                           android:text="Unlimited profile view"
-                           android:layout_margin="@dimen/ten"
-                           android:gravity="center"
-                           android:textColor="@color/white"
-                           android:textSize="@dimen/textsize"/>-->
-
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/packagedurtion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/ten">
-
-                        <ImageView
-                            android:id="@+id/imageview"
-                            android:layout_width="@dimen/twenty_five"
-                            android:layout_height="@dimen/twenty_five"
-                            android:src="@drawable/checked"
-                            android:layout_marginLeft="@dimen/twenty"
-                            android:layout_marginBottom="@dimen/ten"
-                            android:layout_centerVertical="true">
-                        </ImageView>
-
-                        <TextView
-                            android:id="@+id/packagedurtion"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/ten"
-                            android:layout_marginTop="@dimen/ten"
-                            android:layout_marginEnd="@dimen/ten"
-                            android:layout_marginBottom="@dimen/ten"
-                            android:layout_toRightOf="@+id/imageview"
-                            android:fontFamily="@font/sans_bold"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/textsize" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/ten">
-
-                        <ImageView
-                            android:id="@+id/imageview1"
-                            android:layout_width="@dimen/twenty_five"
-                            android:layout_height="@dimen/twenty_five"
-                            android:src="@drawable/checked"
-                            android:layout_marginLeft="@dimen/twenty"
-                            android:layout_marginBottom="@dimen/ten"
-                            android:layout_centerVertical="true">
-                        </ImageView>
-
-                        <TextView
-                            android:id="@+id/packageprice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/ten"
-                            android:layout_marginTop="@dimen/ten"
-                            android:layout_marginEnd="@dimen/ten"
-                            android:layout_marginBottom="@dimen/ten"
-                            android:layout_toRightOf="@+id/imageview1"
-                            android:fontFamily="@font/sans_bold"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/textsize" />
-
-                    </RelativeLayout>
+                        android:layout_marginStart="@dimen/ten"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginEnd="@dimen/ten"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:layout_toRightOf="@+id/imageview"
+                        android:fontFamily="@font/sans_bold"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textsize" />
 
                     <TextView
                         android:id="@+id/messageDet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:gravity="center"
                         android:fontFamily="@font/sans_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/textsize"
                         android:layout_margin="@dimen/ten">
 
                     </TextView>
-
-                    <TextView
-                        android:id="@+id/btn_CouponCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/login_btn_bg"
-                        android:fontFamily="@font/sans_bold"
-                        android:gravity="center"
-                        android:layout_margin="@dimen/twenty"
-                        android:text="Applay Coupon Code"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/edittextsize"
-                        android:padding="@dimen/fifteen"
-                        android:layout_gravity="right" />
-
-                    <TextView
-                        android:id="@+id/btn_BuyNow"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/login_btn_bg"
-                        android:fontFamily="@font/sans_bold"
-                        android:gravity="center"
-                        android:layout_marginLeft="@dimen/twenty"
-                        android:layout_marginRight="@dimen/twenty"
-                        android:layout_marginBottom="@dimen/twenty"
-                        android:text="Buy Now"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/edittextsize"
-                        android:padding="@dimen/fifteen"
-                        android:layout_gravity="right" />
 
                 </LinearLayout>
 
@@ -416,6 +327,36 @@
                 android:textSize="@dimen/textsize"
                 android:padding="@dimen/ten"
                 />
+
+            <TextView
+                android:id="@+id/btn_CouponCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/payment_back"
+                android:fontFamily="@font/sans_bold"
+                android:gravity="center"
+                android:layout_margin="@dimen/twenty"
+                android:text="Applay Coupon Code"
+                android:textColor="@color/white"
+                android:textSize="@dimen/edittextsize"
+                android:padding="@dimen/fifteen"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:id="@+id/btn_BuyNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginRight="@dimen/twenty"
+                android:layout_marginBottom="@dimen/twenty"
+                android:background="@drawable/payment_back"
+                android:fontFamily="@font/sans_bold"
+                android:gravity="center"
+                android:padding="@dimen/fifteen"
+                android:text="Buy Now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/edittextsize" />
 
         </LinearLayout>
 

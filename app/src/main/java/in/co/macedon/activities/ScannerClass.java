@@ -126,15 +126,15 @@ public class ScannerClass extends AppCompatActivity implements ZXingScannerView.
 
     public void scannerDetails(String qrcode_no,String user_id,String date,String time){
 
-        ProgressDialog progressDialog = new ProgressDialog(ScannerClass.this);
-        progressDialog.setMessage("About As Details");
-        progressDialog.show();
+        //ProgressDialog progressDialog = new ProgressDialog(ScannerClass.this);
+        //progressDialog.setMessage("Scanner Details Details");
+       // progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.scanqrcode, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -190,6 +190,14 @@ public class ScannerClass extends AppCompatActivity implements ZXingScannerView.
                         String message = jsonObject.getString("message");
 
                         Toast.makeText(ScannerClass.this, message, Toast.LENGTH_SHORT).show();
+
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ScanFragment contactUsFragment = new ScanFragment();
+                        ft.replace(R.id.nav_host_fragment, contactUsFragment);
+                        ft.addToBackStack(null);
+                        ft.commit();
+
+                        dialogConfirm.dismiss();
                     }
 
                 } catch (JSONException e) {
@@ -201,7 +209,7 @@ public class ScannerClass extends AppCompatActivity implements ZXingScannerView.
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 Toast.makeText(ScannerClass.this, ""+error, Toast.LENGTH_SHORT).show();
             }
         }){
