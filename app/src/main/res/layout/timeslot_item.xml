@@ -6,25 +6,62 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/five"
     android:orientation="horizontal"
-    android:background="@drawable/selection_drawable">
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="@dimen/forty"
-        android:layout_height="@dimen/forty"
-        android:src="@drawable/clock_icon"
-        android:padding="@dimen/ten"
-        app:tint="@color/colorPrimaryDark" />
-
-    <TextView
-        android:id="@+id/name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/forty"
-        android:padding="@dimen/ten"
-        android:text="Protien"
-        android:gravity="center"
-        android:textColor="@color/textcol"
-        android:fontFamily="@font/raleway"
-        android:textSize="@dimen/fourteen"/>
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selection_drawable">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty"
+                android:padding="@dimen/ten"
+                android:text="Protien"
+                android:gravity="center"
+                android:textColor="@color/textcol"
+                android:fontFamily="@font/raleway"
+                android:textSize="@dimen/fourteen"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selection_drawable"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
+                android:src="@drawable/clock_icon"
+                android:padding="@dimen/ten"
+                app:tint="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/timeing"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty"
+                android:padding="@dimen/ten"
+                android:text="Protien"
+                android:gravity="center"
+                android:textColor="@color/textcol"
+                android:fontFamily="@font/raleway"
+                android:textSize="@dimen/fourteen"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
 
 </LinearLayout>

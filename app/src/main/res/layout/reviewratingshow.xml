@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/ten"
+        android:padding="@dimen/ten">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/autocomplate_bg">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/nav_profile_image"
+                android:layout_width="@dimen/sixty"
+                android:layout_height="@dimen/sixty"
+                android:src="@drawable/profile"
+                android:layout_margin="@dimen/five"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/nav_profile_image"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/text_showReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="Address"
+                    android:padding="@dimen/three"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize"/>
+
+                <TextView
+                    android:id="@+id/text_showServiceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sans_bold"
+                    android:text="Address"
+                    android:padding="@dimen/three"
+                    android:layout_below="@+id/text_showReview"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize" />
+
+                <RatingBar
+                    android:id="@+id/showRatingbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="0.5"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:backgroundTint="@color/colorGrey"
+                    android:progressTint="@color/colorPrimaryDark"/>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

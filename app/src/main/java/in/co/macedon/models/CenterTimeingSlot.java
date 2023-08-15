@@ -2,18 +2,16 @@ package in.co.macedon.models;
 
 public class CenterTimeingSlot {
 
-    String timing_id,fromtime,totime,day,sequence,service_id,service_master_id,service_master_name,image;
+    String timing_id,fromtime,totime,day,sequence,service_id,status;
     public CenterTimeingSlot(String timing_id, String fromtime, String totime, String day, String sequence,
-                             String service_id, String service_master_id, String service_master_name, String image) {
+                             String service_id,String status) {
         this.timing_id = timing_id;
         this.fromtime = fromtime;
         this.totime = totime;
         this.day = day;
         this.sequence = sequence;
         this.service_id = service_id;
-        this.service_master_id = service_master_id;
-        this.service_master_name = service_master_name;
-        this.image = image;
+        this.status = status;
     }
 
     public String getTiming_id() {
@@ -64,27 +62,11 @@ public class CenterTimeingSlot {
         this.service_id = service_id;
     }
 
-    public String getService_master_id() {
-        return service_master_id;
-    }
-
-    public void setService_master_id(String service_master_id) {
-        this.service_master_id = service_master_id;
-    }
-
-    public String getService_master_name() {
-        return service_master_name;
-    }
-
-    public void setService_master_name(String service_master_name) {
-        this.service_master_name = service_master_name;
-    }
-
     public String getImage() {
-        return image;
+        return status;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.status = image;
     }
 }

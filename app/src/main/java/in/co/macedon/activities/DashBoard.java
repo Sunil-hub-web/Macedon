@@ -57,6 +57,7 @@ import in.co.macedon.fragments.GymMembership;
 import in.co.macedon.fragments.HelpFragment;
 import in.co.macedon.fragments.HomeFragment;
 import in.co.macedon.fragments.MyOrder;
+import in.co.macedon.fragments.OfferFragment;
 import in.co.macedon.fragments.PrivacyPolicyFragment;
 import in.co.macedon.fragments.ProfileDetailsFragment;
 import in.co.macedon.fragments.ReviewRating_Fragment;
@@ -169,6 +170,13 @@ public class DashBoard extends AppCompatActivity {
                         cart.setVisibility(View.GONE);
                         //fl.removeAllViews();
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileDetailsFragment()).commit();
+                        break;
+
+                    case R.id.navigation_offer:
+                        locationlayout.setVisibility(View.VISIBLE);
+                        cart.setVisibility(View.GONE);
+                        //fl.removeAllViews();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new OfferFragment()).commit();
                         break;
 
                 }
@@ -433,8 +441,8 @@ public class DashBoard extends AppCompatActivity {
 
             locationlayout.setVisibility(View.VISIBLE);
             cart.setVisibility(View.GONE);
-            //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ReviewRating_Fragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+           //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ReviewRating_Fragment()).commit();
 
           /*  if (not_updated.equals("not_updated")) {
 

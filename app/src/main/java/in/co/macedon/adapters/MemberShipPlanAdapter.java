@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import in.co.macedon.R;
+import in.co.macedon.models.CenterTimeingSlot;
 import in.co.macedon.models.MemberShipModel;
 import in.co.macedon.models.SingleCenterActivityModel;
 
@@ -36,7 +37,7 @@ public class MemberShipPlanAdapter extends RecyclerView.Adapter<MemberShipPlanAd
     String center_id;
     public MemberShipPlanAdapter(Context context, ArrayList<SingleCenterActivityModel> centerActivityModels,
                                  ArrayList<MemberShipModel> centerPackageModels, ArrayList<String> centerPackageArray,
-                                 String center_id) {
+                                 ArrayList<CenterTimeingSlot> centerTimeingSlots, String center_id) {
 
         this.context = context;
         this.centerActivityModelArrayList = centerActivityModels;
@@ -106,7 +107,6 @@ public class MemberShipPlanAdapter extends RecyclerView.Adapter<MemberShipPlanAd
                 }
             }
         });
-
 
     }
 

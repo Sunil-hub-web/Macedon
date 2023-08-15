@@ -113,15 +113,15 @@
                 android:id="@+id/confirmbook"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/forty"
-                android:text="CONFIRM &amp; PROCEED"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="@dimen/fifteen"
                 android:layout_marginRight="@dimen/fifteen"
-                android:layout_centerInParent="true"
-                android:gravity="center"
                 android:background="@drawable/selected_bg"
-                android:textColor="@color/white"
                 android:fontFamily="@font/raleway"
-                android:textSize="@dimen/twelve"/>
+                android:gravity="center"
+                android:text="CONFIRM &amp; PROCEED"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve" />
 
         </RelativeLayout>
 

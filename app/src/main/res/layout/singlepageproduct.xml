@@ -244,7 +244,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -257,8 +256,65 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/memberShipPlanDet">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/timesoltreal"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/forty"
+                                android:padding="@dimen/ten"
+                                android:text="Schedule"
+                                android:gravity="center"
+                                android:textColor="@color/textcol"
+                                android:fontFamily="@font/raleway"
+                                android:textSize="@dimen/fourteen"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true">
+
+                            <TextView
+                                android:id="@+id/timeing"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/forty"
+                                android:padding="@dimen/ten"
+                                android:text="Timeing"
+                                android:gravity="center"
+                                android:textColor="@color/textcol"
+                                android:fontFamily="@font/raleway"
+                                android:textSize="@dimen/fourteen"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/timeimgPlanRecycler">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/packagePlanRecycler">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -302,46 +358,14 @@
 
                         <TextView
                             android:id="@+id/text_Amenities"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Amenities"
                             android:fontFamily="@font/sans_bold"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/twelve_size"
-                            android:gravity="center"
-                            android:background="@drawable/autocomplate_bg"
+                            android:textSize="@dimen/textsize"
                             android:padding="@dimen/ten"
                             android:layout_margin="@dimen/three"/>
-
-                        <TextView
-                            android:id="@+id/text_SheduleClass"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Shedule Class"
-                            android:fontFamily="@font/sans_bold"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/twelve_size"
-                            android:gravity="center"
-                            android:layout_margin="@dimen/three"
-                            android:background="@drawable/autocomplate_bg"
-                            android:padding="@dimen/ten"/>
-
-                        <TextView
-                            android:id="@+id/text_CustomerReview"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Customer Review"
-                            android:fontFamily="@font/sans_bold"
-                            android:textColor="@color/black"
-                            android:gravity="center"
-                            android:textSize="@dimen/twelve_size"
-                            android:background="@drawable/autocomplate_bg"
-                            android:padding="@dimen/ten"
-                            android:layout_margin="@dimen/three"/>
-
 
                     </LinearLayout>
 
@@ -349,25 +373,53 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/aboutgymRecycler"
+                        android:layout_marginTop="@dimen/ten">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:id="@+id/text_CustomerReview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Customer Review"
+                            android:fontFamily="@font/sans_bold"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize"
+                            android:padding="@dimen/ten" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_ReviewAndRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Add Review And Rating"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:textSize="@dimen/textsize"
+                        android:background="@drawable/autocomplate_bg"
+                        android:padding="@dimen/ten"
+                        android:layout_marginTop="@dimen/ten"
+
+                        android:visibility="visible"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/reviwRatingRecycler"
                         android:layout_marginTop="@dimen/ten"
                         android:layout_marginBottom="@dimen/thirty">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
-                    <TextView
-                        android:id="@+id/text_ReviewAndRating"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Review And Rating"
-                        android:fontFamily="@font/sans_bold"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:textSize="@dimen/edittextsize"
-                        android:background="@drawable/autocomplate_bg"
-                        android:padding="@dimen/fifteen"
-                        android:layout_marginTop="@dimen/ten"
-                        android:layout_marginBottom="@dimen/thirty"
-                        android:visibility="gone"/>
+
 
                 </LinearLayout>
 

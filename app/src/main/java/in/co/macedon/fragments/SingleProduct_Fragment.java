@@ -3,14 +3,18 @@ package in.co.macedon.fragments;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -39,39 +43,50 @@ import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.AddedsAdapter;
 import in.co.macedon.adapters.CenterAmetiesAdapter;
 import in.co.macedon.adapters.ImageSliderAdapter;
+import in.co.macedon.adapters.MemberShipAdapter1;
 import in.co.macedon.adapters.MemberShipPlanAdapter;
 import in.co.macedon.adapters.MemberShipPlanAdapter1;
+import in.co.macedon.adapters.ReviewRatingAdapter;
+import in.co.macedon.adapters.SingleProductAdapter;
+import in.co.macedon.adapters.TimeslotAdapter;
 import in.co.macedon.extras.AppURL;
+import in.co.macedon.extras.RecyclerTouchListener;
 import in.co.macedon.models.AddedsModel;
 import in.co.macedon.models.CenterTimeingSlot;
 import in.co.macedon.models.MemberShipModel;
+import in.co.macedon.models.ReviewRatingModel;
 import in.co.macedon.models.SingleCenterActivityModel;
 import in.co.macedon.models.SingleCenterAmetiesModel;
 import in.co.macedon.models.SingleCentergalleryModel;
 
-public class SingleProduct_Fragment extends Fragment {
+public class SingleProduct_Fragment extends Fragment{
 
-    RecyclerView memberShipPlanDet,aboutgymRecycler;
+    RecyclerView memberShipPlanDet,aboutgymRecycler,packagePlanRecycler,timeimgPlanRecycler,reviwRatingRecycler;
     TextView address_Det,pin_code,contactNo,emailName,fitnessName,centerLoc,text_Amenities,text_SheduleClass,
             text_CustomerReview,text_ReviewAndRating;
     String centerimage,center_name,city_name,address1,pin,email,contact_no,centerId;
     ArrayList<SingleCentergalleryModel> centergalleryModels = new ArrayList<>();
     ArrayList<SingleCenterActivityModel> centerActivityModels = new ArrayList<>();
-    ArrayList<MemberShipModel> centerPackageModels = new ArrayList<>();
+    ArrayList<MemberShipModel> centerPackageModels;
     ArrayList<SingleCenterAmetiesModel> centerAmetiesModels = new ArrayList<>();
-    ArrayList<CenterTimeingSlot> centerTimeingSlots = new ArrayList<>();
+    ArrayList<CenterTimeingSlot> centerTimeingSlots;
     ArrayList<String> centerPackageArray = new ArrayList<>();
     ArrayList<String> centertimeslot = new ArrayList<>();
     ArrayList<AddedsModel> addedsModels = new ArrayList<>();
+    ArrayList<ReviewRatingModel> reviewRatingModels = new ArrayList<>();
     ImageSliderAdapter bannerAdapter;
-    MemberShipPlanAdapter memberShipPlanAdapter;
+    MemberShipAdapter1 memberShipAdapter;
+    SingleProductAdapter singleProductAdapter;
     MemberShipPlanAdapter1 memberShipPlanAdapter1;
+    ReviewRatingAdapter reviewRatingAdapter;
     ViewPager2 viewpagerBanner,viewpagerAddeds;
     AddedsAdapter addedsAdapter;
     int currentPossition = 0;
     int arraysize,arraysize1;
     Handler sliderhandler = new Handler();
     CenterAmetiesAdapter centerAmetiesAdapter;
+    TimeslotAdapter timeslotAdapter;
+    RelativeLayout timesoltreal;
 
     @Nullable
     @Override
@@ -91,10 +106,13 @@ public class SingleProduct_Fragment extends Fragment {
         viewpagerBanner = view.findViewById(R.id.viewpagerBanner);
         centerLoc = view.findViewById(R.id.centerLoc);
         text_Amenities = view.findViewById(R.id.text_Amenities);
-        text_SheduleClass = view.findViewById(R.id.text_SheduleClass);
         text_CustomerReview = view.findViewById(R.id.text_CustomerReview);
         viewpagerAddeds = view.findViewById(R.id.viewpagerAddeds);
         text_ReviewAndRating = view.findViewById(R.id.text_ReviewAndRating);
+        packagePlanRecycler = view.findViewById(R.id.packagePlanRecycler);
+        timeimgPlanRecycler = view.findViewById(R.id.timeimgPlanRecycler);
+        timesoltreal = view.findViewById(R.id.timesoltreal);
+        reviwRatingRecycler = view.findViewById(R.id.reviwRatingRecycler);
 
         DashBoard.locationlayout.setVisibility(View.VISIBLE);
         DashBoard.cart.setVisibility(View.GONE);
@@ -105,7 +123,7 @@ public class SingleProduct_Fragment extends Fragment {
         if (arguments!=null){
 
             centerId = arguments.getString("centerId");
-            singleproduct(centerId);
+            singleproduct("116",view);
 
         }
 
@@ -151,61 +169,6 @@ public class SingleProduct_Fragment extends Fragment {
 
             }
         });
-
-        text_Amenities.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                text_ReviewAndRating.setVisibility(View.GONE);
-                aboutgymRecycler.setVisibility(View.VISIBLE);
-
-                text_Amenities.setBackgroundResource(R.drawable.textclickcolor_bg);
-                text_CustomerReview.setBackgroundResource(R.drawable.autocomplate_bg);
-                text_SheduleClass.setBackgroundResource(R.drawable.autocomplate_bg);
-
-                LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-                centerAmetiesAdapter = new CenterAmetiesAdapter(centerAmetiesModels,getContext());
-                aboutgymRecycler.setHasFixedSize(true);
-                aboutgymRecycler.setLayoutManager(linearLayoutManager1);
-                aboutgymRecycler.setAdapter(centerAmetiesAdapter);
-
-
-            }
-        });
-
-        text_CustomerReview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                text_Amenities.setBackgroundResource(R.drawable.autocomplate_bg);
-                text_CustomerReview.setBackgroundResource(R.drawable.textclickcolor_bg);
-                text_SheduleClass.setBackgroundResource(R.drawable.autocomplate_bg);
-
-                text_ReviewAndRating.setVisibility(View.VISIBLE);
-                aboutgymRecycler.setVisibility(View.GONE);
-            }
-        });
-
-        text_SheduleClass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                text_ReviewAndRating.setVisibility(View.GONE);
-                aboutgymRecycler.setVisibility(View.VISIBLE);
-
-                text_Amenities.setBackgroundResource(R.drawable.autocomplate_bg);
-                text_CustomerReview.setBackgroundResource(R.drawable.autocomplate_bg);
-                text_SheduleClass.setBackgroundResource(R.drawable.textclickcolor_bg);
-
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-                memberShipPlanAdapter1 = new MemberShipPlanAdapter1(getContext(),centerActivityModels,centerTimeingSlots,centertimeslot);
-                aboutgymRecycler.setHasFixedSize(true);
-                aboutgymRecycler.setLayoutManager(linearLayoutManager);
-                aboutgymRecycler.setAdapter(memberShipPlanAdapter1);
-
-            }
-        });
-
 
         addedsModels.add(new AddedsModel(R.drawable.details1));
         addedsModels.add(new AddedsModel(R.drawable.details2));
@@ -259,10 +222,30 @@ public class SingleProduct_Fragment extends Fragment {
             }
         });
 
+        memberShipPlanDet.addOnItemTouchListener(new RecyclerTouchListener(getActivity().getApplicationContext(), memberShipPlanDet, new RecyclerTouchListener.ClickListener() {
+
+            @Override
+            public void onClick(View view, int position) {
+
+                SingleCenterActivityModel animal = centerActivityModels.get(position);
+                Toast.makeText(getActivity().getApplicationContext(), animal.getService_master_name() + " is selected!", Toast.LENGTH_LONG).show();
+
+                singleproduct1("116",animal.getService_master_id());
+                singleproduct2("116",animal.getService_master_id());
+                Log.d("memberdetails",animal.getService_master_id());
+
+        }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
         return view;
     }
 
-    public void singleproduct(String center_id){
+    public void singleproduct(String center_id, View view){
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Retrive Center Details Wait......");
@@ -278,7 +261,7 @@ public class SingleProduct_Fragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     String status = jsonObject.getString("status");
 
-                    if (status.equals("200")){
+                    if (status.equals("200")) {
 
                         String error = jsonObject.getString("error");
                         String messages = jsonObject.getString("messages");
@@ -288,11 +271,10 @@ public class SingleProduct_Fragment extends Fragment {
                         JSONObject jsonObject_data = new JSONObject(data);
 
                         String Single_Center_Data = jsonObject_data.getString("Single_Center_Data");
-                        String Single_Center_Activity = jsonObject_data.getString("Single_Center_Activity");
                         String Single_Center_Ameties = jsonObject_data.getString("Single_Center_Ameties");
                         String Single_Center_gallery = jsonObject_data.getString("Single_Center_gallery");
-                        String Single_Center_Package = jsonObject_data.getString("Single_Center_Package");
-                        String Single_Center_timing = jsonObject_data.getString("Single_Center_timing");
+                        String rating_review = jsonObject_data.getString("rating_review");
+                        String Single_Center_Activity = jsonObject_data.getString("Single_Center_Activity");
 
                         JSONArray jsonArray_Center_Data = new JSONArray(Single_Center_Data);
 
@@ -355,83 +337,102 @@ public class SingleProduct_Fragment extends Fragment {
                             centergalleryModels.add(singleCentergalleryModel);
                         }
 
-                        centerPackageModels.clear();
-                        JSONArray jsonArray_Center_Package = new JSONArray(Single_Center_Package);
+                        centerActivityModels.clear();
 
-                        for (int l=0;l<jsonArray_Center_Package.length();l++){
+                        JSONArray jsonArray_Center_Activity = new JSONArray(Single_Center_Activity);
 
-                            JSONObject jsonObject_Center_Package = jsonArray_Center_Package.getJSONObject(l);
-                            String package_id = jsonObject_Center_Package.getString("package_id");
-                            String package_name = jsonObject_Center_Package.getString("package_name");
-                            String package_duration = jsonObject_Center_Package.getString("package_duration");
-                            String class_week = jsonObject_Center_Package.getString("class_week");
-                            String service_id = jsonObject_Center_Package.getString("service_id");
-                            String package_price = jsonObject_Center_Package.getString("package_price");
-                            String package_description = jsonObject_Center_Package.getString("package_description");
+                        for (int k=0;k<jsonArray_Center_Activity.length();k++){
+
+
+                            centerTimeingSlots = new ArrayList<>();
+                            centerPackageModels = new ArrayList<>();
+
+                            centerTimeingSlots.clear();
+                            centerPackageModels.clear();
+
+                            JSONObject jsonObject_Center_Activity = jsonArray_Center_Activity.getJSONObject(k);
+
+                            String service_id = jsonObject_Center_Activity.getString("service_id");
+                            String service_name = jsonObject_Center_Activity.getString("service_name");
+                            String image = jsonObject_Center_Activity.getString("image");
+                            String packages = jsonObject_Center_Activity.getString("packages");
+                            String centertiming = jsonObject_Center_Activity.getString("centertiming");
+
+
+                            JSONArray jsonArray_Center_timing = new JSONArray(centertiming);
+                            for (int l=0;l<jsonArray_Center_timing.length();l++){
+
+                                JSONObject jsonObject_Center_timing = jsonArray_Center_timing.getJSONObject(l);
+                                String timing_id = jsonObject_Center_timing.getString("timing_id");
+                                String center_id = jsonObject_Center_timing.getString("center_id");
+                                String fromtime = jsonObject_Center_timing.getString("fromtime");
+                                String totime = jsonObject_Center_timing.getString("totime");
+                                String day = jsonObject_Center_timing.getString("day");
+                                String sequence = jsonObject_Center_timing.getString("sequence");
+                                String service_id1 = jsonObject_Center_timing.getString("service_id");
+                                String status1 = jsonObject_Center_timing.getString("status");
+
+                                CenterTimeingSlot centerTimeing_Slot = new CenterTimeingSlot(
+                                        timing_id,fromtime,totime,day,sequence,service_id1,status1
+                                );
+                                centerTimeingSlots.add(centerTimeing_Slot);
+                                centertimeslot.add(service_id);
+
+                            }
+
+
+                            JSONArray jsonArray_Center_Package = new JSONArray(packages);
+
+                            for (int l=0;l<jsonArray_Center_Package.length();l++){
+
+                                JSONObject jsonObject_Center_Package = jsonArray_Center_Package.getJSONObject(l);
+                                String package_id = jsonObject_Center_Package.getString("package_id");
+                                String package_name = jsonObject_Center_Package.getString("package_name");
+                                String package_duration = jsonObject_Center_Package.getString("package_duration");
+                                String center_id = jsonObject_Center_Package.getString("center_id");
+                                String class_week = jsonObject_Center_Package.getString("class_week");
+                                String service_id1 = jsonObject_Center_Package.getString("service_id");
+                                String package_price = jsonObject_Center_Package.getString("package_price");
+                                String package_description = jsonObject_Center_Package.getString("package_description");
+                                String status1 = jsonObject_Center_Package.getString("status");
 
 //                            SingleCenterPackageModel singleCenterPackageModel = new SingleCenterPackageModel(
 //                                    package_id,package_name,package_duration,class_week,service_id,package_price,package_description
 //                            );
 //                            centerPackageModels.add(singleCenterPackageModel);
 
-                            MemberShipModel memberShipModel = new MemberShipModel(
-                                    package_id, package_name, package_duration, package_price, package_description, "",class_week,service_id
-                            );
+                                MemberShipModel memberShipModel = new MemberShipModel(
+                                        package_id, package_name, package_duration, package_price, package_description, center_id,class_week,service_id1
+                                );
 
-                            centerPackageModels.add(memberShipModel);
+                                centerPackageModels.add(memberShipModel);
 
-                            centerPackageArray.add(service_id);
-                        }
+                            }
 
-                        centerTimeingSlots.clear();
-                        JSONArray jsonArray_Center_timing = new JSONArray(Single_Center_timing);
-
-                        for (int n=0;n<jsonArray_Center_timing.length();n++){
-
-                            JSONObject jsonObject_Center_timing = jsonArray_Center_timing.getJSONObject(n);
-                            String timing_id = jsonObject_Center_timing.getString("timing_id");
-                            String center_id = jsonObject_Center_timing.getString("center_id");
-                            String fromtime = jsonObject_Center_timing.getString("fromtime");
-                            String totime = jsonObject_Center_timing.getString("totime");
-                            String day = jsonObject_Center_timing.getString("day");
-                            String sequence = jsonObject_Center_timing.getString("sequence");
-                            String service_id = jsonObject_Center_timing.getString("service_id");
-                            String service_master_id = jsonObject_Center_timing.getString("service_master_id");
-                            String service_master_name = jsonObject_Center_timing.getString("service_master_name");
-                            String image = jsonObject_Center_timing.getString("image");
-
-                            CenterTimeingSlot centerTimeing_Slot = new CenterTimeingSlot(
-                                    timing_id,fromtime,totime,day,sequence,service_id,service_master_id,service_master_name,image
-                            );
-
-                            centerTimeingSlots.add(centerTimeing_Slot);
-                            centertimeslot.add(service_id);
-                        }
-
-
-                        centerActivityModels.clear();
-                        JSONArray jsonArray_Center_Activity = new JSONArray(Single_Center_Activity);
-
-                        for (int k=0;k<jsonArray_Center_Activity.length();k++){
-
-                            JSONObject jsonObject_Center_Activity = jsonArray_Center_Activity.getJSONObject(k);
-
-                            String service_master_id = jsonObject_Center_Activity.getString("service_master_id");
-                            String service_master_name = jsonObject_Center_Activity.getString("service_master_name");
-                            String image = jsonObject_Center_Activity.getString("image");
 
                             SingleCenterActivityModel singleCenterActivityModel = new SingleCenterActivityModel(
-                                    service_master_id,service_master_name,image
+                                    service_id,service_name,image,centerTimeingSlots,centerPackageModels
                             );
 
+                            centerPackageArray.add(service_id);
+
                             centerActivityModels.add(singleCenterActivityModel);
+
                         }
 
+                        Log.d("centerActivityModels",centerActivityModels.toString());
+
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-                        memberShipPlanAdapter = new MemberShipPlanAdapter(getContext(),centerActivityModels,centerPackageModels,centerPackageArray,center_id);
+                        singleProductAdapter = new SingleProductAdapter(getContext(),centerActivityModels,centerPackageModels,
+                                centerPackageArray,centerTimeingSlots,center_id);
                         memberShipPlanDet.setHasFixedSize(true);
                         memberShipPlanDet.setLayoutManager(linearLayoutManager);
-                        memberShipPlanDet.setAdapter(memberShipPlanAdapter);
+                        //singleProductAdapter.setClickListener(this);
+                        memberShipPlanDet.setAdapter(singleProductAdapter);
+
+                        String serviceid_str = centerPackageArray.get(0);
+                        singleproduct1(center_id,serviceid_str);
+                        singleproduct2(center_id,serviceid_str);
 
                         centerAmetiesModels.clear();
                         JSONArray jsonArray_Center_Ameties = new JSONArray(Single_Center_Ameties);
@@ -450,17 +451,48 @@ public class SingleProduct_Fragment extends Fragment {
                         }
 
                         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+                        GridLayoutManager manager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false);
                         centerAmetiesAdapter = new CenterAmetiesAdapter(centerAmetiesModels,getContext());
                         aboutgymRecycler.setHasFixedSize(true);
-                        aboutgymRecycler.setLayoutManager(linearLayoutManager1);
+                        aboutgymRecycler.setLayoutManager(manager);
                         aboutgymRecycler.setAdapter(centerAmetiesAdapter);
 
-                        text_Amenities.setBackgroundResource(R.drawable.textclickcolor_bg);
+                        reviewRatingModels.clear();
+                        JSONArray jsonArray_rating_review = new JSONArray(rating_review);
 
+                        for (int m=0;m<jsonArray_rating_review.length();m++){
+
+                            JSONObject jsonObject_rating_review = jsonArray_rating_review.getJSONObject(m);
+                            String rating_review_id = jsonObject_rating_review.getString("rating_review_id");
+                            String review = jsonObject_rating_review.getString("review");
+                            String rating = jsonObject_rating_review.getString("rating");
+                            String customer_id = jsonObject_rating_review.getString("customer_id");
+                            String full_name = jsonObject_rating_review.getString("full_name");
+                            String service_master_id = jsonObject_rating_review.getString("service_master_id");
+                            String service_master_name = jsonObject_rating_review.getString("service_master_name");
+                            String profile_image = jsonObject_rating_review.getString("profile_image");
+
+                            ReviewRatingModel reviewRatingModel = new ReviewRatingModel(
+                                    rating_review_id,review,rating,customer_id,full_name,profile_image,
+                                    service_master_id,service_master_name);
+
+                            reviewRatingModels.add(reviewRatingModel);
+                        }
+
+                        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+                        reviewRatingAdapter = new ReviewRatingAdapter(reviewRatingModels,getContext());
+                        reviwRatingRecycler.setHasFixedSize(true);
+                        reviwRatingRecycler.setLayoutManager(linearLayoutManager2);
+                        reviwRatingRecycler.setAdapter(reviewRatingAdapter);
+
+                      //  text_Amenities.setBackgroundResource(R.drawable.textclickcolor_bg);
                     }
+
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
+
+
 
             }
         }, new Response.ErrorListener() {
@@ -484,5 +516,236 @@ public class SingleProduct_Fragment extends Fragment {
         requestQueue.add(stringRequest);
     }
 
+    public void singleproduct1(String center_id, String serviceId){
 
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Retrive Center Details Wait......");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.Single_center_Page, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("status");
+
+                    if (status.equals("200")) {
+
+                        centerTimeingSlots = new ArrayList<>();
+                        centerTimeingSlots.clear();
+
+
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_messages = new JSONObject(messages);
+                        String responsecode = jsonObject_messages.getString("responsecode");
+                        String data = jsonObject_messages.getString("data");
+                        JSONObject jsonObject_data = new JSONObject(data);
+
+                        String Single_Center_Data = jsonObject_data.getString("Single_Center_Data");
+                        String Single_Center_Ameties = jsonObject_data.getString("Single_Center_Ameties");
+                        String Single_Center_gallery = jsonObject_data.getString("Single_Center_gallery");
+                        String rating_review = jsonObject_data.getString("rating_review");
+                        String Single_Center_Activity = jsonObject_data.getString("Single_Center_Activity");
+
+
+                        JSONArray jsonArray_Center_Activity = new JSONArray(Single_Center_Activity);
+
+                        for (int k=0;k<jsonArray_Center_Activity.length();k++){
+
+                            JSONObject jsonObject_Center_Activity = jsonArray_Center_Activity.getJSONObject(k);
+
+                            String service_id = jsonObject_Center_Activity.getString("service_id");
+                            String service_name = jsonObject_Center_Activity.getString("service_name");
+                            String image = jsonObject_Center_Activity.getString("image");
+                            String packages = jsonObject_Center_Activity.getString("packages");
+                            String centertiming = jsonObject_Center_Activity.getString("centertiming");
+
+                            if (service_id.equals(serviceId)){
+
+
+                                JSONArray jsonArray_Center_timing = new JSONArray(centertiming);
+                                for (int l=0;l<jsonArray_Center_timing.length();l++){
+
+                                    JSONObject jsonObject_Center_timing = jsonArray_Center_timing.getJSONObject(l);
+                                    String timing_id = jsonObject_Center_timing.getString("timing_id");
+                                    String center_id = jsonObject_Center_timing.getString("center_id");
+                                    String fromtime = jsonObject_Center_timing.getString("fromtime");
+                                    String totime = jsonObject_Center_timing.getString("totime");
+                                    String day = jsonObject_Center_timing.getString("day");
+                                    String sequence = jsonObject_Center_timing.getString("sequence");
+                                    String service_id1 = jsonObject_Center_timing.getString("service_id");
+                                    String status1 = jsonObject_Center_timing.getString("status");
+
+                                    CenterTimeingSlot centerTimeing_Slot = new CenterTimeingSlot(
+                                            timing_id,fromtime,totime,day,sequence,service_id1,status1
+                                    );
+                                    centerTimeingSlots.add(centerTimeing_Slot);
+                                    centertimeslot.add(service_id);
+
+                                }
+                            }
+                        }
+
+
+                        if (centerTimeingSlots.size() != 0){
+
+                            timesoltreal.setVisibility(View.VISIBLE);
+
+                            Log.d("centerActivityModelsaa",centerTimeingSlots.toString());
+
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                            //linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                            timeslotAdapter = new TimeslotAdapter(centerTimeingSlots,getContext());
+                            timeimgPlanRecycler.setLayoutManager(linearLayoutManager);
+                            timeimgPlanRecycler.setHasFixedSize(true);
+                            timeimgPlanRecycler.setAdapter(timeslotAdapter);
+                        }
+
+                    }
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getActivity(), ""+error, Toast.LENGTH_SHORT).show();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("center_id",center_id);
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+    }
+
+    public void singleproduct2(String center_id, String serviceId){
+
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Retrive Center Details Wait......");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.Single_center_Page, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("status");
+
+                    if (status.equals("200")) {
+
+                        centerPackageModels = new ArrayList<>();
+                        centerPackageModels.clear();
+
+                        String error = jsonObject.getString("error");
+                        String messages = jsonObject.getString("messages");
+                        JSONObject jsonObject_messages = new JSONObject(messages);
+                        String responsecode = jsonObject_messages.getString("responsecode");
+                        String data = jsonObject_messages.getString("data");
+                        JSONObject jsonObject_data = new JSONObject(data);
+
+                        String Single_Center_Data = jsonObject_data.getString("Single_Center_Data");
+                        String Single_Center_Ameties = jsonObject_data.getString("Single_Center_Ameties");
+                        String Single_Center_gallery = jsonObject_data.getString("Single_Center_gallery");
+                        String rating_review = jsonObject_data.getString("rating_review");
+                        String Single_Center_Activity = jsonObject_data.getString("Single_Center_Activity");
+
+
+                        JSONArray jsonArray_Center_Activity = new JSONArray(Single_Center_Activity);
+
+                        for (int k=0;k<jsonArray_Center_Activity.length();k++){
+
+
+                            JSONObject jsonObject_Center_Activity = jsonArray_Center_Activity.getJSONObject(k);
+
+                            String service_id = jsonObject_Center_Activity.getString("service_id");
+                            String service_name = jsonObject_Center_Activity.getString("service_name");
+                            String image = jsonObject_Center_Activity.getString("image");
+                            String packages = jsonObject_Center_Activity.getString("packages");
+                            String centertiming = jsonObject_Center_Activity.getString("centertiming");
+
+                            if (service_id.equals(serviceId)){
+
+                                JSONArray jsonArray_Center_Package = new JSONArray(packages);
+
+                                for (int l=0;l<jsonArray_Center_Package.length();l++){
+
+                                    JSONObject jsonObject_Center_Package = jsonArray_Center_Package.getJSONObject(l);
+                                    String package_id = jsonObject_Center_Package.getString("package_id");
+                                    String package_name = jsonObject_Center_Package.getString("package_name");
+                                    String package_duration = jsonObject_Center_Package.getString("package_duration");
+                                    String center_id = jsonObject_Center_Package.getString("center_id");
+                                    String class_week = jsonObject_Center_Package.getString("class_week");
+                                    String service_id1 = jsonObject_Center_Package.getString("service_id");
+                                    String package_price = jsonObject_Center_Package.getString("package_price");
+                                    String package_description = jsonObject_Center_Package.getString("package_description");
+                                    String status1 = jsonObject_Center_Package.getString("status");
+
+//                            SingleCenterPackageModel singleCenterPackageModel = new SingleCenterPackageModel(
+//                                    package_id,package_name,package_duration,class_week,service_id,package_price,package_description
+//                            );
+//                            centerPackageModels.add(singleCenterPackageModel);
+
+                                    MemberShipModel memberShipModel = new MemberShipModel(
+                                            package_id, package_name, package_duration, package_price, package_description, center_id,class_week,service_id1
+                                    );
+
+                                    centerPackageModels.add(memberShipModel);
+
+                                    centerPackageArray.add(service_id);
+                                }
+                            }
+                        }
+
+                        Log.d("centerActivityModels",centerActivityModels.toString());
+
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                        memberShipAdapter = new MemberShipAdapter1(centerPackageModels,getContext(), "SingleProduct");
+                        packagePlanRecycler.setLayoutManager(linearLayoutManager);
+                        packagePlanRecycler.setHasFixedSize(true);
+                        packagePlanRecycler.setAdapter(memberShipAdapter);
+
+                    }
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("center_id",center_id);
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+    }
 }

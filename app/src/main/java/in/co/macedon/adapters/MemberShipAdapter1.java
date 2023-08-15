@@ -31,17 +31,24 @@ public class MemberShipAdapter1 extends RecyclerView.Adapter<MemberShipAdapter1.
 
         this.context = context;
         this.memberShipModels = memberShip_models;
-        this.SingleProduct = SingleProduct;
+        this.SingleProduct = singleProduct;
         this.dialog = dialogConfirm;
         this.service_master_id = service_master_id;
         this.center_id = center_id;
+    }
+
+    public MemberShipAdapter1(ArrayList<MemberShipModel> centerPackageModels, Context context, String singleProduct) {
+
+        this.context = context;
+        this.memberShipModels = centerPackageModels;
+        this.SingleProduct = singleProduct;
     }
 
     @NonNull
     @Override
     public MemberShipAdapter1.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.memberpackage,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singlepackagedet,parent,false);
         return new ViewHolder(view);
     }
 
@@ -51,8 +58,8 @@ public class MemberShipAdapter1 extends RecyclerView.Adapter<MemberShipAdapter1.
         MemberShipModel memberModel = memberShipModels.get(position);
         holder.packageName.setText(memberModel.getPackage_name());
         holder.priceDetails.setText("RS "+memberModel.getPackage_price()+" /-");
-        holder.packagedurtion.setText("Package Duration  "+memberModel.getPackage_duration()+"  Days");
-        holder.packageprice.setText("Class Per Week Rs  "+memberModel.getClass_week()+" /-");
+        holder.packagedurtion.setText(memberModel.getPackage_duration()+"  Days");
+//        holder.packageprice.setText("Class Per Week Rs  "+memberModel.getClass_week()+" /-");
         holder.messageDet.setText(memberModel.getPackage_description());
 
         holder.btn_BuyNow.setOnClickListener(new View.OnClickListener() {

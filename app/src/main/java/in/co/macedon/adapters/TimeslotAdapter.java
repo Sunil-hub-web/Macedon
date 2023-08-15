@@ -43,7 +43,8 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Progra
     public void onBindViewHolder(@NonNull final TimeslotAdapter.ProgramViewHolder programViewHolder, final int i) {
 
         CenterTimeingSlot currenttime = centerTimeingSlots.get(i);
-        programViewHolder.exname.setText(currenttime.getFromtime()+"-"+currenttime.getTotime()+"  "+currenttime.getDay());
+        programViewHolder.exname.setText(currenttime.getDay());
+        programViewHolder.timeing.setText(currenttime.getFromtime()+"-"+currenttime.getTotime());
     }
 
     @Override
@@ -58,7 +59,7 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Progra
     }
 
     public class ProgramViewHolder extends RecyclerView.ViewHolder {
-        TextView exname;
+        TextView exname,timeing;
         LinearLayout mainlayout;
         ImageView icon;
 
@@ -67,6 +68,7 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Progra
             exname = (TextView) itemView.findViewById(R.id.name);
             mainlayout = (LinearLayout) itemView.findViewById(R.id.mainlayout);
             icon = (ImageView) itemView.findViewById(R.id.icon);
+            timeing = (TextView) itemView.findViewById(R.id.timeing);
         }
     }
 

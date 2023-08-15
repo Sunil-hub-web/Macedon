@@ -17,6 +17,11 @@
         android:title="@string/title_notifications" />
 
     <item
+        android:id="@+id/navigation_offer"
+        android:icon="@drawable/offer64"
+        android:title="@string/title_offer" />
+
+    <item
         android:id="@+id/navigation_help"
         android:icon="@drawable/profile"
         android:title="@string/title_help" />

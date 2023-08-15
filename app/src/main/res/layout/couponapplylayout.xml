@@ -45,15 +45,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/fifty"
-            android:layout_marginRight="@dimen/fifty"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/fifty"
             android:layout_marginBottom="@dimen/twenty"
             android:background="@drawable/login_btn_bg"
+            android:backgroundTint="@color/twitter_color"
             android:fontFamily="@font/sans_bold"
             android:gravity="center"
             android:padding="@dimen/fifteen"
             android:text="Apply Coupon"
-            android:backgroundTint="@color/twitter_color"
             android:textColor="@color/mdtp_white"
             android:textSize="@dimen/edittextsize" />
 

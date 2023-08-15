@@ -156,23 +156,23 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
                     android:background="@drawable/shop_icon_bg"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="@dimen/twenty"
                         android:layout_height="@dimen/twenty"
                         android:src="@drawable/ic_shop"
-                        android:tint="@color/white"/>
+                        android:tint="@color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="QUICK BUY"
-                        android:fontFamily="@font/raleway"
                         android:layout_marginLeft="@dimen/ten"
-                        android:textSize="@dimen/thirteen"/>
+                        android:fontFamily="@font/raleway"
+                        android:text="QUICK BUY"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/thirteen" />
 
                 </LinearLayout>
 
