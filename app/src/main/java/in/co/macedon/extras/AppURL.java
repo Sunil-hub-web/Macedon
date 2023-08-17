@@ -21,5 +21,7 @@ public class AppURL {
     public static final String coupondata = BaseUrl+"coupondata";
     public static final String BuyMembership = BaseUrl+"BuyMembership";
     public static final String offer = BaseUrl+"offer";
+    public static final String ratreview = BaseUrl+"ratreview";
+    public static final String orderstatus = BaseUrl+"orderstatus";
 
 }

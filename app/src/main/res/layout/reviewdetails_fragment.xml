@@ -65,6 +65,17 @@
 
         </LinearLayout>-->
 
+        <AutoCompleteTextView
+            android:id="@+id/autocomplate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textfieldback"
+            android:padding="@dimen/ten"
+            android:layout_margin="@dimen/ten"
+            android:drawableRight="@drawable/arrow_drop_down"
+            android:hint="Select Center Services">
+
+        </AutoCompleteTextView>
 
 
 
@@ -239,7 +250,7 @@
             </LinearLayout>-->
 
             <EditText
-                android:id="@+id/edit_ProductDetails"
+                android:id="@+id/addReviewDetails"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/hundred"
                 android:layout_marginLeft="@dimen/ten"
@@ -252,7 +263,7 @@
                 android:padding="@dimen/fifteen" />
 
             <TextView
-                android:id="@+id/btn_BuyNow"
+                android:id="@+id/btn_Submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

@@ -407,7 +407,6 @@
                         android:background="@drawable/autocomplate_bg"
                         android:padding="@dimen/ten"
                         android:layout_marginTop="@dimen/ten"
-
                         android:visibility="visible"/>
 
                     <androidx.recyclerview.widget.RecyclerView

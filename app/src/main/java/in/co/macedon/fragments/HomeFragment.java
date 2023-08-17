@@ -121,6 +121,8 @@ public class HomeFragment extends Fragment {
         DashBoard.address_txt.setText(sessionManager.getCityName());
         DashBoard.header.setVisibility(View.VISIBLE);
 
+        Log.d("userid123",userId);
+
         viewpagerBanner.setClipToPadding(false);
         viewpagerBanner.setClipChildren(false);
         viewpagerBanner.setOffscreenPageLimit(3);

@@ -58,6 +58,7 @@ import in.co.macedon.fragments.HelpFragment;
 import in.co.macedon.fragments.HomeFragment;
 import in.co.macedon.fragments.MyOrder;
 import in.co.macedon.fragments.OfferFragment;
+import in.co.macedon.fragments.PackageFragment;
 import in.co.macedon.fragments.PrivacyPolicyFragment;
 import in.co.macedon.fragments.ProfileDetailsFragment;
 import in.co.macedon.fragments.ReviewRating_Fragment;
@@ -66,6 +67,7 @@ import in.co.macedon.fragments.ShopFragment;
 import in.co.macedon.fragments.Subscriptions;
 import in.co.macedon.fragments.TermsConditionsFragment;
 import in.co.macedon.fragments.UserProfileDetails;
+import in.co.macedon.fragments.WebViewFragment;
 
 public class DashBoard extends AppCompatActivity {
 
@@ -389,12 +391,14 @@ public class DashBoard extends AppCompatActivity {
         //super.onBackPressed();
 
         test = (HomeFragment) getSupportFragmentManager().findFragmentByTag("HomeFragment");
+        WebViewFragment fragmentInstance = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("WebViewFragment");
+
 
         if (test != null && test.isVisible()) {
 
             if (exit) {
                 finish(); // finish activity
-            } else {
+            }else {
                 Toast.makeText(this, "Press Back again to Exit.",
                         Toast.LENGTH_SHORT).show();
                 exit = true;
@@ -410,8 +414,13 @@ public class DashBoard extends AppCompatActivity {
                     }
                 }, 4 * 1000);
             }
-        }
-        else {
+        }else if (fragmentInstance != null) {
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PackageFragment(), "checkout").commit();
+            header.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+            header.setVisibility(View.VISIBLE);
+
+        } else {
 
           //  userNamedet.setText("Hi, " + name);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
