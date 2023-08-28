@@ -30,23 +30,23 @@
             android:textIsSelectable="false"
             />
 
-        <AutoCompleteTextView
-            android:id="@+id/auto_Area"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textAutoComplete"
-            android:padding="@dimen/twelve"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/textsize"
-            android:background="@drawable/autocomplate_bg"
-            android:layout_margin="@dimen/ten"
-            android:hint="---Select Your Area---"
-            android:focusable="false"
-            android:fontFamily="serif"
-            android:cursorVisible="false"
-            android:longClickable="false"
-            android:textIsSelectable="false"/>
+<!--        <AutoCompleteTextView-->
+<!--            android:id="@+id/auto_Area"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:imeOptions="actionNext"-->
+<!--            android:inputType="textAutoComplete"-->
+<!--            android:padding="@dimen/twelve"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textSize="@dimen/textsize"-->
+<!--            android:background="@drawable/autocomplate_bg"-->
+<!--            android:layout_margin="@dimen/ten"-->
+<!--            android:hint="-&#45;&#45;Select Your Area-&#45;&#45;"-->
+<!--            android:focusable="false"-->
+<!--            android:fontFamily="serif"-->
+<!--            android:cursorVisible="false"-->
+<!--            android:longClickable="false"-->
+<!--            android:textIsSelectable="false"/>-->
 
 
     </LinearLayout>

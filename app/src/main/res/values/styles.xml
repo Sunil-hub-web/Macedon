@@ -9,8 +9,8 @@
     </style>
 
     <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/slide_up_anim_new</item>
-        <item name="android:windowExitAnimation">@anim/slide_down_anim_new</item>
+        <item name="android:windowEnterAnimation">@anim/bottontotop</item>
+        <item name="android:windowExitAnimation">@anim/toptobottom</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>

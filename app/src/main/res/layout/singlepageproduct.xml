@@ -8,13 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:id="@+id/scrollView">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_margin="@dimen/ten">
 
@@ -261,113 +263,44 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/timesoltreal"
-                        android:visibility="gone">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/name"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/forty"
-                                android:padding="@dimen/ten"
-                                android:text="Schedule"
-                                android:gravity="center"
-                                android:textColor="@color/textcol"
-                                android:fontFamily="@font/raleway"
-                                android:textSize="@dimen/fourteen"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true">
-
-                            <TextView
-                                android:id="@+id/timeing"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/forty"
-                                android:padding="@dimen/ten"
-                                android:text="Timeing"
-                                android:gravity="center"
-                                android:textColor="@color/textcol"
-                                android:fontFamily="@font/raleway"
-                                android:textSize="@dimen/fourteen"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/timeimgPlanRecycler">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/packagePlanRecycler">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/text_Showtimeimg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/ten">
+                        android:text="Show Time Slot"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:textSize="@dimen/textsize"
+                        android:background="@drawable/autocomplate_bg"
+                        android:padding="@dimen/ten"
+                        android:layout_marginTop="@dimen/ten"
+                        android:visibility="gone"/>
 
-                        <TextView
-                            android:id="@+id/about"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/ten"
-                            android:fontFamily="@font/rupee_foradian"
-                            android:text="Know More About"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/twelve_size">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                        </TextView>
+                    </androidx.recyclerview.widget.RecyclerView>
 
-                        <TextView
-                            android:id="@+id/fitnessName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/five"
-                            android:layout_marginBottom="@dimen/ten"
-                            android:fontFamily="@font/sans_bold"
-                            android:layout_toRightOf="@id/about"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/twelve_size">
-
-                        </TextView>
-
-                    </RelativeLayout>
-
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="3"
-                        android:layout_marginTop="@dimen/five">
+                        android:id="@+id/packagePlanRecycler"
+                        android:layout_marginTop="@dimen/ten">
 
-                        <TextView
-                            android:id="@+id/text_Amenities"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Amenities"
-                            android:fontFamily="@font/sans_bold"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/textsize"
-                            android:padding="@dimen/ten"
-                            android:layout_margin="@dimen/three"/>
+                    </androidx.recyclerview.widget.RecyclerView>
 
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/text_Amenities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Amenities"
+                        android:fontFamily="@font/sans_bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:padding="@dimen/ten"
+                        android:layout_margin="@dimen/three"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
@@ -390,7 +323,8 @@
                             android:fontFamily="@font/sans_bold"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize"
-                            android:padding="@dimen/ten" />
+                            android:padding="@dimen/ten"
+                            android:gravity="center"/>
 
 
                     </LinearLayout>
@@ -418,13 +352,11 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
 
-
-
                 </LinearLayout>
 
             </LinearLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 

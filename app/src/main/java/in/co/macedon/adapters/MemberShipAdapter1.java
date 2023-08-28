@@ -2,6 +2,7 @@ package in.co.macedon.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,15 @@ public class MemberShipAdapter1 extends RecyclerView.Adapter<MemberShipAdapter1.
         this.SingleProduct = singleProduct;
     }
 
+    public MemberShipAdapter1(ArrayList<MemberShipModel> centerPackageModels, Context context, String singleProduct, String serviceId, String centerId) {
+
+        this.context = context;
+        this.memberShipModels = centerPackageModels;
+        this.SingleProduct = singleProduct;
+        this.service_master_id = serviceId;
+        this.center_id = centerId;
+    }
+
     @NonNull
     @Override
     public MemberShipAdapter1.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -83,7 +93,20 @@ public class MemberShipAdapter1 extends RecyclerView.Adapter<MemberShipAdapter1.
                 transaction.addToBackStack(null);
                 transaction.commit();
 
-                dialog.dismiss();
+                SharedPreferences pref = context.getSharedPreferences("MyPref", 0); // 0 - for private mode
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("packageName",memberModel.getPackage_name());
+                editor.putString("priceDetails",memberModel.getPackage_price());
+                editor.putString("packagedurtion",memberModel.getPackage_duration());
+                editor.putString("packageprice",memberModel.getPackage_duration());
+                editor.putString("messageDet",memberModel.getPackage_description());
+                editor.putString("service_master_id",service_master_id);
+                editor.putString("memberModelId",memberModel.getPackage_id());
+                editor.putString("center_id",center_id);
+                editor.putString("messagepass","Memberde");
+                editor.commit(); // commit changes
+
+              //  dialog.dismiss();
             }
         });
 

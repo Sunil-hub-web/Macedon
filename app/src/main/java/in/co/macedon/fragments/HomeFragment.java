@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
@@ -95,13 +96,13 @@ public class HomeFragment extends Fragment {
     HashMap<String,String> hashMap_City = new HashMap<>();
     HashMap<String,String> hashMap_Area = new HashMap<>();
     AutoCompleteTextView auto_City,auto_Area;
-    String cityname,cityid,areaname,areaId,userId;
+    String cityname,cityid,areaname,areaId = "",userId;
     SessionManager sessionManager;
     AllServicesAdapter allServicesAdapter;
     ArrayList<AllServicesModel> allServicesModels = new ArrayList<>();
     ArrayList<TestimonialModel> testimonialModels = new ArrayList<>();
     ArrayList<CenterServicesModel> servicesModelArrayList;
-    ScrollView scrollView;
+    NestedScrollView scrollView;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -122,6 +123,8 @@ public class HomeFragment extends Fragment {
         DashBoard.header.setVisibility(View.VISIBLE);
 
         Log.d("userid123",userId);
+
+        DashBoard.header.setVisibility(View.VISIBLE);
 
         viewpagerBanner.setClipToPadding(false);
         viewpagerBanner.setClipChildren(false);
@@ -192,16 +195,24 @@ public class HomeFragment extends Fragment {
             String strcityid = sessionManager.getCityId();
             String strareaid = sessionManager.getAreaId();
 
-            getHomeDeatils(userId,strcityid,strareaid);
+            getHomeDeatils(userId,strcityid);
 
             getAllServices(strcityid);
 
             //DashBoard.address_txt.setText(sessionManager.getCityName());
         }
+
+        DashBoard.address_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showAddress_Dialog();
+            }
+        });
         return v;
     }
 
-    public void getHomeDeatils(String user_id, String city_id, String area_id){
+    public void getHomeDeatils(String user_id, String city_id){
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Retrive Home Page Details");
@@ -309,6 +320,9 @@ public class HomeFragment extends Fragment {
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                         categoryAdapter = new CategoryAdapter(categoryDetails,getContext());
                         categoryRecycler.setLayoutManager(linearLayoutManager);
+                        categoryRecycler.setNestedScrollingEnabled(true);
+                        scrollView.fullScroll(View.FOCUS_DOWN);
+                        scrollView.setSmoothScrollingEnabled(true);
                         categoryRecycler.setHasFixedSize(true);
                         categoryRecycler.smoothScrollToPosition(0);
                         categoryRecycler.setAdapter(categoryAdapter);
@@ -361,7 +375,7 @@ public class HomeFragment extends Fragment {
                 Map<String,String> params = new HashMap<>();
                 params.put("user_id",user_id);
                 params.put("city_id",city_id);
-                params.put("area_id",area_id);
+                params.put("area_id","");
 
                 Log.d("paramersdetails",params.toString());
 
@@ -426,7 +440,7 @@ public class HomeFragment extends Fragment {
         getYourcity();
 
         auto_City = dialogConfirm.findViewById(R.id.auto_City);
-        auto_Area = dialogConfirm.findViewById(R.id.auto_Area);
+      //  auto_Area = dialogConfirm.findViewById(R.id.auto_Area);
 
         auto_City.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -436,7 +450,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        auto_Area.setOnClickListener(new View.OnClickListener() {
+       /* auto_Area.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -449,7 +463,7 @@ public class HomeFragment extends Fragment {
                     auto_Area.showDropDown();
                 }
             }
-        });
+        });*/
 
         auto_City.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -465,16 +479,25 @@ public class HomeFragment extends Fragment {
 
                     cityname = parent.getItemAtPosition(position).toString();
                     cityid = hashMap_City.get(cityname);
-                    getArea(cityid);
+                   // getArea(cityid);
+                    sessionManager.setCityName(cityname);
+                    sessionManager.setCityId(cityid);
 
-                   // DashBoard.address_txt.setText(sessionManager.getCityName());
+                    DashBoard.address_txt.setText(sessionManager.getCityName());
+
+
+                    getHomeDeatils(userId,cityid);
+
+                    getAllServices(cityid);
+
+                    dialogConfirm.dismiss();
 
 
                 }
             }
         });
 
-        auto_Area.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* auto_Area.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -482,28 +505,41 @@ public class HomeFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Please Select City", Toast.LENGTH_SHORT).show();
 
-                } else if (auto_City.getText().toString().trim().equals("---Select Your Area---")) {
-
-                    Toast.makeText(getActivity(), "Please Select City", Toast.LENGTH_SHORT).show();
-
                 } else{
 
-                    areaname  = parent.getItemAtPosition(position).toString();
-                    areaId = hashMap_Area.get(areaname);
+                    if(auto_City.getText().toString().trim().equals("---Select Your Area---")){
 
-                    sessionManager.setCityId(cityid);
-                    sessionManager.setAreaId(areaId);
+                        //areaname  = parent.getItemAtPosition(position).toString();
+                        //areaId = hashMap_Area.get(areaname);
 
-                    sessionManager.setCityName(cityname);
+                        sessionManager.setCityId(cityid);
+                        sessionManager.setAreaId("0");
 
-                    getHomeDeatils(userId,cityid,areaId);
+                        sessionManager.setCityName(cityname);
 
-                    getAllServices(cityid);
 
-                    dialogConfirm.dismiss();
+
+                    }else{
+
+                        areaname  = parent.getItemAtPosition(position).toString();
+                        areaId = hashMap_Area.get(areaname);
+
+                        sessionManager.setCityId(cityid);
+                        sessionManager.setAreaId(areaId);
+
+                        sessionManager.setCityName(cityname);
+
+                        getHomeDeatils(userId,cityid);
+
+                        getAllServices(cityid);
+
+                        dialogConfirm.dismiss();
+                    }
+
+
                 }
             }
-        });
+        });*/
 
         dialogConfirm.show();
 
@@ -689,6 +725,9 @@ public class HomeFragment extends Fragment {
                        // GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext().getApplicationContext(), 3);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
                         allservicesRecycler.setLayoutManager(linearLayoutManager);
+                        allservicesRecycler.setNestedScrollingEnabled(false);
+                        scrollView.fullScroll(View.FOCUS_DOWN);
+                        scrollView.setSmoothScrollingEnabled(true);
                         allservicesRecycler.setItemAnimator(new DefaultItemAnimator());
                         allservicesRecycler.setAdapter(adpater);
 

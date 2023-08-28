@@ -16,6 +16,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,6 +65,7 @@ import in.co.macedon.fragments.ProfileDetailsFragment;
 import in.co.macedon.fragments.ReviewRating_Fragment;
 import in.co.macedon.fragments.ScanFragment;
 import in.co.macedon.fragments.ShopFragment;
+import in.co.macedon.fragments.SingleProduct_Fragment;
 import in.co.macedon.fragments.Subscriptions;
 import in.co.macedon.fragments.TermsConditionsFragment;
 import in.co.macedon.fragments.UserProfileDetails;
@@ -71,7 +73,7 @@ import in.co.macedon.fragments.WebViewFragment;
 
 public class DashBoard extends AppCompatActivity {
 
-    BottomNavigationView navView;
+    public static BottomNavigationView navView;
     public static FrameLayout fl;
     public static ImageView usericon, cart,img_Search;
     public static TextView logout_txt, userprofile_txt,nav_Subscriptions,nav_Home,
@@ -85,7 +87,7 @@ public class DashBoard extends AppCompatActivity {
 
     Double latitude,longitude;
     GoogleMap mMap;
-    String name,mobileNo,image,userid,addressDetails;
+    String name,mobileNo,image,userid,addressDetails,notupdatedmess = "",centerId;
     SessionManager sessionManager;
     private int FINE_LOCATION_ACCESS_REQUEST_CODE = 10001;
     LocationManager locationManager;
@@ -93,6 +95,7 @@ public class DashBoard extends AppCompatActivity {
 
     HomeFragment test;
     private Boolean exit = false;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +137,12 @@ public class DashBoard extends AppCompatActivity {
             getLocation();
         }
 
-//        Intent intent = getIntent();
-//        not_updated = intent.getStringExtra("not_updated");
+        intent = getIntent();
+        notupdatedmess = intent.getStringExtra("message");
 
         intrenetCheck();
+
+        navView.setSelectedItemId(R.id.navigation_home);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -219,15 +224,6 @@ public class DashBoard extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(), SearchPage.class);
                 startActivity(i);
-            }
-        });
-
-        address_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent1 = new Intent(DashBoard.this,DeliveryLocation.class);
-                startActivity(intent1);
             }
         });
 
@@ -392,9 +388,12 @@ public class DashBoard extends AppCompatActivity {
 
         test = (HomeFragment) getSupportFragmentManager().findFragmentByTag("HomeFragment");
         WebViewFragment fragmentInstance = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("WebViewFragment");
+        WebViewFragment fragmentInstance1 = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("singleProductFragment");
 
 
         if (test != null && test.isVisible()) {
+
+            navView.setSelectedItemId(R.id.navigation_home);
 
             if (exit) {
                 finish(); // finish activity
@@ -420,10 +419,15 @@ public class DashBoard extends AppCompatActivity {
             header.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
             header.setVisibility(View.VISIBLE);
 
+        }else if (fragmentInstance1 != null) {
+
+           startActivity(new Intent(DashBoard.this,SearchPage.class));
+
         } else {
 
           //  userNamedet.setText("Hi, " + name);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+            navView.setSelectedItemId(R.id.navigation_home);
 
         }
     }
@@ -445,12 +449,38 @@ public class DashBoard extends AppCompatActivity {
 
         }else{
 
-            Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
-            networkConnection.setVisibility(View.GONE);
+            if (notupdatedmess != null){
 
-            locationlayout.setVisibility(View.VISIBLE);
-            cart.setVisibility(View.GONE);
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+                Log.d("notupdatedmess",notupdatedmess);
+
+                centerId = intent.getStringExtra("centerId");
+
+//            locationlayout.setVisibility(View.GONE);
+//            cart.setVisibility(View.GONE);
+//            img_Search.setVisibility(View.GONE);
+//            fl.removeAllViews();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                SingleProduct_Fragment singleProductFragment = new SingleProduct_Fragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("centerId",centerId);
+                singleProductFragment.setArguments(bundle);
+                ft.replace(R.id.nav_host_fragment, singleProductFragment,"singleProductFragment");
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }else{
+
+                Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
+                networkConnection.setVisibility(View.GONE);
+
+                locationlayout.setVisibility(View.VISIBLE);
+                cart.setVisibility(View.GONE);
+                navView.setSelectedItemId(R.id.navigation_home);
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+            }
+
+
+
            //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ReviewRating_Fragment()).commit();
 
           /*  if (not_updated.equals("not_updated")) {

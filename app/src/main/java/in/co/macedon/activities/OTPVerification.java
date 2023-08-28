@@ -50,8 +50,6 @@ public class OTPVerification extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         phone_number = sessionManager.getUserMobileno();
-        OTPV = sessionManager.getUserOTP();
-
 
         verifyotp_btn = findViewById(R.id.verifyotp_btn);
         pinView = findViewById(R.id.pinView);
@@ -67,6 +65,8 @@ public class OTPVerification extends AppCompatActivity {
                 }else{
 
                     String optDet = pinView.getText().toString().trim();
+
+                    OTPV = sessionManager.getUserOTP();
 
                     if (optDet.equals(OTPV)){
 

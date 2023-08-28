@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,7 +56,7 @@ public class PackageFragment extends Fragment {
     TextView packageName, priceDetails, packagedurtion, messageDet, btn_CouponCode, btn_BuyNow, text_Name,
             text_Email, text_Contact, subTotalPrice, couponPrice, grandTotalPrice, btn_StartDate;
     String strpackageName, strpriceDetails, strpackagedurtion, strpackageprice, strmessageDet, userId, date,
-            str_coupon = "", data, service_master_id, memberModelId, center_id, messagepass, formattedDate, order_id,
+            str_coupon = "", data, service_master_id, memberModelId, center_id, messagepass = "", formattedDate, order_id = "",
             statues_url_sat;
     SessionManager sessionManager;
     Dialog dialog;
@@ -90,10 +91,44 @@ public class PackageFragment extends Fragment {
 
         sessionManager = new SessionManager(getContext());
 
+        DashBoard.header.setVisibility(View.VISIBLE);
+
         DashBoard.locationlayout.setVisibility(View.VISIBLE);
         DashBoard.cart.setVisibility(View.GONE);
         DashBoard.fl.removeAllViews();
         DashBoard.userName.setText("Package Detils");
+
+        SharedPreferences pref = getActivity().getSharedPreferences("MyPref", 0);
+
+        strpackageName = pref.getString("packageName", null);
+        strpriceDetails = pref.getString("priceDetails", null);
+        strpackagedurtion = pref.getString("packagedurtion", null);
+        strpackageprice = pref.getString("packageprice", null);
+        strmessageDet = pref.getString("messageDet", null);
+        service_master_id = pref.getString("service_master_id", null);
+        memberModelId = pref.getString("memberModelId", null);
+        center_id = pref.getString("center_id", null);
+        messagepass = pref.getString("messagepass", null);
+
+        SharedPreferences pref1 = getContext().getSharedPreferences("order_id123", 0);
+        order_id = pref1.getString("order_id", null);
+
+        packageName.setText(strpackageName);
+        priceDetails.setText("RS " + strpriceDetails + " /-");
+        packagedurtion.setText("Package Duration  " + strpackagedurtion + "  Days");
+        // packageprice.setText("Class Per Week Rs  "+strpackageprice+" /-");
+        messageDet.setText(strmessageDet);
+        text_Name.setText(sessionManager.getUserName());
+        text_Email.setText(sessionManager.getUserEmail());
+        text_Contact.setText(sessionManager.getUserMobileno());
+
+
+        if (order_id == null){
+        }else{
+            paymentmsg(order_id);
+        }
+
+
 
         Bundle arguments = getArguments();
         if (arguments != null) {
@@ -205,32 +240,27 @@ public class PackageFragment extends Fragment {
                     Double packageprice = Double.parseDouble(strpriceDetails);
                     Double d_walletprice = Double.parseDouble(String.valueOf(walletprice));
 
-
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                        Date c = Calendar.getInstance().getTime();
-                        System.out.println("Current time => " + c);
-                        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-                        formattedDate = df.format(c);
+
+                        formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
                     }
 
                     if (walletamount.isChecked()) {
                         // Do something
                         if (d_walletprice >= packageprice) {
 
-                            buyMembership(userId, memberModelId, strpackageName, strpackagedurtion, center_id, strpriceDetails,
-                                    strpackageprice, service_master_id, strStartDate, str_coupon, data, paidamount, "1");
+                            buyMembership(userId, memberModelId, strpackageName, strpackagedurtion, "1", strpriceDetails,
+                                    strpackageprice, "4", strStartDate, str_coupon, data, paidamount, "1");
                         } else {
 
-                            buyMembership(userId, memberModelId, strpackageName, strpackagedurtion, center_id, strpriceDetails,
-                                    strpackageprice, service_master_id, strStartDate, str_coupon, data, paidamount, "");
+                            Toast.makeText(getActivity(), "Please select Online", Toast.LENGTH_SHORT).show();
                         }
+                    }else{
 
-                    } else {
-
-                        buyMembership(userId, memberModelId, strpackageName, strpackagedurtion, center_id, strpriceDetails,
-                                strpackageprice, service_master_id, strStartDate, str_coupon, data, paidamount, "");
+                        onlinepayment(userId, memberModelId, strpackageName, strpackagedurtion, "1", strpriceDetails,
+                                strpackageprice, "4", strStartDate, str_coupon, data, paidamount, "");
                     }
-                } else {
+                }else{
 
                     if (btn_StartDate.getText().toString().trim().equals("")) {
 
@@ -262,20 +292,18 @@ public class PackageFragment extends Fragment {
                                         strpackageprice, service_master_id, formattedDate, str_coupon, data, paidamount, "1");
                             } else {
 
-                                buyMembership(userId, memberModelId, strpackageName, strpackagedurtion, center_id, strpriceDetails,
-                                        strpackageprice, service_master_id, formattedDate, str_coupon, data, paidamount, "");
+                                Toast.makeText(getActivity(), "Select Pay Online", Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
 
-                            buyMembership(userId, memberModelId, strpackageName, strpackagedurtion, center_id, strpriceDetails,
+                            onlinepayment(userId, memberModelId, strpackageName, strpackagedurtion, center_id, strpriceDetails,
                                     strpackageprice, service_master_id, strStartDate, str_coupon, data, paidamount, "");
                         }
 
                     }
 
                 }
-
             }
         });
 
@@ -392,26 +420,14 @@ public class PackageFragment extends Fragment {
 
                     if (status.equals("200")) {
 
-                        String error = jsonObject.getString("error");
-                        String statusurl = jsonObject.getString("url");
-                        String data = jsonObject.getString("data");
+                       // String error = jsonObject.getString("error");
+                        String message = jsonObject.getString("message");
+                        //String data = jsonObject.getString("data");
                         JSONObject jsonObject_data = new JSONObject(data);
-                        order_id = jsonObject_data.getString("order_id");
+                       // order_id = jsonObject_data.getString("order_id");
 
 
-                        Fragment fragment = new WebViewFragment();
-                        Bundle args = new Bundle();
-                        args.putString("weburl", statusurl);
-                        fragment.setArguments(args);
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.nav_host_fragment, fragment, "WebViewFragment");
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
-
-                        statues_url_sat = "1";
-
-                       /* dialogConfirm = new Dialog(getActivity());
+                        dialogConfirm = new Dialog(getActivity());
                         dialogConfirm.getWindow().setWindowAnimations(R.style.DialogAnimation);
                         dialogConfirm.setContentView(R.layout.successmember);
                         dialogConfirm.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
@@ -432,12 +448,11 @@ public class PackageFragment extends Fragment {
                         });
 
                         dialogConfirm.show();
-*/
 
                     } else {
 
-                        String error = jsonObject.getString("error");
-                        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+                        String message = jsonObject.getString("message");
+                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -495,7 +510,7 @@ public class PackageFragment extends Fragment {
         progressDialog.setMessage("Buy Membership Wait...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.BuyMembership, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.onlinepayment, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -515,6 +530,10 @@ public class PackageFragment extends Fragment {
                         JSONObject jsonObject_data = new JSONObject(data);
                         order_id = jsonObject_data.getString("order_id");
 
+                        SharedPreferences pref = getContext().getSharedPreferences("order_id123", 0); // 0 - for private mode
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("order_id",order_id);
+                        editor.commit();
 
                         Fragment fragment = new WebViewFragment();
                         Bundle args = new Bundle();
@@ -587,7 +606,6 @@ public class PackageFragment extends Fragment {
                 params.put("cupon_code", cupon_code);
                 params.put("cupon_price", cupon_price);
                 params.put("paid_amount", paid_amount);
-                params.put("use_wallet", use_wallet);
 
                 Log.d("details", params.toString());
 
@@ -605,33 +623,30 @@ public class PackageFragment extends Fragment {
 
     public void showCalender1() {
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
 
 
-                month = month + 1;
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
 
-                String fmonth = "" + month;
-                String fDate = "" + dayOfMonth;
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
 
-                if (month < 10) {
-                    fmonth = "0" + month;
-                }
-                if (dayOfMonth < 10) {
-                    fDate = "0" + dayOfMonth;
-                }
+                        //txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
-                date = fmonth + "/" + fDate + "/" + year;
-                //String date = year+"-"+month+"-"+day;
-                btn_StartDate.setText(date);
+                        // date = fmonth + "/" + fDate + "/" + year;
+                        date = year+"-"+(monthOfYear + 1)+"-"+dayOfMonth;
+                        btn_StartDate.setText(date);
 
-
-            }
-        }, year, month, day);
-
+                    }
+                }, year, month, day);
         datePickerDialog.show();
+
     }
 
     public void userwallet(String user_id) {
@@ -744,7 +759,7 @@ public class PackageFragment extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    public void paymentmsg(String cust_id) {
+    public void paymentmsg(String order_id) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.orderstatus, new Response.Listener<String>() {
             @Override
@@ -757,18 +772,26 @@ public class PackageFragment extends Fragment {
                     if (status.equals("200")) {
 
                         String error = jsonObject.getString("error");
+                        String data = jsonObject.getString("data");
 
-//                        if (statusurl.equals("FAILURE")) {
-//
-//                        } else {
-//
-//                            Fragment fragment = new HomeFragment();
-//                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment, "HomeFragment");
-//                            fragmentTransaction.addToBackStack(null);
-//                            fragmentTransaction.commit();
-//                        }
+                        JSONArray jsonArray_data = new JSONArray(data);
+                        JSONObject jsonObject1_data = jsonArray_data.getJSONObject(0);
+                        String order_id = jsonObject1_data.getString("order_id");
+                        String user_id = jsonObject1_data.getString("user_id");
+                        String order_status = jsonObject1_data.getString("order_status");
+
+                        Log.d("order_statusgg",order_status);
+
+                        if (order_status.equals("Success")) {
+
+                            Fragment fragment = new HomeFragment();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment, "HomeFragment");
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+
+                        }
 
                     } else {
 
@@ -823,7 +846,7 @@ public class PackageFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<>();
-                params.put("cust_id", cust_id);
+                params.put("order_id", order_id);
 
                 Log.d("addressparameterlist", params.toString());
 

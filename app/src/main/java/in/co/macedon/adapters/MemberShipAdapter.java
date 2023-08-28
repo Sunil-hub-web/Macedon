@@ -1,6 +1,7 @@
 package in.co.macedon.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,12 +61,24 @@ public class MemberShipAdapter extends RecyclerView.Adapter<MemberShipAdapter.Vi
                 bundle.putString("packagedurtion",memberModel.getPackage_duration());
                 bundle.putString("packageprice",memberModel.getPackage_duration());
                 bundle.putString("messageDet",memberModel.getPackage_description());
+                bundle.putString("memberModelId",memberModel.getPackage_id());
                 bundle.putString("messagepass","gymMemberdetail");
                 packageFragment.setArguments(bundle);
                 FragmentTransaction transaction =((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, packageFragment); // Add your fragment class
                 transaction.addToBackStack(null);
                 transaction.commit();
+
+                SharedPreferences pref = context.getSharedPreferences("MyPref", 0); // 0 - for private mode
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("packageName",memberModel.getPackage_name());
+                editor.putString("priceDetails",memberModel.getPackage_price());
+                editor.putString("packagedurtion",memberModel.getPackage_duration());
+                editor.putString("packageprice",memberModel.getPackage_duration());
+                editor.putString("messageDet",memberModel.getPackage_description());
+                editor.putString("memberModelId",memberModel.getPackage_id());
+                editor.putString("messagepass","gymMemberdetail");
+                editor.commit(); // commit changes
             }
         });
 

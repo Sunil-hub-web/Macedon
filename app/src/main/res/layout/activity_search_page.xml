@@ -46,23 +46,109 @@
 
         </androidx.cardview.widget.CardView>
 
-        <EditText
-            android:id="@+id/serach"
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:weightSum="2"
+           android:orientation="horizontal">
+
+           <AutoCompleteTextView
+               android:id="@+id/auto_City"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_margin="@dimen/ten"
+               android:background="@drawable/autocomplate_bg"
+               android:imeOptions="actionNext"
+               android:inputType="textAutoComplete"
+               android:padding="@dimen/twelve"
+               android:textColor="@color/colorPrimary"
+               android:textSize="@dimen/textsize"
+               android:hint="---Select Your City---"
+               android:focusable="false"
+               android:fontFamily="serif"
+               android:cursorVisible="false"
+               android:longClickable="false"
+               android:textIsSelectable="false"
+               />
+
+           <AutoCompleteTextView
+               android:id="@+id/auto_Area"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_margin="@dimen/ten"
+               android:background="@drawable/autocomplate_bg"
+               android:imeOptions="actionNext"
+               android:inputType="textAutoComplete"
+               android:padding="@dimen/twelve"
+               android:textColor="@color/colorPrimary"
+               android:textSize="@dimen/textsize"
+               android:hint="---Select Your Area---"
+               android:focusable="false"
+               android:fontFamily="serif"
+               android:cursorVisible="false"
+               android:longClickable="false"
+               android:textIsSelectable="false"
+               />
+
+
+       </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/forty_five"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/fifteen"
-            android:background="@drawable/login_btn_bg"
-            android:drawableRight="@drawable/search_1"
-            android:drawablePadding="@dimen/fifteen"
-            android:hint="Serach"
-            android:padding="9dp"></EditText>
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_Services"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginEnd="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:layout_toLeftOf="@+id/btn_Serach"
+                android:background="@drawable/autocomplate_bg"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:fontFamily="serif"
+                android:hint="---Select Your Services---"
+                android:imeOptions="actionNext"
+                android:inputType="textAutoComplete"
+                android:longClickable="false"
+                android:padding="@dimen/twelve"
+                android:textColor="@color/colorPrimary"
+                android:textIsSelectable="false"
+                android:textSize="@dimen/textsize" />
+
+
+            <TextView
+                android:id="@+id/btn_Serach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/payment_back"
+                android:fontFamily="@font/sans_bold"
+                android:gravity="center"
+                android:text="Serach"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/fifteen"
+                android:padding="@dimen/twelve"/>
+
+
+        </RelativeLayout>
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/serachRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/serach"
             android:layout_marginTop="@dimen/ten"></androidx.recyclerview.widget.RecyclerView>
 
 

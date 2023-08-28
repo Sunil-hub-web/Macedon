@@ -23,5 +23,7 @@ public class AppURL {
     public static final String offer = BaseUrl+"offer";
     public static final String ratreview = BaseUrl+"ratreview";
     public static final String orderstatus = BaseUrl+"orderstatus";
+    public static final String onlinepayment = BaseUrl+"onlinepayment";
+    public static final String filter = BaseUrl+"filter";
 
 }

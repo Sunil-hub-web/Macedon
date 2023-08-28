@@ -3,9 +3,13 @@ package in.co.macedon.fragments;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -23,6 +28,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,6 +51,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,7 +81,7 @@ public class SingleProduct_Fragment extends Fragment {
 
     RecyclerView memberShipPlanDet, aboutgymRecycler, packagePlanRecycler, timeimgPlanRecycler, reviwRatingRecycler;
     TextView address_Det, pin_code, contactNo, emailName, fitnessName, centerLoc, text_Amenities, text_SheduleClass,
-            text_CustomerReview, text_ReviewAndRating;
+            text_CustomerReview, text_ReviewAndRating,text_Showtimeimg;
     String centerimage, center_name, city_name, address1, pin, email, contact_no, centerId, rateValue = "",
             service_id = "", service_Name = "",userId;
     ArrayList<SingleCentergalleryModel> centergalleryModels = new ArrayList<>();
@@ -103,6 +110,7 @@ public class SingleProduct_Fragment extends Fragment {
     ArrayList<String> serviceName = new ArrayList<>();
     Map<String, String> paramsServices = new HashMap<>();
     SessionManager sessionManager;
+    NestedScrollView scrollView;
 
     @Nullable
     @Override
@@ -118,7 +126,7 @@ public class SingleProduct_Fragment extends Fragment {
         pin_code = view.findViewById(R.id.pin_code);
         contactNo = view.findViewById(R.id.contactNo);
         emailName = view.findViewById(R.id.emailName);
-        fitnessName = view.findViewById(R.id.fitnessName);
+      //  fitnessName = view.findViewById(R.id.fitnessName);
         viewpagerBanner = view.findViewById(R.id.viewpagerBanner);
         centerLoc = view.findViewById(R.id.centerLoc);
         text_Amenities = view.findViewById(R.id.text_Amenities);
@@ -126,9 +134,9 @@ public class SingleProduct_Fragment extends Fragment {
         viewpagerAddeds = view.findViewById(R.id.viewpagerAddeds);
         text_ReviewAndRating = view.findViewById(R.id.text_ReviewAndRating);
         packagePlanRecycler = view.findViewById(R.id.packagePlanRecycler);
-        timeimgPlanRecycler = view.findViewById(R.id.timeimgPlanRecycler);
-        timesoltreal = view.findViewById(R.id.timesoltreal);
+        text_Showtimeimg = view.findViewById(R.id.text_Showtimeimg);
         reviwRatingRecycler = view.findViewById(R.id.reviwRatingRecycler);
+        scrollView = view.findViewById(R.id.scrollView);
 
         DashBoard.locationlayout.setVisibility(View.VISIBLE);
         DashBoard.cart.setVisibility(View.GONE);
@@ -145,6 +153,9 @@ public class SingleProduct_Fragment extends Fragment {
 
 
         }
+
+        scrollView.fullScroll(View.FOCUS_DOWN);
+        scrollView.setSmoothScrollingEnabled(true);
 
         sessionManager = new SessionManager(getContext());
         userId = sessionManager.getUserID();
@@ -250,10 +261,10 @@ public class SingleProduct_Fragment extends Fragment {
             public void onClick(View view, int position) {
 
                 SingleCenterActivityModel animal = centerActivityModels.get(position);
-                Toast.makeText(getActivity().getApplicationContext(), animal.getService_master_name() + " is selected!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity().getApplicationContext(), animal.getService_master_name() + " is selected!", Toast.LENGTH_LONG).show();
 
-                singleproduct1("116", animal.getService_master_id());
-                singleproduct2("116", animal.getService_master_id());
+                singleproduct1(centerId, animal.getService_master_id());
+                singleproduct2(centerId, animal.getService_master_id());
                 Log.d("memberdetails", animal.getService_master_id());
 
             }
@@ -269,6 +280,14 @@ public class SingleProduct_Fragment extends Fragment {
             public void onClick(View v) {
 
                 showReviewRating();
+            }
+        });
+
+        text_Showtimeimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showDialog();
             }
         });
 
@@ -327,7 +346,7 @@ public class SingleProduct_Fragment extends Fragment {
                         pin_code.setText(pin);
                         contactNo.setText(contact_no);
                         emailName.setText(email);
-                        fitnessName.setText(center_name);
+        //                fitnessName.setText(center_name);
                         centerLoc.setText(city_name);
 
                         centergalleryModels.clear();
@@ -623,24 +642,14 @@ public class SingleProduct_Fragment extends Fragment {
                             }
                         }
 
-
                         if (centerTimeingSlots.size() != 0) {
 
-                            timesoltreal.setVisibility(View.VISIBLE);
+                            text_Showtimeimg.setVisibility(View.VISIBLE);
 
-                            Log.d("centerActivityModelsaa", centerTimeingSlots.toString());
-
-                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-                            //linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                            timeslotAdapter = new TimeslotAdapter(centerTimeingSlots, getContext());
-                            timeimgPlanRecycler.setLayoutManager(linearLayoutManager);
-                            timeimgPlanRecycler.setHasFixedSize(true);
-                            timeimgPlanRecycler.setAdapter(timeslotAdapter);
                         }else{
 
-                            Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Time Solt Not Found", Toast.LENGTH_SHORT).show();
                         }
-
                     }
 
                 } catch (JSONException e) {
@@ -755,8 +764,10 @@ public class SingleProduct_Fragment extends Fragment {
                             Log.d("centerActivityModels", centerActivityModels.toString());
 
                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-                            memberShipAdapter = new MemberShipAdapter1(centerPackageModels, getContext(), "SingleProduct");
+                            memberShipAdapter = new MemberShipAdapter1(centerPackageModels, getContext(), "SingleProduct",serviceId,centerId);
                             packagePlanRecycler.setLayoutManager(linearLayoutManager);
+                            scrollView.fullScroll(View.FOCUS_DOWN);
+                            scrollView.setSmoothScrollingEnabled(true);
                             packagePlanRecycler.setHasFixedSize(true);
                             packagePlanRecycler.setAdapter(memberShipAdapter);
 
@@ -764,9 +775,7 @@ public class SingleProduct_Fragment extends Fragment {
 
                             Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
                         }
-
-
-
+                        
                     }
 
                 } catch (JSONException e) {
@@ -938,6 +947,43 @@ public class SingleProduct_Fragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
+
+    }
+
+    private void showDialog() {
+
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.showtimesolat);
+
+        RecyclerView timeimgPlanRecycler = dialog.findViewById(R.id.timeimgPlanRecycler);
+
+        if (centerTimeingSlots.size() != 0) {
+
+            text_Showtimeimg.setVisibility(View.VISIBLE);
+
+            Log.d("centerActivityModelsaa", centerTimeingSlots.toString());
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+            //linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+            timeslotAdapter = new TimeslotAdapter(centerTimeingSlots, getContext());
+            timeimgPlanRecycler.setLayoutManager(linearLayoutManager);
+            scrollView.fullScroll(View.FOCUS_DOWN);
+            scrollView.setSmoothScrollingEnabled(true);
+            timeimgPlanRecycler.setHasFixedSize(true);
+            timeimgPlanRecycler.setAdapter(timeslotAdapter);
+
+        }else{
+
+            Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
+        }
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
 }

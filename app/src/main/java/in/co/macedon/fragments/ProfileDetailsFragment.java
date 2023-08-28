@@ -1,13 +1,20 @@
 package in.co.macedon.fragments;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,8 +33,10 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import in.co.macedon.R;
@@ -37,7 +46,7 @@ import in.co.macedon.extras.SessionManager;
 
 public class ProfileDetailsFragment extends Fragment {
 
-    TextView logout_txt, userprofile_txt, nav_Subscriptions, nev_CompletedSession, wallet_txt;
+    TextView logout_txt, userprofile_txt, nav_Subscriptions, nev_CompletedSession, wallet_txt,showAllDate;
     SessionManager sessionManager;
     ImageView image_back;
     // variable for our bar chart
@@ -73,6 +82,7 @@ public class ProfileDetailsFragment extends Fragment {
         nev_CompletedSession = view.findViewById(R.id.nev_CompletedSession);
         image_back = view.findViewById(R.id.image_back);
         editProfile = view.findViewById(R.id.editProfile);
+        showAllDate = view.findViewById(R.id.showAllDate);
         DashBoard.header.setVisibility(View.GONE);
 
         // initializing variable for bar chart.
@@ -178,6 +188,8 @@ public class ProfileDetailsFragment extends Fragment {
                 ft.replace(R.id.nav_host_fragment, homeFragment);
                 ft.addToBackStack(null);
                 ft.commit();
+
+                DashBoard.navView.setSelectedItemId(R.id.navigation_home);
 
             }
         });
@@ -314,6 +326,53 @@ public class ProfileDetailsFragment extends Fragment {
         barChart.getXAxis().setGranularityEnabled(true);
        // barChart.getXAxis().setCenterAxisLabels(true);
 
+        showAllDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showDialog();
+            }
+        });
+
         return view;
+    }
+
+    private void showDialog() {
+
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottomsheetlayout);
+
+        TextView showdate = dialog.findViewById(R.id.showdate);
+        DatePicker datePicker1 = dialog.findViewById(R.id.datePicker1);
+        int day = datePicker1.getDayOfMonth();
+        int month = datePicker1.getMonth() + 1;
+        int year = datePicker1.getYear();
+        showdate.setText(year+"-"+day+"-"+month);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            datePicker1.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                    showdate.setText(year+"-"+dayOfMonth+"-"+monthOfYear);
+                }
+            });
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("MM-dd-yyyy");
+            Date d = new Date(year, month, day);
+            String strDate = dateFormatter.format(d);
+        }
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
     }
 }
