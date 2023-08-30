@@ -26,7 +26,7 @@
                 android:layout_marginStart="@dimen/ten"
                 android:layout_marginTop="@dimen/ten"
                 android:layout_marginEnd="@dimen/ten"
-                android:src="@drawable/back">
+                android:src="@drawable/left_arrow">
 
 
             </ImageView>

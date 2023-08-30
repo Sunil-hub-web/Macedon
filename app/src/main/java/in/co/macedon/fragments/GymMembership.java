@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.MemberShipAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.models.MemberShipModel;
@@ -48,6 +49,9 @@ public class GymMembership extends Fragment {
         View view = inflater.inflate(R.layout.membership_frag, container, false);
 
         membershipRecycler = view.findViewById(R.id.membershipRecycler);
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         getMemberShip();
 

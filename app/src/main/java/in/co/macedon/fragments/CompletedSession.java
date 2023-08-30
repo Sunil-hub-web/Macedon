@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.CompleteSessionAdapter;
 import in.co.macedon.adapters.SubscriptionAdapter;
 import in.co.macedon.extras.AppURL;
@@ -58,6 +59,9 @@ public class CompletedSession extends Fragment {
 
         recyclerCompleteSession = view.findViewById(R.id.recyclerCompleteSession);
         sessionManager = new SessionManager(getActivity());
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         userCompletedsession(sessionManager.getUserID());
 

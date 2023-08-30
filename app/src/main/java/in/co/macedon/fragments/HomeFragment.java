@@ -69,6 +69,7 @@ import in.co.macedon.adapters.ExploreMoreAdapters;
 import in.co.macedon.adapters.TestimonialAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.extras.SessionManager;
+import in.co.macedon.extras.ViewDialog;
 import in.co.macedon.models.AllServicesModel;
 import in.co.macedon.models.Banner_ModelClass;
 import in.co.macedon.models.Category_ModelClass;
@@ -104,6 +105,8 @@ public class HomeFragment extends Fragment {
     ArrayList<CenterServicesModel> servicesModelArrayList;
     NestedScrollView scrollView;
 
+    ViewDialog progressbar;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -120,11 +123,12 @@ public class HomeFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         userId = sessionManager.getUserID();
         DashBoard.address_txt.setText(sessionManager.getCityName());
+        DashBoard.address_txt1.setText(sessionManager.getCityName());
         DashBoard.header.setVisibility(View.VISIBLE);
+        DashBoard.header1.setVisibility(View.GONE);
 
         Log.d("userid123",userId);
-
-        DashBoard.header.setVisibility(View.VISIBLE);
+        progressbar = new ViewDialog(getActivity());
 
         viewpagerBanner.setClipToPadding(false);
         viewpagerBanner.setClipChildren(false);
@@ -209,20 +213,33 @@ public class HomeFragment extends Fragment {
                 showAddress_Dialog();
             }
         });
+
+        /*DashBoard.address_txt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showAddress_Dialog();
+            }
+        });
+*/
         return v;
     }
 
     public void getHomeDeatils(String user_id, String city_id){
 
-        ProgressDialog progressDialog = new ProgressDialog(getContext());
+       /* ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Retrive Home Page Details");
-        progressDialog.show();
+        progressDialog.show();*/
+
+        progressbar.showDialog();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.user_home, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
+
+                progressbar.hideDialog();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -321,8 +338,8 @@ public class HomeFragment extends Fragment {
                         categoryAdapter = new CategoryAdapter(categoryDetails,getContext());
                         categoryRecycler.setLayoutManager(linearLayoutManager);
                         categoryRecycler.setNestedScrollingEnabled(true);
-                        scrollView.fullScroll(View.FOCUS_DOWN);
-                        scrollView.setSmoothScrollingEnabled(true);
+                       // scrollView.fullScroll(View.FOCUS_DOWN);
+                      //  scrollView.setSmoothScrollingEnabled(true);
                         categoryRecycler.setHasFixedSize(true);
                         categoryRecycler.smoothScrollToPosition(0);
                         categoryRecycler.setAdapter(categoryAdapter);
@@ -363,7 +380,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
+                progressbar.hideDialog();
                 error.printStackTrace();
                 Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
 
@@ -432,7 +450,7 @@ public class HomeFragment extends Fragment {
         dialogConfirm.getWindow().setWindowAnimations(R.style.DialogAnimation);
         dialogConfirm.setContentView(R.layout.selectaddress);
         dialogConfirm.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        dialogConfirm.setCancelable(false);
+        dialogConfirm.setCancelable(true);
         //dialogConfirm.setCanceledOnTouchOutside(true);
        // Window window = dialogConfirm.getWindow();
       //  window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -484,13 +502,14 @@ public class HomeFragment extends Fragment {
                     sessionManager.setCityId(cityid);
 
                     DashBoard.address_txt.setText(sessionManager.getCityName());
+                    DashBoard.address_txt1.setText(sessionManager.getCityName());
 
 
                     getHomeDeatils(userId,cityid);
 
                     getAllServices(cityid);
 
-                    dialogConfirm.dismiss();
+                    //dialogConfirm.dismiss();
 
 
                 }
@@ -686,15 +705,15 @@ public class HomeFragment extends Fragment {
     }
     public void getAllServices(String cityId){
 
-        ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("All Serivices Pleae Wait....");
-        progressDialog.show();
+//        ProgressDialog progressDialog = new ProgressDialog(getContext());
+//        progressDialog.setMessage("All Serivices Pleae Wait....");
+//        progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, AppURL.AllService, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                progressDialog.dismiss();
+            //    progressDialog.dismiss();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -726,8 +745,8 @@ public class HomeFragment extends Fragment {
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
                         allservicesRecycler.setLayoutManager(linearLayoutManager);
                         allservicesRecycler.setNestedScrollingEnabled(false);
-                        scrollView.fullScroll(View.FOCUS_DOWN);
-                        scrollView.setSmoothScrollingEnabled(true);
+                      //  scrollView.fullScroll(View.FOCUS_DOWN);
+                      //  scrollView.setSmoothScrollingEnabled(true);
                         allservicesRecycler.setItemAnimator(new DefaultItemAnimator());
                         allservicesRecycler.setAdapter(adpater);
 
@@ -740,7 +759,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 error.printStackTrace();
                 Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
             }

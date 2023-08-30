@@ -89,6 +89,7 @@ public class ProfileDetailsFragment extends Fragment {
         barChart = view.findViewById(R.id.idBarChart);
 
         sessionManager = new SessionManager(getContext());
+
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

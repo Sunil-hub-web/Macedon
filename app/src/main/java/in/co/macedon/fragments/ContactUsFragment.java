@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.extras.AppURL;
 
 public class ContactUsFragment extends Fragment {
@@ -43,6 +44,9 @@ public class ContactUsFragment extends Fragment {
         text_address = view.findViewById(R.id.text_address);
         text_phono = view.findViewById(R.id.text_phono);
         text_email = view.findViewById(R.id.text_email);
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         aboutAsData();
 

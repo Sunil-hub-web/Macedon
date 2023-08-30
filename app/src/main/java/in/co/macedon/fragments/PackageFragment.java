@@ -97,6 +97,10 @@ public class PackageFragment extends Fragment {
         DashBoard.cart.setVisibility(View.GONE);
         DashBoard.fl.removeAllViews();
         DashBoard.userName.setText("Package Detils");
+        DashBoard.userName1.setText("Package Detils");
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         SharedPreferences pref = getActivity().getSharedPreferences("MyPref", 0);
 

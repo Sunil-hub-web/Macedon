@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.BannerAdapter;
 import in.co.macedon.adapters.CategoryAdapter;
 import in.co.macedon.adapters.CategoryListAdapter;
@@ -63,6 +64,9 @@ public class Category_Fragment extends Fragment {
         listnotFound = view.findViewById(R.id.listnotFound);
 
         Bundle arguments = getArguments();
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
 
         if (arguments!=null){

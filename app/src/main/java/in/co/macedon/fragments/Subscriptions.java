@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.SubscriptionAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.extras.SessionManager;
@@ -70,6 +71,9 @@ public class Subscriptions extends Fragment {
         sessionManager = new SessionManager(getActivity());
 
         userSubscription(sessionManager.getUserID());
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         text_MacPass.setOnClickListener(new View.OnClickListener() {
             @Override

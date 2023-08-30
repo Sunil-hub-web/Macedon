@@ -20,6 +20,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -111,6 +112,7 @@ public class SingleProduct_Fragment extends Fragment {
     Map<String, String> paramsServices = new HashMap<>();
     SessionManager sessionManager;
     NestedScrollView scrollView;
+    ImageView imageback;
 
     @Nullable
     @Override
@@ -139,9 +141,13 @@ public class SingleProduct_Fragment extends Fragment {
         scrollView = view.findViewById(R.id.scrollView);
 
         DashBoard.locationlayout.setVisibility(View.VISIBLE);
+        DashBoard.locationlayout1.setVisibility(View.VISIBLE);
         DashBoard.cart.setVisibility(View.GONE);
         DashBoard.fl.removeAllViews();
         //     DashBoard.userName.setText("Package Detils");
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         Bundle arguments = getArguments();
         if (arguments != null) {
@@ -290,6 +296,7 @@ public class SingleProduct_Fragment extends Fragment {
                 showDialog();
             }
         });
+
 
         return view;
     }
@@ -766,8 +773,8 @@ public class SingleProduct_Fragment extends Fragment {
                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                             memberShipAdapter = new MemberShipAdapter1(centerPackageModels, getContext(), "SingleProduct",serviceId,centerId);
                             packagePlanRecycler.setLayoutManager(linearLayoutManager);
-                            scrollView.fullScroll(View.FOCUS_DOWN);
-                            scrollView.setSmoothScrollingEnabled(true);
+                          //  scrollView.fullScroll(View.FOCUS_DOWN);
+                         //   scrollView.setSmoothScrollingEnabled(true);
                             packagePlanRecycler.setHasFixedSize(true);
                             packagePlanRecycler.setAdapter(memberShipAdapter);
 
@@ -968,8 +975,8 @@ public class SingleProduct_Fragment extends Fragment {
             //linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
             timeslotAdapter = new TimeslotAdapter(centerTimeingSlots, getContext());
             timeimgPlanRecycler.setLayoutManager(linearLayoutManager);
-            scrollView.fullScroll(View.FOCUS_DOWN);
-            scrollView.setSmoothScrollingEnabled(true);
+           // scrollView.fullScroll(View.FOCUS_DOWN);
+          //  scrollView.setSmoothScrollingEnabled(true);
             timeimgPlanRecycler.setHasFixedSize(true);
             timeimgPlanRecycler.setAdapter(timeslotAdapter);
 

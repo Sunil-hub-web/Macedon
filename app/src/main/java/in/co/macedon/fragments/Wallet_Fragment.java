@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.CompleteSessionAdapter;
 import in.co.macedon.adapters.WalletAdapter;
 import in.co.macedon.extras.AppURL;
@@ -66,6 +67,10 @@ public class Wallet_Fragment extends Fragment {
 
         sessionManager = new SessionManager(getContext());
         userwallet(sessionManager.getUserID());
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
+
         return view;
     }
 

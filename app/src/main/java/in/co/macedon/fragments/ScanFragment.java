@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.activities.ScannerClass;
 
 public class ScanFragment extends Fragment {
@@ -23,6 +24,9 @@ public class ScanFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_scanner, container, false);
 
         btn_ScannClass = root.findViewById(R.id.btn_ScannClass);
+
+        DashBoard.header1.setVisibility(View.VISIBLE);
+        DashBoard.header.setVisibility(View.GONE);
 
         btn_ScannClass.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.adapters.OfferAdapter;
 import in.co.macedon.extras.AppURL;
 import in.co.macedon.models.OfferModelClass;
@@ -45,6 +46,9 @@ public class OfferFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.showofferimagelist,container,false);
         offerRecycler = view.findViewById(R.id.offerRecycler);
+
+        DashBoard.header1.setVisibility(View.VISIBLE);
+        DashBoard.header.setVisibility(View.GONE);
 
         getOfferDetails();
 
