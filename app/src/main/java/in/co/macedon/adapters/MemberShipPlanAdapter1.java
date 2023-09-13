@@ -103,7 +103,6 @@ public class MemberShipPlanAdapter1 extends RecyclerView.Adapter<MemberShipPlanA
             }
         });
 
-
     }
 
     @Override

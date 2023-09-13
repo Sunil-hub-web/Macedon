@@ -65,7 +65,7 @@ public class MemberShipAdapter extends RecyclerView.Adapter<MemberShipAdapter.Vi
                 bundle.putString("messagepass","gymMemberdetail");
                 packageFragment.setArguments(bundle);
                 FragmentTransaction transaction =((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, packageFragment); // Add your fragment class
+                transaction.replace(R.id.nav_host_fragment, packageFragment,"packageFragment1"); // Add your fragment class
                 transaction.addToBackStack(null);
                 transaction.commit();
 

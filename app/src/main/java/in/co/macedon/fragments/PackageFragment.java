@@ -161,10 +161,12 @@ public class PackageFragment extends Fragment {
         if (messagepass.equals("gymMemberdetail")) {
 
             btn_StartDate.setVisibility(View.INVISIBLE);
+          //  walletamount.setVisibility(View.INVISIBLE);
 
         } else {
 
             btn_StartDate.setVisibility(View.VISIBLE);
+           // walletamount.setVisibility(View.VISIBLE);
         }
 
         String data = "0";
@@ -714,6 +716,8 @@ public class PackageFragment extends Fragment {
                                 }
                             }
 
+                            walletamount.setVisibility(View.VISIBLE);
+
                             crdr_balance = totcr_balance - totdr_balance;
                             sessionManager.setWalletAmount(crdr_balance.floatValue());
 
@@ -724,6 +728,8 @@ public class PackageFragment extends Fragment {
                         } else {
 
                             Toast.makeText(getContext(), statusdat, Toast.LENGTH_SHORT).show();
+
+                            walletamount.setVisibility(View.GONE);
                         }
                     } else {
 
@@ -754,7 +760,9 @@ public class PackageFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("user_id", user_id);
-                Log.d("userid", user_id);
+
+                Log.d("userid123", user_id);
+
                 return params;
             }
         };

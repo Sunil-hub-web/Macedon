@@ -415,7 +415,6 @@ public class DashBoard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
-        String tag;
         test = (HomeFragment) getSupportFragmentManager().findFragmentByTag("HomeFragment");
         WebViewFragment fragmentInstance = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("WebViewFragment");
         WebViewFragment fragmentInstance1 = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("singleProductFragment");
@@ -429,16 +428,7 @@ public class DashBoard extends AppCompatActivity {
 
 
         Fragment fragment1 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-
-        if (fragment1 != null){
-
-            tag = (String) fragment1.getTag();
-
-        }else{
-
-            tag = "";
-        }
-
+        String tagName = (String) fragment1.getTag();
 
         if (test != null && test.isVisible()) {
 
@@ -468,44 +458,37 @@ public class DashBoard extends AppCompatActivity {
             header.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
             header.setVisibility(View.VISIBLE);
 
-        }else if (tag != null) {
-
-//            if (fragmentInstance6 != null){
-//
-//                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new GymMembership(),"GymMembership").commit();
-//
-//            }else{
-//
-//            }
+        }else if (tagName.equals("GymMembership")) {
 
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
-
-
-        }else if (fragmentInstance3 != null) {
+        }else if (tagName.equals("ScanFragment")) {
 
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
-        }else if (fragmentInstance4 != null) {
+        }else if (tagName.equals("ProfileDetailsFragment")) {
 
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
-        }else if (fragmentInstance5 != null) {
+        }else if (tagName.equals("OfferFragment")) {
 
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
-        }else if (fragmentInstance1 != null) {
+        }else if (tagName.equals("packageFragment1")) {
 
-            navView.setSelectedItemId(R.id.navigation_home);
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+          //  navView.setSelectedItemId(R.id.navigation_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new GymMembership(),"GymMembership").commit();
+
+        }else if (tagName.equals("packageFragment2")) {
+
+           // navView.setSelectedItemId(R.id.navigation_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new SingleProduct_Fragment(),"singleProductFragment").commit();
 
         } else {
-
-
 
             super.onBackPressed();
 
