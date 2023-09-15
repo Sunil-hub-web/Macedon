@@ -452,7 +452,13 @@ public class DashBoard extends AppCompatActivity {
                     }
                 }, 4 * 1000);
             }
-        }else if (fragmentInstance != null) {
+        }else if (tagName == null) {
+
+           // userNamedet.setText("Hi, " + name);
+            navView.setSelectedItemId(R.id.navigation_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+
+        } else if (fragmentInstance != null) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PackageFragment(), "checkout").commit();
             header.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
@@ -493,7 +499,7 @@ public class DashBoard extends AppCompatActivity {
             super.onBackPressed();
 
            // userNamedet.setText("Hi, " + name);
-            // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
 
         }

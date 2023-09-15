@@ -26,6 +26,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -40,6 +42,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,14 +51,19 @@ import java.util.Map;
 
 import in.co.macedon.R;
 import in.co.macedon.activities.DashBoard;
+import in.co.macedon.adapters.OfferAdapter;
+import in.co.macedon.adapters.PackageOfferAdapter;
 import in.co.macedon.extras.AppURL;
+import in.co.macedon.extras.RecyclerTouchListener;
 import in.co.macedon.extras.SessionManager;
+import in.co.macedon.models.OfferModelClass;
+import in.co.macedon.models.SingleCenterActivityModel;
 
 public class PackageFragment extends Fragment {
 
-    TextView packageName, priceDetails, packagedurtion, messageDet, btn_CouponCode, btn_BuyNow, text_Name,
+    public static TextView packageName, priceDetails, packagedurtion, messageDet, btn_CouponCode, btn_BuyNow, text_Name,
             text_Email, text_Contact, subTotalPrice, couponPrice, grandTotalPrice, btn_StartDate;
-    String strpackageName, strpriceDetails, strpackagedurtion, strpackageprice, strmessageDet, userId, date,
+    public static String strpackageName, strpriceDetails, strpackagedurtion, strpackageprice, strmessageDet, userId, date,
             str_coupon = "", data, service_master_id, memberModelId, center_id, messagepass = "", formattedDate, order_id = "",
             statues_url_sat;
     SessionManager sessionManager;
@@ -64,6 +72,7 @@ public class PackageFragment extends Fragment {
     Double cr_balance, dr_balance, crdr_balance, totcr_balance = 0.0, totdr_balance = 0.0, price3 = 0.0;
     CheckBox walletamount;
     Dialog dialogConfirm;
+    ArrayList<OfferModelClass> offerModelClasses = new ArrayList<>();
 
     @Nullable
     @Override
@@ -126,6 +135,7 @@ public class PackageFragment extends Fragment {
         text_Email.setText(sessionManager.getUserEmail());
         text_Contact.setText(sessionManager.getUserMobileno());
 
+        getOfferDetails();
 
         if (order_id == null){
         }else{
@@ -189,25 +199,40 @@ public class PackageFragment extends Fragment {
                 dialog.setContentView(R.layout.couponapplylayout);
 
                 ImageView backimage = dialog.findViewById(R.id.backimage);
-                EditText edit_couponecode = dialog.findViewById(R.id.edit_couponecode);
-                TextView btn_ApplyCoupon = dialog.findViewById(R.id.btn_ApplyCoupon);
+                RecyclerView recyclerViewOffer = dialog.findViewById(R.id.recyclerViewOffer);
+              //  TextView btn_ApplyCoupon = dialog.findViewById(R.id.btn_ApplyCoupon);
 
-                btn_ApplyCoupon.setOnClickListener(new View.OnClickListener() {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                PackageOfferAdapter packageOfferAdapter = new PackageOfferAdapter(offerModelClasses,getContext());
+                recyclerViewOffer.setLayoutManager(linearLayoutManager);
+                recyclerViewOffer.setHasFixedSize(true);
+                recyclerViewOffer.setAdapter(packageOfferAdapter);
+
+                recyclerViewOffer.addOnItemTouchListener(new RecyclerTouchListener(getActivity().getApplicationContext(),
+                        recyclerViewOffer, new RecyclerTouchListener.ClickListener() {
+
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View view, int position) {
 
-                        if (edit_couponecode.getText().toString().trim().equals("")) {
+                        OfferModelClass offerModel = offerModelClasses.get(position);
+                        //Toast.makeText(getActivity().getApplicationContext(), animal.getService_master_name() + " is selected!", Toast.LENGTH_LONG).show();
 
-                            Toast.makeText(getContext(), "Enter Your Coupon Code", Toast.LENGTH_SHORT).show();
+                        String strcityid = sessionManager.getCityId();
+                        str_coupon = offerModel.getCode();
+                        applyCouponCode(userId, str_coupon, strcityid, strpriceDetails);
 
-                        } else {
+                        Log.d("sunil123456",userId +"  "+ str_coupon +" "+ strcityid+" "+ strpriceDetails);
 
-                            String strcityid = sessionManager.getCityId();
-                            str_coupon = edit_couponecode.getText().toString().trim();
-                            applyCouponCode(userId, str_coupon, strcityid, strpriceDetails);
-                        }
+                        dialog.dismiss();
+
                     }
-                });
+
+                    @Override
+                    public void onLongClick(View view, int position) {
+
+                    }
+                }));
+
 
                 backimage.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -314,93 +339,6 @@ public class PackageFragment extends Fragment {
         });
 
         return view;
-    }
-
-    public void applyCouponCode(String userid, String couponcode, String city_id, String amount) {
-
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Apply Coupon Wait...");
-        progressDialog.show();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.coupondata, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                progressDialog.dismiss();
-
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String status = jsonObject.getString("status");
-
-                    progressDialog.dismiss();
-
-                    if (status.equals("200")) {
-
-                        String error = jsonObject.getString("error");
-                        String message = jsonObject.getString("message");
-                        data = jsonObject.getString("data");
-
-                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-
-                        subTotalPrice.setText("Rs " + strpriceDetails);
-                        couponPrice.setText("Rs " + data);
-
-                        Double price1 = Double.valueOf(strpriceDetails);
-                        Double price2 = Double.valueOf(data);
-                        price3 = price1 - price2;
-                        grandTotalPrice.setText("Rs " + String.valueOf(price3));
-
-                        dialog.dismiss();
-
-                    } else {
-
-                        String error = jsonObject.getString("error");
-                        String message = jsonObject.getString("message");
-                        String data = "0";
-
-                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-
-                        subTotalPrice.setText("Rs " + strpriceDetails);
-                        couponPrice.setText("Rs " + "0");
-                        Double price1 = Double.valueOf(strpriceDetails);
-                        Double price2 = Double.valueOf(data);
-                        Double price3 = price1 - price2;
-                        grandTotalPrice.setText("Rs " + String.valueOf(price3));
-
-                        dialog.dismiss();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                progressDialog.dismiss();
-                Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Map<String, String> params = new HashMap<>();
-                params.put("cuponcode", couponcode);
-                params.put("city_id", city_id);
-                params.put("user_id", userid);
-                params.put("amount", amount);
-
-                return params;
-            }
-        };
-
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(stringRequest);
-
     }
 
     public void buyMembership(String user_id, String package_id, String package_name, String package_duration,
@@ -871,5 +809,159 @@ public class PackageFragment extends Fragment {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+    }
+
+    public void getOfferDetails(){
+
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Offer Details Wait......");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.offer, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("status");
+                    String error = jsonObject.getString("error");
+                    String data = jsonObject.getString("data");
+
+                    if (status.equals("200")){
+
+                        JSONArray jsonArray_data = new JSONArray(data);
+
+                        for (int i=0;i<jsonArray_data.length();i++){
+
+                            JSONObject jsonObject1_datalist = jsonArray_data.getJSONObject(i);
+
+                            String coupon_code_id = jsonObject1_datalist.getString("coupon_code_id");
+                            String name = jsonObject1_datalist.getString("name");
+                            String code = jsonObject1_datalist.getString("code");
+                            String city_id = jsonObject1_datalist.getString("city_id");
+                            String discount_type = jsonObject1_datalist.getString("discount_type");
+                            String discount_value = jsonObject1_datalist.getString("discount_value");
+                            String valid_uo_to = jsonObject1_datalist.getString("valid_uo_to");
+                            String used_up_to = jsonObject1_datalist.getString("used_up_to");
+                            String no_of_use_user = jsonObject1_datalist.getString("no_of_use_user");
+                            String price_cart = jsonObject1_datalist.getString("price_cart");
+                            String img = jsonObject1_datalist.getString("img");
+
+                            OfferModelClass offerModelClass = new OfferModelClass(
+                                    coupon_code_id,name,code,city_id,discount_type,discount_value,valid_uo_to,used_up_to,no_of_use_user,
+                                    price_cart,img
+                            );
+
+                            offerModelClasses.add(offerModelClass);
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getActivity(), ""+error, Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+
+            }
+        });
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+    }
+
+    public void applyCouponCode(String userid, String couponcode, String city_id, String amount) {
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Apply Coupon Wait...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.coupondata, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("status");
+
+                    progressDialog.dismiss();
+
+                    if (status.equals("200")) {
+
+                        String error = jsonObject.getString("error");
+                        String message = jsonObject.getString("message");
+                        data = jsonObject.getString("data");
+
+                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+                        subTotalPrice.setText("Rs " + strpriceDetails);
+                        couponPrice.setText("Rs " + data);
+
+                        Double price1 = Double.valueOf(strpriceDetails);
+                        Double price2 = Double.valueOf(data);
+                        price3 = price1 - price2;
+                        grandTotalPrice.setText("Rs " + String.valueOf(price3));
+
+                        dialog.dismiss();
+
+                    } else {
+
+                        String error = jsonObject.getString("error");
+                        String message = jsonObject.getString("message");
+                        String data = "0";
+
+                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+                        subTotalPrice.setText("Rs " + strpriceDetails);
+                        couponPrice.setText("Rs " + "0");
+                        Double price1 = Double.valueOf(strpriceDetails);
+                        Double price2 = Double.valueOf(data);
+                        Double price3 = price1 - price2;
+                        grandTotalPrice.setText("Rs " + String.valueOf(price3));
+
+                        dialog.dismiss();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<>();
+                params.put("cuponcode", couponcode);
+                params.put("city_id", city_id);
+                params.put("user_id", userid);
+                params.put("amount", amount);
+
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+
     }
 }

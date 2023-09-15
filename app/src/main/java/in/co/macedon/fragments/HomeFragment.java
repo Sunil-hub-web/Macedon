@@ -288,10 +288,10 @@ public class HomeFragment extends Fragment {
                         selectedIndicatorPosition(currentPossition);*/
 
                         categoryDetails = new ArrayList<>();
-                        servicesModelArrayList = new ArrayList<>();
+
 
                         categoryDetails.clear();
-                        servicesModelArrayList.clear();
+
 
                         JSONArray jsonArray_category = new JSONArray(Service_List);
 
@@ -303,6 +303,10 @@ public class HomeFragment extends Fragment {
                             String service_master_name = jsonObject_category.getString("service_master_name");
                             String image = jsonObject_category.getString("image");
                             String center_service = jsonObject_category.getString("center_service");
+
+
+                            servicesModelArrayList = new ArrayList<>();
+                            servicesModelArrayList.clear();
 
                             JSONArray jsonArray_center = new JSONArray(center_service);
 
@@ -509,7 +513,7 @@ public class HomeFragment extends Fragment {
 
                     getAllServices(cityid);
 
-                    //dialogConfirm.dismiss();
+                    dialogConfirm.dismiss();
 
 
                 }

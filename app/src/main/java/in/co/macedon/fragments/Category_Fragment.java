@@ -137,7 +137,7 @@ public class Category_Fragment extends Fragment {
 
                             }
 
-                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                            // GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
                             CategoryListAdapter centerDetailsAdapter = new CategoryListAdapter(getContext(),servicesModelArrayList);
                             categoryRecycler.setLayoutManager(linearLayoutManager);

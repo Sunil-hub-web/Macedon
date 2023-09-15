@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import in.co.macedon.R;
+import in.co.macedon.activities.DashBoard;
 import in.co.macedon.extras.AppURL;
 
 public class TermsConditionsFragment extends Fragment {
@@ -41,6 +42,9 @@ public class TermsConditionsFragment extends Fragment {
 
         text_header = view.findViewById(R.id.text_header);
         text_details = view.findViewById(R.id.text_details);
+
+        DashBoard.header.setVisibility(View.GONE);
+        DashBoard.header1.setVisibility(View.VISIBLE);
 
         aboutAsData();
 
