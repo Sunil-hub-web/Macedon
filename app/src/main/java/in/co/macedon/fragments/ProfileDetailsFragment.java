@@ -90,6 +90,10 @@ public class ProfileDetailsFragment extends Fragment {
 
         sessionManager = new SessionManager(getContext());
 
+        DashBoard.header1.setVisibility(View.GONE);
+        DashBoard.header.setVisibility(View.GONE);
+
+
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +120,7 @@ public class ProfileDetailsFragment extends Fragment {
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 Subscriptions subscriptions = new Subscriptions();
-                ft.replace(R.id.nav_host_fragment, subscriptions);
+                ft.replace(R.id.nav_host_fragment, subscriptions,"Subscriptions");
                 ft.addToBackStack(null);
                 ft.commit();
             }
@@ -133,7 +137,7 @@ public class ProfileDetailsFragment extends Fragment {
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 CompletedSession completedSession = new CompletedSession();
-                ft.replace(R.id.nav_host_fragment, completedSession);
+                ft.replace(R.id.nav_host_fragment, completedSession,"Completed Session");
                 ft.addToBackStack(null);
                 ft.commit();
 
@@ -146,12 +150,12 @@ public class ProfileDetailsFragment extends Fragment {
                 DashBoard.locationlayout.setVisibility(View.VISIBLE);
                 DashBoard.cart.setVisibility(View.GONE);
                 DashBoard.img_Search.setVisibility(View.VISIBLE);
-                DashBoard.userName.setText("Completed Session");
+                DashBoard.userName.setText("Wallet");
                 DashBoard.fl.removeAllViews();
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 Wallet_Fragment wallet_fragment = new Wallet_Fragment();
-                ft.replace(R.id.nav_host_fragment, wallet_fragment);
+                ft.replace(R.id.nav_host_fragment, wallet_fragment,"Wallet");
                 ft.addToBackStack(null);
                 ft.commit();
             }

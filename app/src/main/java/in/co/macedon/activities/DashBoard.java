@@ -130,6 +130,9 @@ public class DashBoard extends AppCompatActivity {
         userName.setText("Hi, " + name);
         userName1.setText("Hi, " + name);
 
+        DashBoard.header1.setVisibility(View.GONE);
+        DashBoard.header.setVisibility(View.VISIBLE);
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -161,6 +164,10 @@ public class DashBoard extends AppCompatActivity {
                         cart.setVisibility(View.GONE);
                         userName.setText("Hi, " + name);
                         userName1.setText("Hi, " + name);
+
+                        DashBoard.header1.setVisibility(View.GONE);
+                        DashBoard.header.setVisibility(View.VISIBLE);
+
                         //fl.removeAllViews();
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
                         break;
@@ -168,7 +175,7 @@ public class DashBoard extends AppCompatActivity {
                     case R.id.navigation_dashboard:
                         locationlayout.setVisibility(View.GONE);
                         cart.setVisibility(View.VISIBLE);
-                        img_Search.setVisibility(View.GONE);
+                        //img_Search.setVisibility(View.GONE);
                         //fl.removeAllViews();
                         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new GymMembership(),"GymMembership").commit();
                         break;
@@ -284,9 +291,12 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                DashBoard.header1.setVisibility(View.GONE);
+                DashBoard.header.setVisibility(View.VISIBLE);
+
                 locationlayout.setVisibility(View.GONE);
                 cart.setVisibility(View.GONE);
-                img_Search.setVisibility(View.GONE);
+                //img_Search.setVisibility(View.GONE);
                 fl.removeAllViews();
                 userName.setText("Contact Us");
                 userName1.setText("Contact Us");
@@ -414,17 +424,24 @@ public class DashBoard extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
+        userName.setText("Hi, " + name);
+        userName1.setText("Hi, " + name);
+
+        DashBoard.header1.setVisibility(View.GONE);
+        DashBoard.header.setVisibility(View.VISIBLE);
+
         //super.onBackPressed();
         test = (HomeFragment) getSupportFragmentManager().findFragmentByTag("HomeFragment");
         WebViewFragment fragmentInstance = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("WebViewFragment");
-        WebViewFragment fragmentInstance1 = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("singleProductFragment");
-
-        GymMembership fragmentInstance2 = (GymMembership) getSupportFragmentManager().findFragmentByTag("GymMembership");
-        ScanFragment fragmentInstance3 = (ScanFragment) getSupportFragmentManager().findFragmentByTag("ScanFragment");
-        ProfileDetailsFragment fragmentInstance4 = (ProfileDetailsFragment) getSupportFragmentManager().findFragmentByTag("ProfileDetailsFragment");
-        OfferFragment fragmentInstance5 = (OfferFragment) getSupportFragmentManager().findFragmentByTag("OfferFragment");
-        PackageFragment fragmentInstance6 = (PackageFragment) getSupportFragmentManager().findFragmentByTag("packageFragment1");
-        PackageFragment fragmentInstance7 = (PackageFragment) getSupportFragmentManager().findFragmentByTag("packageFragment2");
+//        WebViewFragment fragmentInstance1 = (WebViewFragment) getSupportFragmentManager().findFragmentByTag("singleProductFragment");
+//
+//        GymMembership fragmentInstance2 = (GymMembership) getSupportFragmentManager().findFragmentByTag("GymMembership");
+//        ScanFragment fragmentInstance3 = (ScanFragment) getSupportFragmentManager().findFragmentByTag("ScanFragment");
+//        ProfileDetailsFragment fragmentInstance4 = (ProfileDetailsFragment) getSupportFragmentManager().findFragmentByTag("ProfileDetailsFragment");
+//        OfferFragment fragmentInstance5 = (OfferFragment) getSupportFragmentManager().findFragmentByTag("OfferFragment");
+//        PackageFragment fragmentInstance6 = (PackageFragment) getSupportFragmentManager().findFragmentByTag("packageFragment1");
+//        PackageFragment fragmentInstance7 = (PackageFragment) getSupportFragmentManager().findFragmentByTag("packageFragment2");
 
 
         Fragment fragment1 = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
@@ -454,32 +471,62 @@ public class DashBoard extends AppCompatActivity {
             }
         }else if (tagName == null) {
 
+            userName.setText("Hi, " + name);
+            userName1.setText("Hi, " + name);
+
+            DashBoard.header1.setVisibility(View.GONE);
+            DashBoard.header.setVisibility(View.VISIBLE);
+
            // userNamedet.setText("Hi, " + name);
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
         } else if (fragmentInstance != null) {
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PackageFragment(), "checkout").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PackageFragment()).commit();
             header.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
             header.setVisibility(View.VISIBLE);
 
         }else if (tagName.equals("GymMembership")) {
+
+            userName.setText("Hi, " + name);
+            userName1.setText("Hi, " + name);
+
+            DashBoard.header1.setVisibility(View.GONE);
+            DashBoard.header.setVisibility(View.VISIBLE);
 
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
         }else if (tagName.equals("ScanFragment")) {
 
+            userName.setText("Hi, " + name);
+            userName1.setText("Hi, " + name);
+
+            DashBoard.header1.setVisibility(View.GONE);
+            DashBoard.header.setVisibility(View.VISIBLE);
+
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
         }else if (tagName.equals("ProfileDetailsFragment")) {
 
+            userName.setText("Hi, " + name);
+            userName1.setText("Hi, " + name);
+
+            DashBoard.header1.setVisibility(View.GONE);
+            DashBoard.header.setVisibility(View.VISIBLE);
+
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
         }else if (tagName.equals("OfferFragment")) {
+
+            userName.setText("Hi, " + name);
+            userName1.setText("Hi, " + name);
+
+            DashBoard.header1.setVisibility(View.GONE);
+            DashBoard.header.setVisibility(View.VISIBLE);
 
             navView.setSelectedItemId(R.id.navigation_home);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
@@ -492,13 +539,32 @@ public class DashBoard extends AppCompatActivity {
         }else if (tagName.equals("packageFragment2")) {
 
            // navView.setSelectedItemId(R.id.navigation_home);
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new SingleProduct_Fragment(),"singleProductFragment").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileDetailsFragment(),"singleProductFragment").commit();
+
+        }else if (tagName.equals("Subscriptions")) {
+
+            // navView.setSelectedItemId(R.id.navigation_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileDetailsFragment(),"ProfileDetailsFragment").commit();
+
+        }else if (tagName.equals("Completed Session")) {
+
+            // navView.setSelectedItemId(R.id.navigation_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileDetailsFragment(),"ProfileDetailsFragment").commit();
+
+        }else if (tagName.equals("Wallet")) {
+
+            // navView.setSelectedItemId(R.id.navigation_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileDetailsFragment(),"ProfileDetailsFragment").commit();
 
         } else {
 
             super.onBackPressed();
 
            // userNamedet.setText("Hi, " + name);
+            userName.setText("Hi, " + name);
+            userName1.setText("Hi, " + name);
+            DashBoard.header1.setVisibility(View.GONE);
+            DashBoard.header.setVisibility(View.VISIBLE);
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
 
 
@@ -548,6 +614,7 @@ public class DashBoard extends AppCompatActivity {
 
                 locationlayout.setVisibility(View.VISIBLE);
                 cart.setVisibility(View.GONE);
+                img_Search.setVisibility(View.VISIBLE);
                 navView.setSelectedItemId(R.id.navigation_home);
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment(),"HomeFragment").commit();
             }

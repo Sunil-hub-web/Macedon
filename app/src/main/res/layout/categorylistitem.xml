@@ -98,19 +98,19 @@
                     android:gravity="center"
                     android:fontFamily="@font/rupee_foradian"/>
 
-               <!-- <TextView
-                    android:id="@+id/show_Ditance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/loc_Distance"
-                    android:layout_marginLeft="@dimen/ten"
-                    android:layout_marginTop="@dimen/five"
-                    android:text="12 Km"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/twelve_size"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/rupee_foradian"
-                    />-->
+                <!-- <TextView
+                     android:id="@+id/show_Ditance"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_toRightOf="@+id/loc_Distance"
+                     android:layout_marginLeft="@dimen/ten"
+                     android:layout_marginTop="@dimen/five"
+                     android:text="12 Km"
+                     android:textColor="@color/colorAccent"
+                     android:textSize="@dimen/twelve_size"
+                     android:textStyle="bold"
+                     android:fontFamily="@font/rupee_foradian"
+                     />-->
 
             </RelativeLayout>
 

@@ -100,7 +100,7 @@ public class PackageFragment extends Fragment {
 
         sessionManager = new SessionManager(getContext());
 
-        DashBoard.header.setVisibility(View.VISIBLE);
+     //   DashBoard.header.setVisibility(View.VISIBLE);
 
         DashBoard.locationlayout.setVisibility(View.VISIBLE);
         DashBoard.cart.setVisibility(View.GONE);
@@ -441,6 +441,7 @@ public class PackageFragment extends Fragment {
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
 
     }
@@ -561,6 +562,7 @@ public class PackageFragment extends Fragment {
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
 
     }
@@ -706,6 +708,7 @@ public class PackageFragment extends Fragment {
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
     }
 
@@ -808,6 +811,7 @@ public class PackageFragment extends Fragment {
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
     }
 
@@ -961,6 +965,7 @@ public class PackageFragment extends Fragment {
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
 
     }

@@ -207,6 +207,11 @@ public class UserProfileDetails extends Fragment {
                         edit_Gender.setEnabled(false);
                         edit_MobileNo.setEnabled(false);
 
+                        sessionManager.setUserId(user_id);
+                        sessionManager.setUserName(fullname);
+                        sessionManager.setUserMobileNO(contact);
+                        sessionManager.setuserEmail(email);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -244,11 +249,12 @@ public class UserProfileDetails extends Fragment {
     public void UpdateUserProfile(String user_id, String full_name, String e_mail, String contact_number, String gender) {
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Retrive User Details");
+        progressDialog.setMessage("Update User Details");
         progressDialog.show();
 
+        String update = "https://macedon.in/API/update_profile";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, AppURL.update_profile, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURL.update_profile, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -307,6 +313,9 @@ public class UserProfileDetails extends Fragment {
                 params.put("e_mail", e_mail);
                 params.put("contact_number", contact_number);
                 params.put("gender", gender);
+
+                Log.d("profiledetails",user_id+" "+full_name+" "+" "+e_mail+" "+contact_number+" "+gender);
+                
                 return params;
             }
         };
