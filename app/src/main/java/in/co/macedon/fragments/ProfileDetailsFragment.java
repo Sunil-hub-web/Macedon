@@ -46,7 +46,7 @@ import in.co.macedon.extras.SessionManager;
 
 public class ProfileDetailsFragment extends Fragment {
 
-    TextView logout_txt, userprofile_txt, nav_Subscriptions, nev_CompletedSession, wallet_txt,showAllDate;
+    TextView logout_txt, userprofile_txt, nav_Subscriptions, nev_CompletedSession, wallet_txt,showAllDate,centerName;
     SessionManager sessionManager;
     ImageView image_back;
     // variable for our bar chart
@@ -76,12 +76,13 @@ public class ProfileDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
         logout_txt = view.findViewById(R.id.logout_txt);
-        userprofile_txt = view.findViewById(R.id.userprofile_txt);
+        //userprofile_txt = view.findViewById(R.id.userprofile_txt);
         nav_Subscriptions = view.findViewById(R.id.nav_Subscriptions);
         wallet_txt = view.findViewById(R.id.wallet_txt);
         nev_CompletedSession = view.findViewById(R.id.nev_CompletedSession);
         image_back = view.findViewById(R.id.image_back);
         editProfile = view.findViewById(R.id.editProfile);
+        centerName = view.findViewById(R.id.centerName);
         showAllDate = view.findViewById(R.id.showAllDate);
         DashBoard.header.setVisibility(View.GONE);
 
@@ -92,7 +93,7 @@ public class ProfileDetailsFragment extends Fragment {
 
         DashBoard.header1.setVisibility(View.GONE);
         DashBoard.header.setVisibility(View.GONE);
-
+        centerName.setText(sessionManager.getUserName());
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,10 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:fullBackupContent="false">
         <activity
             android:name=".activities.WebViewActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -26,19 +32,31 @@
         </activity>
         <activity
             android:name=".activities.ScannerClass"
-            android:exported="true"></activity>
-        <activity android:name=".activities.DeliveryLocation" />
-        <activity android:name=".activities.SearchPage" />
-        <activity android:name=".activities.CheckInternetConnection" />
-        <activity android:name=".activities.CartActivity" />
-        <activity android:name=".activities.TrainerDetail" />
-        <activity android:name=".activities.TrainerActivity" />
-        <activity android:name=".activities.FitnessCentre" />
-        <activity android:name=".activities.Dietician" />
-        <activity android:name=".activities.ExploreMore" />
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.DeliveryLocation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.SearchPage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.CheckInternetConnection"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.CartActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.TrainerDetail"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.TrainerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.FitnessCentre"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.Dietician"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ExploreMore"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.DashBoard"
-            android:label="@string/title_activity_dash_board">
+            android:label="@string/title_activity_dash_board"
+            android:screenOrientation="portrait">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -47,13 +65,18 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".activities.OTPVerification" />
-        <activity android:name=".activities.MobileLogin" />
-        <activity android:name=".activities.Login" />
-        <activity android:name=".activities.LandingPage" />
+        <activity android:name=".activities.OTPVerification"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.MobileLogin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.Login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.LandingPage"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

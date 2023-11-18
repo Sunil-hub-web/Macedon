@@ -337,15 +337,17 @@ public class HomeFragment extends Fragment {
                             Log.d("categoryDetails",categoryDetails.toString());
                         }
 
+                        final int lIndex = 0;
+
                         //gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                         categoryAdapter = new CategoryAdapter(categoryDetails,getContext());
                         categoryRecycler.setLayoutManager(linearLayoutManager);
-                        categoryRecycler.setNestedScrollingEnabled(true);
-                       // scrollView.fullScroll(View.FOCUS_DOWN);
-                      //  scrollView.setSmoothScrollingEnabled(true);
+                        categoryRecycler.setItemViewCacheSize(20);
+                        categoryRecycler.setDrawingCacheEnabled(true);
+                        categoryRecycler.setNestedScrollingEnabled(false);
+                        categoryRecycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
                         categoryRecycler.setHasFixedSize(true);
-                        categoryRecycler.smoothScrollToPosition(0);
                         categoryRecycler.setAdapter(categoryAdapter);
 
                         testimonialModels.clear();
@@ -446,7 +448,6 @@ public class HomeFragment extends Fragment {
         }
 
     }*/
-
 
     public void showAddress_Dialog(){
 

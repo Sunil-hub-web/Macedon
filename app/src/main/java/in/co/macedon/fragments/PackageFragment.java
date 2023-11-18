@@ -591,6 +591,9 @@ public class PackageFragment extends Fragment {
 
                     }
                 }, year, month, day);
+
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
         datePickerDialog.show();
 
     }

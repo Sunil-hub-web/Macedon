@@ -487,6 +487,10 @@ public class SingleProduct_Fragment extends Fragment {
                                 centerPackageArray, centerTimeingSlots, center_id);
                         memberShipPlanDet.setHasFixedSize(true);
                         memberShipPlanDet.setLayoutManager(linearLayoutManager);
+                        memberShipPlanDet.setNestedScrollingEnabled(true);
+                        memberShipPlanDet.setItemViewCacheSize(20);
+                        memberShipPlanDet.setDrawingCacheEnabled(true);
+                        memberShipPlanDet.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
                         //singleProductAdapter.setClickListener(this);
                         memberShipPlanDet.setAdapter(singleProductAdapter);
 
@@ -514,7 +518,12 @@ public class SingleProduct_Fragment extends Fragment {
                         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false);
                         centerAmetiesAdapter = new CenterAmetiesAdapter(centerAmetiesModels, getContext());
                         aboutgymRecycler.setHasFixedSize(true);
+                        aboutgymRecycler.setNestedScrollingEnabled(true);
+                        aboutgymRecycler.setItemViewCacheSize(20);
+                        aboutgymRecycler.setDrawingCacheEnabled(true);
+                        aboutgymRecycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
                         aboutgymRecycler.setLayoutManager(manager);
+
                         aboutgymRecycler.setAdapter(centerAmetiesAdapter);
 
                         reviewRatingModels.clear();
@@ -542,6 +551,10 @@ public class SingleProduct_Fragment extends Fragment {
                         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                         reviewRatingAdapter = new ReviewRatingAdapter(reviewRatingModels, getContext());
                         reviwRatingRecycler.setHasFixedSize(true);
+                        reviwRatingRecycler.setNestedScrollingEnabled(true);
+                        reviwRatingRecycler.setItemViewCacheSize(20);
+                        reviwRatingRecycler.setDrawingCacheEnabled(true);
+                        reviwRatingRecycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
                         reviwRatingRecycler.setLayoutManager(linearLayoutManager2);
                         reviwRatingRecycler.setAdapter(reviewRatingAdapter);
 
@@ -773,6 +786,10 @@ public class SingleProduct_Fragment extends Fragment {
                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                             memberShipAdapter = new MemberShipAdapter1(centerPackageModels, getContext(), "SingleProduct",serviceId,centerId);
                             packagePlanRecycler.setLayoutManager(linearLayoutManager);
+                            packagePlanRecycler.setNestedScrollingEnabled(true);
+                            packagePlanRecycler.setItemViewCacheSize(20);
+                            packagePlanRecycler.setDrawingCacheEnabled(true);
+                            packagePlanRecycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
                           //  scrollView.fullScroll(View.FOCUS_DOWN);
                          //   scrollView.setSmoothScrollingEnabled(true);
                             packagePlanRecycler.setHasFixedSize(true);
@@ -975,6 +992,10 @@ public class SingleProduct_Fragment extends Fragment {
             //linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
             timeslotAdapter = new TimeslotAdapter(centerTimeingSlots, getContext());
             timeimgPlanRecycler.setLayoutManager(linearLayoutManager);
+            timeimgPlanRecycler.setNestedScrollingEnabled(true);
+            timeimgPlanRecycler.setItemViewCacheSize(20);
+            timeimgPlanRecycler.setDrawingCacheEnabled(true);
+            timeimgPlanRecycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
            // scrollView.fullScroll(View.FOCUS_DOWN);
           //  scrollView.setSmoothScrollingEnabled(true);
             timeimgPlanRecycler.setHasFixedSize(true);

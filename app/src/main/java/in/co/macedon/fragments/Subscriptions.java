@@ -80,14 +80,14 @@ public class Subscriptions extends Fragment {
             public void onClick(View v) {
 
                 linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails);
+                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails1);
                 recyclerShowPlane.setLayoutManager(linearLayoutManager);
                 recyclerShowPlane.setHasFixedSize(true);
                 recyclerShowPlane.setAdapter(subscriptionAdapter);
 
-                lin_MacPass.setBackgroundResource(R.drawable.shop_filter_selected);
-                text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
-
+                lin_MacPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
+                text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_selected);
+                
             }
         });
 
@@ -96,13 +96,13 @@ public class Subscriptions extends Fragment {
             public void onClick(View v) {
 
                 linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails1);
+                subscriptionAdapter  = new SubscriptionAdapter(getContext(),subscriptionDetails);
                 recyclerShowPlane.setLayoutManager(linearLayoutManager);
                 recyclerShowPlane.setHasFixedSize(true);
                 recyclerShowPlane.setAdapter(subscriptionAdapter);
 
-                lin_MacPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
-                text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_selected);
+                lin_MacPass.setBackgroundResource(R.drawable.shop_filter_selected);
+                text_TrannerPass.setBackgroundResource(R.drawable.shop_filter_item_bg);
             }
         });
 
